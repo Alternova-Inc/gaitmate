@@ -36,7 +36,8 @@ class CheckListItemViewController: OCKChecklistTaskViewController, ORKTaskViewCo
         if  isComplete,
             let event = self.controller.eventFor(indexPath: indexPath),
             event.scheduleEvent.element.targetValues.count>0,
-            let identifier = event.scheduleEvent.element.targetValues[0].groupIdentifier,
+            let identifier = event.outcome?.groupIdentifier,
+//            let identifier = event.scheduleEvent.element.targetValues[0].groupIdentifier,
             let studyCollection = CKStudyUser.shared.studyCollection
             {
             let collectionI = "\(collection)/\(identifier)/questions"

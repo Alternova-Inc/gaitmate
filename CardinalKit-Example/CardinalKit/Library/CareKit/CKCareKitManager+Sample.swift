@@ -338,7 +338,7 @@ internal extension OCKStore {
                                 for target in targetValues{
                                     if let identifier = target["groupIdentifier"] as? String{
                                         var come = OCKOutcomeValue(false, units: nil)
-                                        come.groupIdentifier=identifier
+//                                        come.groupIdentifier=identifier
                                         targetValue.append(come)
                                     }
                                 }
