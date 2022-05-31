@@ -111,7 +111,9 @@ enum LocalTaskItem: Int {
         case .sampleResearchKitActiveTask:
             return AnyView(CKTaskViewController(tasks: TaskSamples.sampleWalkingTask))
         case .sampleCoreMotionAppleWatch:
-            return AnyView(SensorsDemoUIView())
+            // TODO: add sensors demoUi
+            return AnyView(CKTaskViewController(tasks: TaskSamples.sampleWalkingTask))
+//            return AnyView(SensorsDemoUIView())
         case .sampleFunCoffeeSurvey:
             return AnyView(CKTaskViewController(tasks: TaskSamples.sampleCoffeeTask))
         case .sampleFunCoffeeResult:

@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
                 
         // (1) initialize Firebase SDK
-        FirebaseApp.configure()
+//        FirebaseApp.configure()
         
         // (2) check if this is the first time
         // that the app runs!
@@ -179,7 +179,7 @@ extension AppDelegate {
             if ORKPasscodeViewController.isPasscodeStoredInKeychain() {
                 ORKPasscodeViewController.removePasscodeFromKeychain()
             }
-            try? Auth.auth().signOut()
+//            try? Auth.auth().signOut()
             UserDefaults.standard.set(true, forKey: Constants.prefFirstRunWasMarked)
         }
     }

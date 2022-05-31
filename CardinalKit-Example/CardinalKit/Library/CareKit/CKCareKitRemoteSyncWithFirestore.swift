@@ -12,6 +12,30 @@ import CareKitStore
 import CareKitUI
 
 class CKCareKitRemoteSyncWithFirestore: OCKRemoteSynchronizable {
+    func pullRevisions(since knowledgeVector: OCKRevisionRecord.KnowledgeVector, mergeRevision: @escaping (OCKRevisionRecord) -> Void, completion: @escaping (Error?) -> Void) {
+        getRevisionsFromFirestore { (outComes) in
+            print("[pullRevisions] mergeRevision")
+            let newRecord = self.createPullMergeRevisionRecord(outComes, knowledgeVector)
+            mergeRevision(newRecord)
+            completion(nil)
+        }
+    }
+    
+    func pushRevisions(deviceRevision: OCKRevisionRecord, completion: @escaping (Error?) -> Void) {
+        getRevisionsFromFirestore { (outComes) in
+            print("[pushRevisions] mergeRevision")
+            var newRevisions = outComes
+            newRevisions.append(deviceRevision)
+            let newRecord = self.createPushMergeRevisionRecord(newRevisions, deviceRevision.knowledgeVector)
+            // This step will pass the revision record to server (GCP, Firestore).
+            self.putRevisionInFirestore(deviceRevision: newRecord, true, completion)
+        }
+    }
+    
+    func chooseConflictResolution(conflicts: [OCKEntity], completion: @escaping OCKResultClosure<OCKEntity>) {
+        completion(.success(conflicts[0]))
+    }
+    
     
     var delegate: OCKRemoteSynchronizationDelegate?
     
@@ -23,36 +47,45 @@ class CKCareKitRemoteSyncWithFirestore: OCKRemoteSynchronizable {
         delegate = self
     }
     
+//
+//    func pullRevisions(since knowledgeVector: OCKRevisionRecord.KnowledgeVector, mergeRevision: @escaping (OCKRevisionRecord, @escaping (Error?) -> Void) -> Void, completion: @escaping (Error?) -> Void) {
+//
+//        // https://developer.apple.com/videos/play/wwdc2020/10151
+//        // Given a revision record, merge it into the store.
+//        getRevisionsFromFirestore { (outComes) in
+//            print("[pullRevisions] mergeRevision")
+//            let newRecord = self.createPullMergeRevisionRecord(outComes, knowledgeVector)
+//            mergeRevision(newRecord, completion)
+//        }
+//    }
+//
+//    func pushRevisions(deviceRevision: OCKRevisionRecord, overwriteRemote: Bool, completion: @escaping (Error?) -> Void) {
+//
+//        getRevisionsFromFirestore { (outComes) in
+//            print("[pushRevisions] mergeRevision")
+//            var newRevisions = outComes
+//            newRevisions.append(deviceRevision)
+//            let newRecord = self.createPushMergeRevisionRecord(newRevisions, deviceRevision.knowledgeVector)
+//
+//            // This step will pass the revision record to server (GCP, Firestore).
+//            self.putRevisionInFirestore(deviceRevision: newRecord, true, completion)
+//        }
+//
+//    }
     
-    func pullRevisions(since knowledgeVector: OCKRevisionRecord.KnowledgeVector, mergeRevision: @escaping (OCKRevisionRecord, @escaping (Error?) -> Void) -> Void, completion: @escaping (Error?) -> Void) {
-        
-        // https://developer.apple.com/videos/play/wwdc2020/10151
-        // Given a revision record, merge it into the store.
-        getRevisionsFromFirestore { (outComes) in
-            print("[pullRevisions] mergeRevision")
-            let newRecord = self.createPullMergeRevisionRecord(outComes, knowledgeVector)
-            mergeRevision(newRecord, completion)
-        }
-    }
+//    func chooseConflictResolution(conflicts: [OCKEntity], completion: @escaping OCKResultClosure<OCKEntity>) {
+//        completion(OCKResultC)
+//
+//    }
     
-    func pushRevisions(deviceRevision: OCKRevisionRecord, overwriteRemote: Bool, completion: @escaping (Error?) -> Void) {
-        
-        getRevisionsFromFirestore { (outComes) in
-            print("[pushRevisions] mergeRevision")
-            var newRevisions = outComes
-            newRevisions.append(deviceRevision)
-            let newRecord = self.createPushMergeRevisionRecord(newRevisions, deviceRevision.knowledgeVector)
-
-            // This step will pass the revision record to server (GCP, Firestore).
-            self.putRevisionInFirestore(deviceRevision: newRecord, true, completion)
-        }
-        
-    }
+//    func chooseConflictResolution(conflicts: [OCKEntity], completion: @escaping OCKResultClosure<OCKEntity>) {
+//        completion(.success(conflicts[0]))
+//    }
     
-    func chooseConflictResolutionPolicy(_ conflict: OCKMergeConflictDescription, completion: @escaping (OCKMergeConflictResolutionPolicy) -> Void) {
-        // NOTE: depending on your project, you might want to change the resolution policy
-        completion(.keepRemote)
-    }
+//    func chooseConflictResolutionPolicy(_ conflict: OCKMergeConflictDescription, completion: @escaping (OCKMergeConflictResolutionPolicy) -> Void) {
+//        // NOTE: depending on your project, you might want to change the resolution policy
+//        completion(.keepRemote)
+//    }
     
 }
 
@@ -166,7 +199,7 @@ extension CKCareKitRemoteSyncWithFirestore {
                             }
                             case .success(let tasks):
                                 if tasks.count == 1{
-                                    payload["taskUUID"] = tasks[0].uuid!.uuidString
+                                    payload["taskUUID"] = tasks[0].uuid.uuidString
                                     var object = [String:Any]()
                                     object["object"] = payload
                                     object["type"] = type

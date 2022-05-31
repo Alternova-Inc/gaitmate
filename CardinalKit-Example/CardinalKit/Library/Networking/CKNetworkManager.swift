@@ -9,6 +9,14 @@ import CardinalKit
 import Firebase
 
 class CKAppNetworkManager: CKAPIDeliveryDelegate, CKAPIReceiverDelegate {
+    func send(route: String, data: Any, params: Any?, onCompletion: ((Bool, Error?) -> Void)?) {
+        
+    }
+    
+    func request(route: String, onCompletion: @escaping (Any?) -> Void) {
+        
+    }
+    
     
     // MARK: - CKAPIDeliveryDelegate
     func send(file: URL, package: Package, onCompletion: @escaping (Bool) -> Void) {
@@ -22,8 +30,8 @@ class CKAppNetworkManager: CKAPIDeliveryDelegate, CKAPIReceiverDelegate {
         case .hkdata:
             sendHealthKit(file, package, onCompletion)
             break
-        case .sensorData:
-            sendSensorData(file, package, onCompletion)
+//        case .sensorData:
+//            sendSensorData(file, package, onCompletion)
             break
         case .metricsData:
             sendMetricsData(file, package, onCompletion)

@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'CardinalKit_Example' do
-  pod 'CardinalKit', :path => '../'
+  pod 'CardinalKit', :git => 'https://github.com/Alternova-Inc/CardinalKit.git',:branch => 'alternova/restructuring-the-library'
   
   # CK Sample Pods
   pod 'ResearchKit', :git => 'https://github.com/cs342-gaitmate/ResearchKit.git', :branch => 'main'

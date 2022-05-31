@@ -224,10 +224,16 @@ PODS:
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
   - CardinalKit (2.0.0):
+    - Firebase/Analytics
+    - Firebase/Auth
+    - Firebase/Core
+    - Firebase/DynamicLinks
+    - Firebase/Firestore
+    - Firebase/Storage
     - Granola
     - ObjectMapper (~> 3.3.0)
     - ReachabilitySwift (~> 3)
-    - RealmSwift (~> 10.7)
+    - RealmSwift (~> 10.25.0)
     - SAMKeychain (~> 1.5.2)
     - SwiftyJSON (~> 4.1.0)
     - Zip (~> 1.1.0)
@@ -394,18 +400,18 @@ PODS:
   - ObjectMapper (3.3.0)
   - PromisesObjC (1.2.12)
   - ReachabilitySwift (3)
-  - Realm (10.7.2):
-    - Realm/Headers (= 10.7.2)
-  - Realm/Headers (10.7.2)
-  - RealmSwift (10.7.2):
-    - Realm (= 10.7.2)
+  - Realm (10.25.2):
+    - Realm/Headers (= 10.25.2)
+  - Realm/Headers (10.25.2)
+  - RealmSwift (10.25.2):
+    - Realm (= 10.25.2)
   - ResearchKit (2.1.0-beta)
   - SAMKeychain (1.5.3)
   - SwiftyJSON (4.1.0)
   - Zip (1.1.0)
 
 DEPENDENCIES:
-  - CardinalKit (from `../`)
+  - CardinalKit (from `https://github.com/Alternova-Inc/CardinalKit.git`, branch `alternova/restructuring-the-library`)
   - FBSDKLoginKit
   - Firebase/Analytics
   - Firebase/Auth
@@ -456,7 +462,8 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   CardinalKit:
-    :path: "../"
+    :branch: alternova/restructuring-the-library
+    :git: https://github.com/Alternova-Inc/CardinalKit.git
   Granola:
     :branch: main
     :git: https://github.com/CardinalKit/Granola.git
@@ -465,6 +472,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/cs342-gaitmate/ResearchKit.git
 
 CHECKOUT OPTIONS:
+  CardinalKit:
+    :commit: c62d69f4ff7774bba084b304c4e88ca657688fd3
+    :git: https://github.com/Alternova-Inc/CardinalKit.git
   Granola:
     :commit: 4b6a421bab81bea5fad4b124b0441b3dd2d82c6b
     :git: https://github.com/CardinalKit/Granola.git
@@ -476,7 +486,7 @@ SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
-  CardinalKit: c300a3d56de7d0f54503aea8a6b8436f8069f9e0
+  CardinalKit: 65abcd5d29e4c05f63d7fe5a791007286628faf7
   FBAEMKit: 56c0bb9b42e3747cd82b67934f0c2b19325382ea
   FBSDKCoreKit: 75368765d9c2303073145a7925dfaa9d60bcd77b
   FBSDKCoreKit_Basics: 39865aff97e5f6951a78fb3e89dc4460e35e1895
@@ -505,13 +515,13 @@ SPEC CHECKSUMS:
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
-  Realm: e523da9ade306c5ae87e85dc09fdef148d3e1cc1
-  RealmSwift: 4f6758c3adbdcc87f7b7777107226532a077f61c
+  Realm: 978303663d0509166498f423d112e5ee97d4c91b
+  RealmSwift: a0c30c1efc49e928a0a6f8fb141bb2629616d79b
   ResearchKit: 9d6981b42c8633aa64097f4490be65abf39c350a
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: cf247e4a3cd43fabf839b7ef13c97eb581addcb7
+PODFILE CHECKSUM: 4574b0471fe536eb3af527bc25fc7670319ab5ea
 
 COCOAPODS: 1.11.2
