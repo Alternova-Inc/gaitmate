@@ -113,21 +113,41 @@ struct BaselineSurveyViewController: UIViewControllerRepresentable {
             let ethnicityChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: ethnicityChoices)
             let ethnicityItem = ORKFormItem(identifier: "ethnicityItem", text: "Do you identify as Hispanic or Latino?", answerFormat: ethnicityChoiceAnswerFormat)
             
-            /*
+            
             let heightFormat = ORKAnswerFormat.scale(withMaximumValue: 100, minimumValue: 0, defaultValue: 50, step: 10, vertical: false, maximumValueDescription: "100", minimumValueDescription: "0")
-            let heightItem = ORKFormItem(identifier: "heightItem", text: "What is your height (in inches):", answerFormat: heightFormat)
-            */
+            let heightItem = ORKFormItem(identifier: "heightItem", text: "How tall are you? (in inches):", answerFormat: heightFormat)
+            
             
             //let weightFormat = ORKNumericAnswerFormat(style: ORKNumericAnswerStyle.Type, unit: "lbs", minimum: 600, maximum: 0)
-            let weightFormat = ORKAnswerFormat.scale(withMaximumValue: 500, minimumValue: 0, defaultValue: 150, step: 50, vertical: false, maximumValueDescription: "500", minimumValueDescription: "0")
-            let weightItem = ORKFormItem(identifier: "weightItem", text: "How much do you weigh (lbs):", answerFormat: weightFormat)
+            //let weightFormat = ORKAnswerFormat.scale(withMaximumValue: 500, minimumValue: 0, defaultValue: 150, step: 50, vertical: false, maximumValueDescription: "500", minimumValueDescription: "0")
             
+            let weightChoices = [
+                ORKTextChoice(text: "<100", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "100-150", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "151-180", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "181-200", value: 3 as NSCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "201-250", value: 4 as NSCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: ">250", value: 5 as NSCoding & NSCopying & NSObjectProtocol),
+            ]
+            let weightChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .multipleChoice, textChoices: weightChoices)
+            let weightItem = ORKFormItem(identifier: "weightItem", text: "Approximately how much do you weigh in pounds?", answerFormat: weightChoiceAnswerFormat)
             
+            // -------------------------------------------
             
             let demoStep = ORKFormStep(identifier: "demoStep", title: "Demographics", text: "The following questions concern your demographic information")
             demoStep.formItems = [ageItem, sexItem, raceItem, ethnicityItem, weightItem]
             
             steps += [demoStep]
+            
+            let maritalStatusChoices = [
+                ORKTextChoice(text: "Single, never married", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "Married, or in a domestic partnership", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "Separated", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "Divorced", value: 3 as NSCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "Widowed", value: 4 as NSCoding & NSCopying & NSObjectProtocol),
+            ]
+            let maritalStatusWithFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: maritalStatusChoices)
+            let maritalStatusWithItem = ORKFormItem(identifier: "maritalStatusWithItem", text: "What is your marital status?", answerFormat: maritalStatusWithFormat)
             
             let liveWithChoices = [
                 ORKTextChoice(text: "By myself", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
@@ -137,14 +157,24 @@ struct BaselineSurveyViewController: UIViewControllerRepresentable {
             let liveWithFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: liveWithChoices)
             let liveWithItem = ORKFormItem(identifier: "liveWithItem", text: "Who do you currenty live with?", answerFormat: liveWithFormat)
             
+            let leaveHomeChoices = [
+                ORKTextChoice(text: "Single, never married", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "Married, or in a domestic partnership", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "Separated", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "Divorced", value: 3 as NSCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "Widowed", value: 4 as NSCoding & NSCopying & NSObjectProtocol),
+            ]
+            let leaveHomeWithFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: leaveHomeChoices)
+            let leaveHomeWithItem = ORKFormItem(identifier: "leavehomeWithItem", text: "How often do you leave your home?", answerFormat: leaveHomeWithFormat)
+            
             let livingSituationStep = ORKFormStep(identifier: "livingSituatiomStep", title: "Current Living Situation", text: "The following questions concern your current living situation")
             //let livingSituationStep = ORKFormStep(identifier: "livingSituatiomStep", title: "Current Living Situation", text: nil)
 
-            livingSituationStep.formItems = [liveWithItem]
+            livingSituationStep.formItems = [maritalStatusWithItem,liveWithItem, leaveHomeWithItem]
             
             steps += [livingSituationStep]
             
-            //Part 3: Quality of Life
+            //Part 4: Quality of Life
             let mobilityChoices = [
                 ORKTextChoice(text: "I have no problems in walking about", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
                 ORKTextChoice(text: "I have slight problems in walking about", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
