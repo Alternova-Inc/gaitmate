@@ -26,12 +26,6 @@ struct ProfileUIView: View {
                     PatientIDView()
                 }.listRowBackground(Color.white)
                 
-                Section {
-                    FallNotificationView()
-                    GaitNotificationView()
-                    //SendRecordsView()
-                    //ChangePasscodeView()
-                }
                 
                 Section {
                     HelpView(site: config.read(query: "Website"))
