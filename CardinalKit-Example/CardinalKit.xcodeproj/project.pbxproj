@@ -22,7 +22,7 @@
 		2B932F84276BF8D300AB3A02 /* CKReviewConsentDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B932F83276BF8D300AB3A02 /* CKReviewConsentDocument.swift */; };
 		2BD5328326C2CC4E00C4636E /* CkResearchSurveysManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD5328226C2CC4E00C4636E /* CkResearchSurveysManager.swift */; };
 		2BD5328526C30F2E00C4636E /* CloudTaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD5328426C30F2E00C4636E /* CloudTaskItem.swift */; };
-		2BF6451826C1D0040020C206 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2BF6451826C1D0040020C206 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		2BF6452026C1DBE70020C206 /* CK_ORKSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF6451F26C1DBE70020C206 /* CK_ORKSerialization.swift */; };
 		2F94C5F22536543600DF8866 /* SceneDelegate+CardinalKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C5F12536543600DF8866 /* SceneDelegate+CardinalKit.swift */; };
 		4AB6AAAB14B361668A8DCF0C /* Pods_CardinalKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F26823E0F81D89B49F12C44 /* Pods_CardinalKit_Example.framework */; };
@@ -90,7 +90,6 @@
 		8EBE6F9C24B3C0E60093D07C /* AppDelegate+CardinalKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBE6F9B24B3C0E60093D07C /* AppDelegate+CardinalKit.swift */; };
 		D253D132250D1BDB00A363E4 /* CKSignInWithAppleStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253D131250D1BDB00A363E4 /* CKSignInWithAppleStep.swift */; };
 		D308EBDA27CD8B6F00438BF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E0A4388244A4A0400656518 /* Assets.xcassets */; };
-		D308EBDC27CD8BAC00438BF4 /* GaitNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D308EBDB27CD8BAC00438BF4 /* GaitNotificationView.swift */; };
 		D314690627B48E0E0096E8D4 /* ActiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314690527B48E0E0096E8D4 /* ActiveViewController.swift */; };
 		D314690827B4914C0096E8D4 /* GaitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314690727B4914C0096E8D4 /* GaitViewController.swift */; };
 		D314690A27B4B8E20096E8D4 /* BaselineSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314690927B4B8E20096E8D4 /* BaselineSurveyViewController.swift */; };
@@ -100,7 +99,6 @@
 		D3590D1B27DAA90B008BB288 /* ReportFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3590D1A27DAA90B008BB288 /* ReportFall.swift */; };
 		D36BC87127C860320019311B /* NotificationStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36BC87027C860320019311B /* NotificationStep.swift */; };
 		D3C49CC527C57A08004520CD /* LaunchUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C49CC427C57A08004520CD /* LaunchUIViewController.swift */; };
-		D3C49CC927C5C613004520CD /* FallNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C49CC827C5C613004520CD /* FallNotificationView.swift */; };
 		D3CD04D327B0EC1E00C5F5A3 /* HomeUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CD04D227B0EC1E00C5F5A3 /* HomeUIView.swift */; };
 		D3D5A0ED27C465FE009FAB06 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D5A0EC27C465FE009FAB06 /* NotificationManager.swift */; };
 		E235077724F7082700CC1899 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235077624F7082700CC1899 /* SceneDelegate.swift */; };
@@ -214,7 +212,6 @@
 		901D8AC056E411362004396F /* Pods-CardinalKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardinalKit_Example.release.xcconfig"; path = "Target Support Files/Pods-CardinalKit_Example/Pods-CardinalKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B407C8AA0EA2CF5364B7A54B /* Pods-CardinalKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardinalKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-CardinalKit_Example/Pods-CardinalKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D253D131250D1BDB00A363E4 /* CKSignInWithAppleStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKSignInWithAppleStep.swift; sourceTree = "<group>"; };
-		D308EBDB27CD8BAC00438BF4 /* GaitNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaitNotificationView.swift; sourceTree = "<group>"; };
 		D314690527B48E0E0096E8D4 /* ActiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveViewController.swift; sourceTree = "<group>"; };
 		D314690727B4914C0096E8D4 /* GaitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaitViewController.swift; sourceTree = "<group>"; };
 		D314690927B4B8E20096E8D4 /* BaselineSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaselineSurveyViewController.swift; sourceTree = "<group>"; };
@@ -224,7 +221,6 @@
 		D3590D1A27DAA90B008BB288 /* ReportFall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportFall.swift; sourceTree = "<group>"; };
 		D36BC87027C860320019311B /* NotificationStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationStep.swift; sourceTree = "<group>"; };
 		D3C49CC427C57A08004520CD /* LaunchUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchUIViewController.swift; sourceTree = "<group>"; };
-		D3C49CC827C5C613004520CD /* FallNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallNotificationView.swift; sourceTree = "<group>"; };
 		D3CD04D227B0EC1E00C5F5A3 /* HomeUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIView.swift; sourceTree = "<group>"; };
 		D3D5A0EC27C465FE009FAB06 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		E235077624F7082700CC1899 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -440,8 +436,6 @@
 			isa = PBXGroup;
 			children = (
 				8E6E1E1F253529760024B8DF /* DocumentView.swift */,
-				D3C49CC827C5C613004520CD /* FallNotificationView.swift */,
-				D308EBDB27CD8BAC00438BF4 /* GaitNotificationView.swift */,
 				8E6E1E19253528450024B8DF /* WithdrawView.swift */,
 				8E6E1E1B253528D70024B8DF /* ReportView.swift */,
 				8E6E1E1D253528F50024B8DF /* SupportView.swift */,
@@ -842,20 +836,18 @@
 				8E6E1E182535263F0024B8DF /* CKTaskViewController.swift in Sources */,
 				10B2985027CEEEB500FFFCA3 /* SurveyItemViewControllerOnboarding.swift in Sources */,
 				8E9CDF142591B73900C8A228 /* CKHealthRecordsManager.swift in Sources */,
-				D308EBDC27CD8BAC00438BF4 /* GaitNotificationView.swift in Sources */,
 				8EA664B42594387900B6A45A /* Errors.swift in Sources */,
 				8E6E1E1225351F830024B8DF /* DocumentPreviewViewController.swift in Sources */,
 				8E6E1E20253529760024B8DF /* DocumentView.swift in Sources */,
 				8E7FFFBB25DE37FF002982B4 /* CoffeePieChartView.swift in Sources */,
 				8E7FFFB825DE350A002982B4 /* CoffeeUIView.swift in Sources */,
-				2BF6451826C1D0040020C206 /* BuildFile in Sources */,
+				2BF6451826C1D0040020C206 /* (null) in Sources */,
 				2B19DD9226FE1BEB00649CE1 /* JsonToSurvey.swift in Sources */,
 				8E0A43B5244A4A0400656518 /* LocalTaskItem.swift in Sources */,
 				2BD5328326C2CC4E00C4636E /* CkResearchSurveysManager.swift in Sources */,
 				D314690627B48E0E0096E8D4 /* ActiveViewController.swift in Sources */,
 				8E6E1E2C253539AE0024B8DF /* ChangePasscodeView.swift in Sources */,
 				D314690827B4914C0096E8D4 /* GaitViewController.swift in Sources */,
-				D3C49CC927C5C613004520CD /* FallNotificationView.swift in Sources */,
 				8E0A43AD244A4A0400656518 /* Constants.swift in Sources */,
 				8E0A43BE244A4A0400656518 /* CKHealthDataStepViewController.swift in Sources */,
 				2BF6452026C1DBE70020C206 /* CK_ORKSerialization.swift in Sources */,
