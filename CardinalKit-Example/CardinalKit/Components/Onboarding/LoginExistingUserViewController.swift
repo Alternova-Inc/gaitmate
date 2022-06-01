@@ -25,7 +25,8 @@ struct LoginExistingUserViewController: UIViewControllerRepresentable {
         let config = CKPropertyReader(file: "CKConfiguration")
         
         var loginSteps: [ORKStep]
-        let signInButtons = CKMultipleSignInStep(identifier: "SignInButtons")
+        let signInButtons = CodeSignInStep(identifier: "SignInStep")
+//        CKMultipleSignInStep(identifier: "SignInButtons")
         let loginUserPassword = ORKLoginStep(identifier: "LoginExistingStep", title: "Login", text: "Log into this study.", loginViewControllerClass: LoginViewController.self)
         loginSteps = [signInButtons, loginUserPassword]
         

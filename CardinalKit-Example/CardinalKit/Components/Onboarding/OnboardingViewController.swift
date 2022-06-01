@@ -64,7 +64,8 @@ struct OnboardingViewController: UIViewControllerRepresentable {
         //let notificationStep = NotificationStep(identifier: "Notifications")
 
         var loginSteps: [ORKStep]
-        let signInButtons = CKMultipleSignInStep(identifier: "SignInButtons")
+        let signInButtons = CodeSignInStep(identifier: "SignInStep")
+//        CKMultipleSignInStep(identifier: "SignInButtons")
         
         
 //        if config["Login-Sign-In-With-Apple"]["Enabled"] as? Bool == true {
