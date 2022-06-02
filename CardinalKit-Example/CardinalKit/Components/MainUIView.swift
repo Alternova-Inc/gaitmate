@@ -29,13 +29,6 @@ struct MainUIView: View {
                 Text("Home")
             }
             
-            /*
-            TasksUIView(color: self.color).tabItem {
-                Image(systemName: "figure.walk")
-                Text("Tasks")
-            }
-            */
-            
             if useCareKit && carekitLoaded {
                 ScheduleViewControllerRepresentable()
                     .ignoresSafeArea(edges: .all)

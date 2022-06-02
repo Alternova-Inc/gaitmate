@@ -26,6 +26,8 @@
 		2BF6452026C1DBE70020C206 /* CK_ORKSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF6451F26C1DBE70020C206 /* CK_ORKSerialization.swift */; };
 		2F94C5F22536543600DF8866 /* SceneDelegate+CardinalKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C5F12536543600DF8866 /* SceneDelegate+CardinalKit.swift */; };
 		4AB6AAAB14B361668A8DCF0C /* Pods_CardinalKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F26823E0F81D89B49F12C44 /* Pods_CardinalKit_Example.framework */; };
+		638340E92847F8F50050FD25 /* CodeSignInStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638340E82847F8F40050FD25 /* CodeSignInStep.swift */; };
+		63EE800528490BA9005E80F0 /* FinalStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EE800428490BA9005E80F0 /* FinalStep.swift */; };
 		8E0A43AC244A4A0400656518 /* CKStudyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A4382244A4A0400656518 /* CKStudyUser.swift */; };
 		8E0A43AD244A4A0400656518 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A4384244A4A0400656518 /* Constants.swift */; };
 		8E0A43AE244A4A0400656518 /* ORKESerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A4386244A4A0400656518 /* ORKESerialization.m */; };
@@ -46,9 +48,7 @@
 		8E6E1E1025351E890024B8DF /* Extensions+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E1E0F25351E890024B8DF /* Extensions+UIColor.swift */; };
 		8E6E1E1225351F830024B8DF /* DocumentPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E1E1125351F830024B8DF /* DocumentPreviewViewController.swift */; };
 		8E6E1E14253520440024B8DF /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E1E13253520440024B8DF /* PasscodeViewController.swift */; };
-		8E6E1E16253524500024B8DF /* WithdrawalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E1E15253524500024B8DF /* WithdrawalViewController.swift */; };
 		8E6E1E182535263F0024B8DF /* CKTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E1E172535263F0024B8DF /* CKTaskViewController.swift */; };
-		8E6E1E1A253528450024B8DF /* WithdrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E1E19253528450024B8DF /* WithdrawView.swift */; };
 		8E6E1E1C253528D70024B8DF /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E1E1B253528D70024B8DF /* ReportView.swift */; };
 		8E6E1E1E253528F50024B8DF /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E1E1D253528F50024B8DF /* SupportView.swift */; };
 		8E6E1E20253529760024B8DF /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E1E1F253529760024B8DF /* DocumentView.swift */; };
@@ -146,6 +146,8 @@
 		41DC264876E45FE5A3FD8701 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* CardinalKit Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CardinalKit Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62AA5CD1C2188D392530510F /* CardinalKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CardinalKit.podspec; path = ../CardinalKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		638340E82847F8F40050FD25 /* CodeSignInStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSignInStep.swift; sourceTree = "<group>"; };
+		63EE800428490BA9005E80F0 /* FinalStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalStep.swift; sourceTree = "<group>"; };
 		8E0A4378244A4A0300656518 /* CardinalKit_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CardinalKit_Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		8E0A4382244A4A0400656518 /* CKStudyUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKStudyUser.swift; sourceTree = "<group>"; };
 		8E0A4384244A4A0400656518 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -171,9 +173,7 @@
 		8E6E1E0F25351E890024B8DF /* Extensions+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIColor.swift"; sourceTree = "<group>"; };
 		8E6E1E1125351F830024B8DF /* DocumentPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPreviewViewController.swift; sourceTree = "<group>"; };
 		8E6E1E13253520440024B8DF /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
-		8E6E1E15253524500024B8DF /* WithdrawalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalViewController.swift; sourceTree = "<group>"; };
 		8E6E1E172535263F0024B8DF /* CKTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKTaskViewController.swift; sourceTree = "<group>"; };
-		8E6E1E19253528450024B8DF /* WithdrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawView.swift; sourceTree = "<group>"; };
 		8E6E1E1B253528D70024B8DF /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		8E6E1E1D253528F50024B8DF /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
 		8E6E1E1F253529760024B8DF /* DocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentView.swift; sourceTree = "<group>"; };
@@ -253,6 +253,8 @@
 			children = (
 				2B8FB80327552B02000B2D7B /* CKMultipleSignInStep.swift */,
 				2B932F83276BF8D300AB3A02 /* CKReviewConsentDocument.swift */,
+				638340E82847F8F40050FD25 /* CodeSignInStep.swift */,
+				63EE800428490BA9005E80F0 /* FinalStep.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -318,7 +320,6 @@
 				8E6E1E3025353AA70024B8DF /* Views */,
 				8E6E1E3125353ABE0024B8DF /* ProfileUIView.swift */,
 				8E6E1E1125351F830024B8DF /* DocumentPreviewViewController.swift */,
-				8E6E1E15253524500024B8DF /* WithdrawalViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -436,7 +437,6 @@
 			isa = PBXGroup;
 			children = (
 				8E6E1E1F253529760024B8DF /* DocumentView.swift */,
-				8E6E1E19253528450024B8DF /* WithdrawView.swift */,
 				8E6E1E1B253528D70024B8DF /* ReportView.swift */,
 				8E6E1E1D253528F50024B8DF /* SupportView.swift */,
 				8E6E1E292535398D0024B8DF /* HelpView.swift */,
@@ -806,7 +806,6 @@
 				8E0A43B3244A4A0400656518 /* TaskSamples.swift in Sources */,
 				8E6E1E2225352C780024B8DF /* OnboardingUIView.swift in Sources */,
 				104C940C27A28E7600340E2F /* SurveyViewCoordinator.swift in Sources */,
-				8E6E1E1A253528450024B8DF /* WithdrawView.swift in Sources */,
 				8E6E1E2E25353A1E0024B8DF /* PatientIDView.swift in Sources */,
 				104C940A27A2791A00340E2F /* SurveyViewController.swift in Sources */,
 				8E6E1E0B2534FF640024B8DF /* OnboardingViewController+Coordinator.swift in Sources */,
@@ -846,6 +845,7 @@
 				8E0A43B5244A4A0400656518 /* LocalTaskItem.swift in Sources */,
 				2BD5328326C2CC4E00C4636E /* CkResearchSurveysManager.swift in Sources */,
 				D314690627B48E0E0096E8D4 /* ActiveViewController.swift in Sources */,
+				638340E92847F8F50050FD25 /* CodeSignInStep.swift in Sources */,
 				8E6E1E2C253539AE0024B8DF /* ChangePasscodeView.swift in Sources */,
 				D314690827B4914C0096E8D4 /* GaitViewController.swift in Sources */,
 				8E0A43AD244A4A0400656518 /* Constants.swift in Sources */,
@@ -872,7 +872,6 @@
 				8E9CDEA725916B2800C8A228 /* ScheduleViewControllerRepresentable.swift in Sources */,
 				2B932F84276BF8D300AB3A02 /* CKReviewConsentDocument.swift in Sources */,
 				E235077724F7082700CC1899 /* SceneDelegate.swift in Sources */,
-				8E6E1E16253524500024B8DF /* WithdrawalViewController.swift in Sources */,
 				D3590D1927DAA845008BB288 /* SurveyItemViewControllerReportFall.swift in Sources */,
 				D3CD04D327B0EC1E00C5F5A3 /* HomeUIView.swift in Sources */,
 				D34849DB27CF2E520042E654 /* AboutStudyViewText.swift in Sources */,
@@ -881,6 +880,7 @@
 				8E6E1E2A2535398D0024B8DF /* HelpView.swift in Sources */,
 				8E9CDED02591AC4A00C8A228 /* CKHealthKitManager.swift in Sources */,
 				8E0A43C2244A4A0400656518 /* ConsentDocument.swift in Sources */,
+				63EE800528490BA9005E80F0 /* FinalStep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

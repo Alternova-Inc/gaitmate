@@ -13,7 +13,7 @@ struct PatientIDView: View {
     
     init() {
         if let currentUser = CKStudyUser.shared.currentUser {
-           self.userID = currentUser.uid
+           self.userID = currentUser
        }
     }
     

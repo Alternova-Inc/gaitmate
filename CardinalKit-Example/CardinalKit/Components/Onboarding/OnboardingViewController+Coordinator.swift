@@ -87,107 +87,7 @@ class OnboardingViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
     }
     
     func taskViewController(_ taskViewController: ORKTaskViewController, stepViewControllerWillAppear stepViewController: ORKStepViewController) {
-        
-        // MARK: - Advanced Concepts
-        // Sometimes we might want some custom logic
-        // to run when a step appears 🎩
-        
-        if stepViewController.step?.identifier == PasswordlessLoginStep.identifier {
-            
-            /* **************************************************************
-            * When the login step appears, asking for the patient's email
-            **************************************************************/
-            if let _ = CKStudyUser.shared.currentUser?.email {
-                // if we already have an email, go forward and continue.
-                DispatchQueue.main.async {
-                    stepViewController.goForward()
-                }
-            }
-            
-        } else if (stepViewController.step?.identifier == "RegistrationStep") {
-            
-            if let _ = CKStudyUser.shared.currentUser?.email {
-                // if we already have an email, go forward and continue.
-                DispatchQueue.main.async {
-                    stepViewController.goForward()
-                }
-            }
-            
-        } else if (stepViewController.step?.identifier == "LoginStep") {
-            
-            if let _ = CKStudyUser.shared.currentUser?.email {
-                // good — we have an email!
-            } else {
-                let alert = UIAlertController(title: nil, message: "Creating account...", preferredStyle: .alert)
-
-                let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-                loadingIndicator.hidesWhenStopped = true
-                loadingIndicator.style = UIActivityIndicatorView.Style.medium
-                loadingIndicator.startAnimating();
-
-                alert.view.addSubview(loadingIndicator)
-                taskViewController.present(alert, animated: false, completion: nil)
-                
-                let stepResult = taskViewController.result.stepResult(forStepIdentifier: "RegistrationStep")
-                if let emailRes = stepResult?.results?.first as? ORKTextQuestionResult, let email = emailRes.textAnswer {
-                    if let passwordRes = stepResult?.results?[1] as? ORKTextQuestionResult, let pass = passwordRes.textAnswer {
-                        Auth.auth().createUser(withEmail: email, password: pass) { (res, error) in
-                            DispatchQueue.main.async {
-                                if error != nil {
-                                    alert.dismiss(animated: false, completion: nil)
-                                    if let errCode = AuthErrorCode(rawValue: error!._code) {
-
-                                        switch errCode {
-                                            default:
-                                                let alert = UIAlertController(title: "Registration Error!", message: error?.localizedDescription, preferredStyle: .alert)
-                                                alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-
-                                                taskViewController.present(alert, animated: false)
-                                        }
-                                    }
-                                    
-                                    stepViewController.goBackward()
-
-                                } else {
-                                    alert.dismiss(animated: false, completion: nil)
-                                    print("Created user!")
-                                }
-                            }
-                        }
-                        
-                    }
-                }
-            }
-        } else if stepViewController.step?.identifier == LoginCustomWaitStep.identifier {
-            
-            /* **************************************************************
-            * When the email verification step appears, send email in background!
-            **************************************************************/
-            
-            let stepResult = taskViewController.result.stepResult(forStepIdentifier: PasswordlessLoginStep.identifier)
-            if let emailRes = stepResult?.results?.first as? ORKTextQuestionResult, let email = emailRes.textAnswer {
-                
-                // if we received a valid email
-                CKStudyUser.shared.sendLoginLink(email: email) { (success) in
-                    // send a login link
-                    guard success else {
-                        // and react accordingly if we ran into an error.
-                        DispatchQueue.main.async {
-                            let config = CKPropertyReader(file: "CKConfiguration")
-                            
-                            Alerts.showInfo(title: config.read(query: "Failed Login Title"), message: config.read(query: "Failed Login Text"))
-                            stepViewController.goBackward()
-                        }
-                        return
-                    }
-                    
-                    CKStudyUser.shared.email = email
-                }
-                
-            }
-            
-        }
-        
+//        stepViewController.goForward()
     }
     
     func taskViewController(_ taskViewController: ORKTaskViewController, viewControllerFor step: ORKStep) -> ORKStepViewController? {
@@ -217,6 +117,10 @@ class OnboardingViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
             return CKMultipleSignInStepViewController(step: step)
         case is CKReviewConsentDocument:
             return CKReviewConsentDocumentViewController(step: step)
+        case is CodeSignInStep:
+            return CodeSignInStepViewController(step: step)
+        case is FinalStep:
+            return FinalStepViewcontroller(step: step)
         default:
             return nil
         }

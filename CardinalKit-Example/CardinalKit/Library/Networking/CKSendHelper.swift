@@ -94,7 +94,7 @@ class CKSendHelper {
     */
     static func sendToFirestoreWithUUID(json: [String:Any], collection: String, withIdentifier identifier: String? = nil, onCompletion: ((Bool, Error?) -> Void)? = nil) throws {
         guard let authCollection = CKStudyUser.shared.authCollection,
-              let userId = CKStudyUser.shared.currentUser?.uid else {
+              let userId = CKStudyUser.shared.currentUser else {
             onCompletion?(false, CKError.unauthorized)
             return
         }
@@ -126,7 +126,7 @@ class CKSendHelper {
     */
     static func appendResearchKitResultToFirestore(json: [String:Any], collection: String, withIdentifier identifier: String? = nil, onCompletion: ((Bool, Error?) -> Void)? = nil) throws {
         guard let authCollection = CKStudyUser.shared.authCollection,
-              let userId = CKStudyUser.shared.currentUser?.uid,
+              let userId = CKStudyUser.shared.currentUser,
               let identifier = identifier,
               !json.isEmpty else {
             onCompletion?(false, CKError.unauthorized)
