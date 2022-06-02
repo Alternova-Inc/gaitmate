@@ -26,6 +26,11 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
                     // (3) if we have any files, send those using Google Storage
                     if let associatedFiles = taskViewController.outputDirectory {
                         if let taskType = json["identifier"] as? String {
+                            if taskType == "onboardingSurvey" {
+                                UserDefaults.standard.set(true, forKey: "CompleteOnBoardingTask")
+                                NotificationCenter.default.post(name: NSNotification.Name("CompleteOnBoardingTask"), object: true)
+                            }
+                            
                             if taskType == "ShortWalkTask" {
                                 try sendWalkTaskResults(associatedFiles, result: json)
                             } else {

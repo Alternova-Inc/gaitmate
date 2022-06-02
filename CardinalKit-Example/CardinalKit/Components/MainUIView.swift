@@ -12,43 +12,48 @@ struct MainUIView: View {
     
     let color: Color
     let config = CKConfig.shared
+    @State var completeOnboardingSurvey = false
     
     @State var useCareKit = false
     @State var carekitLoaded = false
     
     init() {
         self.color = Color(config.readColor(query: "Primary Color"))
-        
     }
     
     var body: some View {
         TabView {
-            
-            HomeUIView(color: self.color).tabItem {
-                Image(systemName: "house")
-                Text("Home")
-            }
-            
-            if useCareKit && carekitLoaded {
-                ScheduleViewControllerRepresentable()
-                    .ignoresSafeArea(edges: .all)
-                    .tabItem {
-                        Image(systemName: "calendar")
-                        Text("Schedule")
+            if completeOnboardingSurvey{
+                HomeUIView(color: self.color).tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
                 }
                 
-                CareTeamViewControllerRepresentable()
-                    .ignoresSafeArea(edges: .all)
-                    .tabItem {
-                        Image(systemName: "cross.circle.fill")
-                        Text("Contact")
+                if useCareKit && carekitLoaded {
+                    ScheduleViewControllerRepresentable()
+                        .ignoresSafeArea(edges: .all)
+                        .tabItem {
+                            Image(systemName: "calendar")
+                            Text("Schedule")
+                    }
+                    
+                    CareTeamViewControllerRepresentable()
+                        .ignoresSafeArea(edges: .all)
+                        .tabItem {
+                            Image(systemName: "cross.circle.fill")
+                            Text("Contact")
+                    }
+                }
+                
+                ProfileUIView(color: self.color).tabItem {
+                    Image(systemName: "person.crop.circle.fill")
+                    Text("Profile")
                 }
             }
-            
-            ProfileUIView(color: self.color).tabItem {
-                Image(systemName: "person.crop.circle.fill")
-                Text("Profile")
+            else{
+                OnBoardingSurveyview(color: self.color)
             }
+           
         }
         .accentColor(self.color)
         .onAppear(perform: {
@@ -59,8 +64,14 @@ struct MainUIView: View {
                 self.carekitLoaded = true
             }
             
-            
+            if let completed = UserDefaults.standard.object(forKey: "CompleteOnBoardingTask") as? Bool {
+               self.completeOnboardingSurvey = completed
+            }
         })
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("CompleteOnBoardingTask"))){
+            notification in
+            self.completeOnboardingSurvey = true
+        }
     }
 }
 
