@@ -127,9 +127,7 @@ struct OnboardingViewController: UIViewControllerRepresentable {
         
         // unless they have already gotten as far as to enter an email address
         var stepsToUse = fullSteps
-        if CKStudyUser.shared.email != nil {
-            stepsToUse = emailVerificationSteps
-        }
+        
         
         /* **************************************************************
         * and SHOW the user these steps!

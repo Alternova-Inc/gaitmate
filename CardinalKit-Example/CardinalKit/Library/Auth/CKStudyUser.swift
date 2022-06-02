@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import Firebase
 import CardinalKit
+import Firebase
 
 class CKStudyUser {
     
@@ -16,10 +16,10 @@ class CKStudyUser {
     /* **************************************************************
      * the current user only resolves if we are logged in
     **************************************************************/
-    var currentUser: User? {
+    var currentUser: String? {
         // this is a reference to the
         // Firebase + Google Identity User
-        return Auth.auth().currentUser
+        return UserDefaults.standard.string(forKey: "UserId")
     }
     
     /* **************************************************************
@@ -27,7 +27,7 @@ class CKStudyUser {
      * be compatible with CardinalKit GCP rules.
     **************************************************************/
     var authCollection: String? {
-        if let userId = currentUser?.uid,
+        if let userId = currentUser,
             let root = rootAuthCollection {
             return "\(root)\(userId)/"
         }
@@ -57,79 +57,26 @@ class CKStudyUser {
         
         return nil
     }
-
-    var email: String? {
-        get {
-            return UserDefaults.standard.string(forKey: Constants.prefUserEmail)
-        }
-        set {
-            if let newValue = newValue {
-                UserDefaults.standard.set(newValue, forKey: Constants.prefUserEmail)
-            } else {
-                UserDefaults.standard.removeObject(forKey: Constants.prefUserEmail)
-            }
-        }
-    }
     
     var isLoggedIn: Bool {
-        return (currentUser?.isEmailVerified ?? false) && UserDefaults.standard.bool(forKey: Constants.prefConfirmedLogin)
+        return currentUser != nil
     }
     
-    /**
-    Send a login email to the user.
-
-    At this stage, we do not have a `currentUser` via Google Identity.
-
-    - Parameters:
-        - email: validated address that should receive the sign-in link.
-        - completion: callback
-    */
-    func sendLoginLink(email: String, completion: @escaping (Bool)->Void) {
-        guard !email.isEmpty else {
-            completion(false)
-            return
-        }
-        
-        let actionCodeSettings = ActionCodeSettings()
-        actionCodeSettings.url = URL(string: "https://cs342.page.link")
-        actionCodeSettings.handleCodeInApp = true // The sign-in operation has to always be completed in the app.
-        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
-        
-        Auth.auth().sendSignInLink(toEmail: email, actionCodeSettings: actionCodeSettings) { (error) in
-            if let error = error {
-                print(error.localizedDescription)
-                completion(false)
-                return
-            }
-            
-            completion(true)
-        }
-    }
+   
 
     /**
     Save a snapshot of our current user into Firestore.
     */
     func save() {
         if let dataBucket = rootAuthCollection,
-            let email = currentUser?.email,
-            let uid = currentUser?.uid {
-            
+            let uid = currentUser {
             CKSession.shared.userId = uid
             CKSendHelper.createNecessaryDocuments(path:dataBucket)
             let settings = FirestoreSettings()
             settings.isPersistenceEnabled = false
             let db = Firestore.firestore()
             db.settings = settings
-            db.collection(dataBucket).document(uid).setData(["userID":uid, "lastActive":Date().ISOStringFromDate(),"email":email])
+            db.collection(dataBucket).document(uid).setData(["userID":uid, "lastActive":Date().ISOStringFromDate()])
         }
     }
-    
-    /**
-    Remove the current user's auth parameters from storage.
-    */
-    func signOut() throws {
-        email = nil
-        try Auth.auth().signOut()
-    }
-    
 }
