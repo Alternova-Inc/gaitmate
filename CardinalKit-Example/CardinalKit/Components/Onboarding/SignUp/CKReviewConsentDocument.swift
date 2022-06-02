@@ -53,6 +53,10 @@ public class CKReviewConsentDocumentViewController:ORKQuestionStepViewController
                 super.goForward()
             }
         }
+        else{
+            self.setAnswer(false)
+            super.goForward()
+        }
         
         // SELF IF DOCUMENT EXIST
        

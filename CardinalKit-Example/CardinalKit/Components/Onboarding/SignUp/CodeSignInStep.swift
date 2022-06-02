@@ -102,13 +102,16 @@ public class CodeSignInStepViewController: ORKQuestionStepViewController {
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard let data = data else { return }
             let response = String(data: data, encoding: .utf8)!
-            if response == "true"{
-                self.setAnswer(true)
+            OperationQueue.main.addOperation {
+                if response == "true"{
+                    UserDefaults.standard.set(nText, forKey: "UserId")
+                    self.setAnswer(true)
+                }
+                else{
+                    self.setAnswer(false)
+                }
+                super.goForward()
             }
-            else{
-                self.setAnswer(false)
-            }
-            super.goForward()
         }
         task.resume()
     }

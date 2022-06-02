@@ -219,6 +219,8 @@ class OnboardingViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
             return CKReviewConsentDocumentViewController(step: step)
         case is CodeSignInStep:
             return CodeSignInStepViewController(step: step)
+        case is FinalStep:
+            return FinalStepViewcontroller(step: step)
         default:
             return nil
         }
