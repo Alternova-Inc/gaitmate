@@ -1,7 +1,7 @@
 import ResearchKit
 
 struct OnboardingSurvey {
-    static let onboardingSurvey: ORKOrderedTask = {
+    static let onboardingSurvey: ORKNavigableOrderedTask = {
         var steps = [ORKStep]()
         
         // Instruction step
@@ -231,7 +231,9 @@ struct OnboardingSurvey {
             ORKTextChoice(text: "More than three times", value: 3 as NSCoding & NSCopying & NSObjectProtocol)
         ]
         let stepsFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: stepsChoices)
-        let stepsItem = ORKFormItem(identifier: "steps_1", text: "In a typical day how about many times do you go down a set of steps?", answerFormat: stepsFormat)
+//        let stepsItem = ork(identifier: "steps_1", text: "In a typical day how about many times do you go down a set of steps?", answerFormat: stepsFormat)
+        
+        let stepsQuestion = ORKQuestionStep(identifier: "steps_1", title: "Environment", question: "In a typical day how about many times do you go down a set of steps?", answer: stepsFormat)
         
         
         let steps2Choices = [
@@ -287,12 +289,14 @@ struct OnboardingSurvey {
         let bathroomItem1 = ORKFormItem(identifier: "bath_1", text: "Do you have hand rails for your toilet?", answerFormat: bathroomYesNoFormat)
         let bathroomItem2 = ORKFormItem(identifier: "bath_2", text: "Do you have hand rails for your bath/shower?", answerFormat: bathroomYesNoFormat)
         
+        let environmentStepWay1 = ORKFormStep(identifier: "environmentStep1", title: "Environment", text: "The following question are about your home environment")
+        environmentStepWay1.formItems = [steps2Item, steps3Item, steps4Item]
+        
+        let environmentStepWay2 = ORKFormStep(identifier: "environmentStep2", title: "Environment", text: "The following question are about your home environment")
+        environmentStepWay2.formItems = [floorsItem1, floorsItem2, floorsItem3,floorsItem4, floorsItem5, bedroomItem1, bedroomItem2, bathroomItem1, bathroomItem2]
         
         
-        let environmentStep = ORKFormStep(identifier: "environmentStep", title: "Environment", text: "The following question are about your home environment")
-        environmentStep.formItems = [stepsItem, steps2Item, floorsItem1, floorsItem2, floorsItem3,floorsItem4, floorsItem5, bedroomItem1, bedroomItem2, bathroomItem1, bathroomItem2]
-        
-        steps += [environmentStep]
+        steps += [stepsQuestion, environmentStepWay1, environmentStepWay2]
         
 
         let fallYesNoChoices = [
@@ -347,7 +351,21 @@ struct OnboardingSurvey {
         steps += [summaryStep]
         
         
-        return ORKOrderedTask(identifier: "onboardingSurvey", steps: steps)
+        let navigableTask = ORKNavigableOrderedTask(identifier: "onboardingSurvey", steps: steps)
+        
+        let resultSelector = ORKResultSelector(resultIdentifier: "steps_1")
+        let booleanAnswerType = ORKResultPredicate.predicateForChoiceQuestionResult(with: resultSelector, expectedAnswerValue: 0 as NSCoding & NSCopying & NSObjectProtocol)
+        let predicateRule = ORKPredicateStepNavigationRule(resultPredicates: [booleanAnswerType],
+                                                           destinationStepIdentifiers: ["environmentStep2"],
+                                                           defaultStepIdentifier: "environmentStep1",
+                                                           validateArrays: true)
+        
+        navigableTask.setNavigationRule(predicateRule, forTriggerStepIdentifier: "steps_1")
+        
+        
+        
+        
+        return navigableTask
     }()
 }
 
