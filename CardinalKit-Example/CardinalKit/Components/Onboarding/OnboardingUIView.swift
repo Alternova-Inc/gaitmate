@@ -111,37 +111,37 @@ struct OnboardingUIView: View {
                 .sheet(isPresented: $showingOnboard, onDismiss: {
                     self.onComplete?()
                 }, content: {
-                    OnboardingViewController().ignoresSafeArea(edges: .all)
-                })
-        
-                Spacer()
-            }
-            
-            HStack {
-                Spacer()
-                Button(action: {
-                    self.showingLogin.toggle()
-                }, label: {
-                     Text("I'm a Returning User")
-                        .padding(Metrics.PADDING_BUTTON_LABEL)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(.white)
-                        .font(.system(size: 20, weight: .bold, design: .default))
-                        .overlay(
-                                    RoundedRectangle(cornerRadius: Metrics.RADIUS_CORNER_BUTTON)
-                                        .stroke(.white, lineWidth: 2)
-                            )
-                })
-                .padding(.leading, Metrics.PADDING_HORIZONTAL_MAIN)
-                .padding(.trailing, Metrics.PADDING_HORIZONTAL_MAIN)
-                .sheet(isPresented: $showingLogin, onDismiss: {
-                    self.onComplete?()
-                }, content: {
                     LoginExistingUserViewController().ignoresSafeArea(edges: .all)
                 })
         
                 Spacer()
             }
+//
+//            HStack {
+//                Spacer()
+//                Button(action: {
+//                    self.showingLogin.toggle()
+//                }, label: {
+//                     Text("Join Study")
+//                        .padding(Metrics.PADDING_BUTTON_LABEL)
+//                        .frame(maxWidth: .infinity)
+//                        .foregroundColor(.white)
+//                        .font(.system(size: 20, weight: .bold, design: .default))
+//                        .overlay(
+//                                    RoundedRectangle(cornerRadius: Metrics.RADIUS_CORNER_BUTTON)
+//                                        .stroke(.white, lineWidth: 2)
+//                            )
+//                })
+//                .padding(.leading, Metrics.PADDING_HORIZONTAL_MAIN)
+//                .padding(.trailing, Metrics.PADDING_HORIZONTAL_MAIN)
+//                .sheet(isPresented: $showingLogin, onDismiss: {
+//                    self.onComplete?()
+//                }, content: {
+//                    LoginExistingUserViewController().ignoresSafeArea(edges: .all)
+//                })
+//
+//                Spacer()
+//            }
             /*
             HStack {
                 Spacer()

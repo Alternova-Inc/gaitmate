@@ -26,6 +26,7 @@
 		2BF6452026C1DBE70020C206 /* CK_ORKSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF6451F26C1DBE70020C206 /* CK_ORKSerialization.swift */; };
 		2F94C5F22536543600DF8866 /* SceneDelegate+CardinalKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C5F12536543600DF8866 /* SceneDelegate+CardinalKit.swift */; };
 		4AB6AAAB14B361668A8DCF0C /* Pods_CardinalKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F26823E0F81D89B49F12C44 /* Pods_CardinalKit_Example.framework */; };
+		63652602284977C40027592B /* OnBoardingSurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63652601284977C40027592B /* OnBoardingSurveyView.swift */; };
 		638340E92847F8F50050FD25 /* CodeSignInStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638340E82847F8F40050FD25 /* CodeSignInStep.swift */; };
 		63EE800528490BA9005E80F0 /* FinalStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EE800428490BA9005E80F0 /* FinalStep.swift */; };
 		8E0A43AC244A4A0400656518 /* CKStudyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A4382244A4A0400656518 /* CKStudyUser.swift */; };
@@ -146,6 +147,7 @@
 		41DC264876E45FE5A3FD8701 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* CardinalKit Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CardinalKit Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62AA5CD1C2188D392530510F /* CardinalKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CardinalKit.podspec; path = ../CardinalKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		63652601284977C40027592B /* OnBoardingSurveyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingSurveyView.swift; sourceTree = "<group>"; };
 		638340E82847F8F40050FD25 /* CodeSignInStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSignInStep.swift; sourceTree = "<group>"; };
 		63EE800428490BA9005E80F0 /* FinalStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalStep.swift; sourceTree = "<group>"; };
 		8E0A4378244A4A0300656518 /* CardinalKit_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CardinalKit_Example-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				8E6E1E23253537580024B8DF /* MainUIView.swift */,
+				63652601284977C40027592B /* OnBoardingSurveyView.swift */,
 				D3CD04D227B0EC1E00C5F5A3 /* HomeUIView.swift */,
 				10C6BA8C27B8480D0022429C /* ReportFallViewController.swift */,
 				D314690927B4B8E20096E8D4 /* BaselineSurveyViewController.swift */,
@@ -797,6 +800,7 @@
 				2B19DD9626FE1D2F00649CE1 /* CheckListItemViewController.swift in Sources */,
 				2B19DD9426FE1D2600649CE1 /* TestViewController.swift in Sources */,
 				E29143FC24E74AD100EE97B2 /* LaunchUIView.swift in Sources */,
+				63652602284977C40027592B /* OnBoardingSurveyView.swift in Sources */,
 				2B8FB80427552B02000B2D7B /* CKMultipleSignInStep.swift in Sources */,
 				8EA6648725930B6B00B6A45A /* CKHealthRecordsStepViewController.swift in Sources */,
 				8E0A43C0244A4A0400656518 /* PasswordlessLoginStep.swift in Sources */,
