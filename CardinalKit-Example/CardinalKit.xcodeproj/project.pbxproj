@@ -12,7 +12,6 @@
 		104C940C27A28E7600340E2F /* SurveyViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C940B27A28E7600340E2F /* SurveyViewCoordinator.swift */; };
 		1089FAC327B3B38F0054133A /* PainSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1089FAC227B3B38F0054133A /* PainSurvey.swift */; };
 		10B2985027CEEEB500FFFCA3 /* SurveyItemViewControllerOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B2984F27CEEEB500FFFCA3 /* SurveyItemViewControllerOnboarding.swift */; };
-		10B2985227CEEF7900FFFCA3 /* OnboardingSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B2985127CEEF7900FFFCA3 /* OnboardingSurvey.swift */; };
 		10C6BA8D27B8480D0022429C /* ReportFallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C6BA8C27B8480D0022429C /* ReportFallViewController.swift */; };
 		27653A13272A2E7700D74E83 /* LocalTaskListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27653A12272A2E7700D74E83 /* LocalTaskListItemView.swift */; };
 		2B19DD9226FE1BEB00649CE1 /* JsonToSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B19DD9126FE1BEB00649CE1 /* JsonToSurvey.swift */; };
@@ -26,7 +25,9 @@
 		2BF6452026C1DBE70020C206 /* CK_ORKSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF6451F26C1DBE70020C206 /* CK_ORKSerialization.swift */; };
 		2F94C5F22536543600DF8866 /* SceneDelegate+CardinalKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C5F12536543600DF8866 /* SceneDelegate+CardinalKit.swift */; };
 		4AB6AAAB14B361668A8DCF0C /* Pods_CardinalKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F26823E0F81D89B49F12C44 /* Pods_CardinalKit_Example.framework */; };
-		63652602284977C40027592B /* OnBoardingSurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63652601284977C40027592B /* OnBoardingSurveyView.swift */; };
+		634362F32850F3FA00357EF9 /* HomeViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634362F22850F3FA00357EF9 /* HomeViewPresenter.swift */; };
+		634363002850FE2A00357EF9 /* OnBoardingSurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634362FE2850FE2A00357EF9 /* OnBoardingSurveyView.swift */; };
+		634363022850FF7800357EF9 /* OnboardingSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634362FF2850FE2A00357EF9 /* OnboardingSurvey.swift */; };
 		638340E92847F8F50050FD25 /* CodeSignInStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638340E82847F8F40050FD25 /* CodeSignInStep.swift */; };
 		63EE800528490BA9005E80F0 /* FinalStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EE800428490BA9005E80F0 /* FinalStep.swift */; };
 		8E0A43AC244A4A0400656518 /* CKStudyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A4382244A4A0400656518 /* CKStudyUser.swift */; };
@@ -131,7 +132,6 @@
 		104C940B27A28E7600340E2F /* SurveyViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewCoordinator.swift; sourceTree = "<group>"; };
 		1089FAC227B3B38F0054133A /* PainSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PainSurvey.swift; sourceTree = "<group>"; };
 		10B2984F27CEEEB500FFFCA3 /* SurveyItemViewControllerOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyItemViewControllerOnboarding.swift; sourceTree = "<group>"; };
-		10B2985127CEEF7900FFFCA3 /* OnboardingSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSurvey.swift; sourceTree = "<group>"; };
 		10C6BA8C27B8480D0022429C /* ReportFallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportFallViewController.swift; sourceTree = "<group>"; };
 		270AF36127872C13002945A7 /* CardinalKit_ExampleRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CardinalKit_ExampleRelease.entitlements; sourceTree = "<group>"; };
 		27653A12272A2E7700D74E83 /* LocalTaskListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTaskListItemView.swift; sourceTree = "<group>"; };
@@ -147,7 +147,9 @@
 		41DC264876E45FE5A3FD8701 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* CardinalKit Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CardinalKit Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62AA5CD1C2188D392530510F /* CardinalKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CardinalKit.podspec; path = ../CardinalKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		63652601284977C40027592B /* OnBoardingSurveyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingSurveyView.swift; sourceTree = "<group>"; };
+		634362F22850F3FA00357EF9 /* HomeViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewPresenter.swift; sourceTree = "<group>"; };
+		634362FE2850FE2A00357EF9 /* OnBoardingSurveyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingSurveyView.swift; sourceTree = "<group>"; };
+		634362FF2850FE2A00357EF9 /* OnboardingSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSurvey.swift; sourceTree = "<group>"; };
 		638340E82847F8F40050FD25 /* CodeSignInStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSignInStep.swift; sourceTree = "<group>"; };
 		63EE800428490BA9005E80F0 /* FinalStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalStep.swift; sourceTree = "<group>"; };
 		8E0A4378244A4A0300656518 /* CardinalKit_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CardinalKit_Example-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 		634362EA2850F24300357EF9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				634362F12850F3EB00357EF9 /* Presenter */,
 				E29143FB24E74AD100EE97B2 /* LaunchUIView.swift */,
 				8E6E1E23253537580024B8DF /* MainUIView.swift */,
 				D3CD04D227B0EC1E00C5F5A3 /* HomeUIView.swift */,
@@ -356,6 +359,8 @@
 		634362EB2850F24800357EF9 /* Surveys */ = {
 			isa = PBXGroup;
 			children = (
+				634362FD2850FE2A00357EF9 /* OnBoardingSurvey */,
+				634362F02850F35800357EF9 /* Weekly Check-in Survey */,
 				10C6BA8C27B8480D0022429C /* ReportFallViewController.swift */,
 				D314690927B4B8E20096E8D4 /* BaselineSurveyViewController.swift */,
 				104C940927A2791A00340E2F /* SurveyViewController.swift */,
@@ -364,6 +369,30 @@
 				104C940B27A28E7600340E2F /* SurveyViewCoordinator.swift */,
 			);
 			path = Surveys;
+			sourceTree = "<group>";
+		};
+		634362F02850F35800357EF9 /* Weekly Check-in Survey */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Weekly Check-in Survey";
+			sourceTree = "<group>";
+		};
+		634362F12850F3EB00357EF9 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				634362F22850F3FA00357EF9 /* HomeViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		634362FD2850FE2A00357EF9 /* OnBoardingSurvey */ = {
+			isa = PBXGroup;
+			children = (
+				634362FE2850FE2A00357EF9 /* OnBoardingSurveyView.swift */,
+				634362FF2850FE2A00357EF9 /* OnboardingSurvey.swift */,
+			);
+			path = OnBoardingSurvey;
 			sourceTree = "<group>";
 		};
 		8E0A4379244A4A0400656518 /* Profile */ = {
@@ -406,13 +435,6 @@
 				8E6E1E25253537E40024B8DF /* TasksUIView.swift */,
 			);
 			path = Tasks;
-			sourceTree = "<group>";
-		};
-		8E0A4399244A4A0400656518 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		8E0A439C244A4A0400656518 /* Steps */ = {
@@ -506,7 +528,6 @@
 		8E9CDEAA25916F2A00C8A228 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				8E0A4399244A4A0400656518 /* Onboarding */,
 				8E9CDEA525915F6600C8A228 /* Schedule */,
 				D36BC86727C82E800019311B /* Notifications */,
 				8E9CDEB42591818200C8A228 /* Care Team */,
@@ -561,7 +582,6 @@
 				8E0A438F244A4A0400656518 /* TaskSamples.swift */,
 				D3590D1A27DAA90B008BB288 /* ReportFall.swift */,
 				1089FAC227B3B38F0054133A /* PainSurvey.swift */,
-				10B2985127CEEF7900FFFCA3 /* OnboardingSurvey.swift */,
 				8E7FFFBC25DE38E4002982B4 /* CoffeeChartDataSource.swift */,
 				8E0A4391244A4A0400656518 /* LocalTaskItem.swift */,
 				2BD5328426C30F2E00C4636E /* CloudTaskItem.swift */,
@@ -831,7 +851,7 @@
 				2B19DD9626FE1D2F00649CE1 /* CheckListItemViewController.swift in Sources */,
 				2B19DD9426FE1D2600649CE1 /* TestViewController.swift in Sources */,
 				E29143FC24E74AD100EE97B2 /* LaunchUIView.swift in Sources */,
-				63652602284977C40027592B /* OnBoardingSurveyView.swift in Sources */,
+				634363002850FE2A00357EF9 /* OnBoardingSurveyView.swift in Sources */,
 				2B8FB80427552B02000B2D7B /* CKMultipleSignInStep.swift in Sources */,
 				8EA6648725930B6B00B6A45A /* CKHealthRecordsStepViewController.swift in Sources */,
 				8E0A43C0244A4A0400656518 /* PasswordlessLoginStep.swift in Sources */,
@@ -862,6 +882,7 @@
 				8E6E1E26253537E40024B8DF /* TasksUIView.swift in Sources */,
 				8E9CDEAD259170AD00C8A228 /* CKCareKitManager.swift in Sources */,
 				D3590D1B27DAA90B008BB288 /* ReportFall.swift in Sources */,
+				634362F32850F3FA00357EF9 /* HomeViewPresenter.swift in Sources */,
 				10C6BA8D27B8480D0022429C /* ReportFallViewController.swift in Sources */,
 				8EA664892593213000B6A45A /* CKSendHelper.swift in Sources */,
 				8E6E1E3425353AFE0024B8DF /* EmailHelper.swift in Sources */,
@@ -900,7 +921,6 @@
 				8E0A43C3244A4A0400656518 /* LoginCustomWaitStepViewController.swift in Sources */,
 				8E9CDEB22591739A00C8A228 /* TipView.swift in Sources */,
 				8E7FFFBD25DE38E4002982B4 /* CoffeeChartDataSource.swift in Sources */,
-				10B2985227CEEF7900FFFCA3 /* OnboardingSurvey.swift in Sources */,
 				E2F1FD7624D61EDA006C39DF /* CKPropertyReader.swift in Sources */,
 				8E6E1E1025351E890024B8DF /* Extensions+UIColor.swift in Sources */,
 				8E9CDF832592844A00C8A228 /* LearnUIView.swift in Sources */,
@@ -911,6 +931,7 @@
 				D3CD04D327B0EC1E00C5F5A3 /* HomeUIView.swift in Sources */,
 				D34849DB27CF2E520042E654 /* AboutStudyViewText.swift in Sources */,
 				E2680B1B260A72DD00B755EA /* LoginExistingUserViewController.swift in Sources */,
+				634363022850FF7800357EF9 /* OnboardingSurvey.swift in Sources */,
 				1089FAC327B3B38F0054133A /* PainSurvey.swift in Sources */,
 				8E6E1E2A2535398D0024B8DF /* HelpView.swift in Sources */,
 				8E9CDED02591AC4A00C8A228 /* CKHealthKitManager.swift in Sources */,
@@ -1049,7 +1070,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "CardinalKit-Example.entitlements";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9J8J9PDSXS;
+				DEVELOPMENT_TEAM = UX98524U82;
 				INFOPLIST_FILE = "CardinalKit/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1058,7 +1079,7 @@
 				);
 				MARKETING_VERSION = 2.0.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.gaitmate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alternova.gaitmate;
 				PRODUCT_NAME = "CardinalKit Example";
 				SWIFT_OBJC_BRIDGING_HEADER = "CardinalKit/Supporting Files/CardinalKit_Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1075,7 +1096,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CardinalKit_ExampleRelease.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9J8J9PDSXS;
+				DEVELOPMENT_TEAM = UX98524U82;
 				INFOPLIST_FILE = "CardinalKit/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1084,7 +1105,7 @@
 				);
 				MARKETING_VERSION = 2.0.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.gaitmate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alternova.gaitmate;
 				PRODUCT_NAME = "CardinalKit Example";
 				SWIFT_OBJC_BRIDGING_HEADER = "CardinalKit/Supporting Files/CardinalKit_Example-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

@@ -175,13 +175,13 @@ extension AppDelegate {
      keychain items persist after uninstallation.
     */
     fileprivate func cleanIfFirstRun() {
-        if !UserDefaults.standard.bool(forKey: Constants.prefFirstRunWasMarked) {
-            if ORKPasscodeViewController.isPasscodeStoredInKeychain() {
-                ORKPasscodeViewController.removePasscodeFromKeychain()
-            }
-//            try? Auth.auth().signOut()
-            UserDefaults.standard.set(true, forKey: Constants.prefFirstRunWasMarked)
-        }
+//        if !UserDefaults.standard.bool(forKey: Constants.prefFirstRunWasMarked) {
+////            if ORKPasscodeViewController.isPasscodeStoredInKeychain() {
+////                ORKPasscodeViewController.removePasscodeFromKeychain()
+////            }
+////            try? Auth.auth().signOut()
+//            UserDefaults.standard.set(true, forKey: Constants.prefFirstRunWasMarked)
+//        }
     }
     
 }
