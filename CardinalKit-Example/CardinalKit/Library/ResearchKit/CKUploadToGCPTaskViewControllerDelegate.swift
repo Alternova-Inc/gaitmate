@@ -27,8 +27,8 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
                     if let associatedFiles = taskViewController.outputDirectory {
                         if let taskType = json["identifier"] as? String {
                             if taskType == "onboardingSurvey" {
-                                UserDefaults.standard.set(true, forKey: "CompleteOnBoardingTask")
-                                NotificationCenter.default.post(name: NSNotification.Name("CompleteOnBoardingTask"), object: true)
+                                UserDefaults.standard.set(true, forKey: Constants.onboardingSurveyDidComplete)
+                                NotificationCenter.default.post(name: NSNotification.Name(Constants.onboardingSurveyDidComplete), object: true)
                             }
                             
                             if taskType == "ShortWalkTask" {

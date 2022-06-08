@@ -23,11 +23,11 @@ class HomeViewPresenter:ObservableObject {
         weeklySurveyButtonIsActive = false
         presentWeeklySurvey = false
         
-        if let completed = UserDefaults.standard.object(forKey: "CompleteOnBoardingTask") as? Bool {
+        if let completed = UserDefaults.standard.object(forKey: Constants.onboardingSurveyDidComplete) as? Bool {
            showOnBoardingSurveyButton = !completed
         }
         else {
-            NotificationCenter.default.addObserver(self, selector: #selector(OnCompleteOnboardingSurvey), name: Notification.Name("CompleteOnBoardingTask"), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(OnCompleteOnboardingSurvey), name: Notification.Name(Constants.onboardingSurveyDidComplete), object: nil)
         }
         
         let date = Date()
@@ -41,6 +41,7 @@ class HomeViewPresenter:ObservableObject {
                 // Check if not complete
                 if !(UserDefaults.standard.bool(forKey: "WeekleySurveyOn-\(weekNumber)")){
                     weeklySurveyButtonIsActive = true
+                    NotificationCenter.default.addObserver(self, selector: #selector(OnCompleteWeeklySurvey), name: Notification.Name(Constants.weeklySurveyComplete), object: nil)
                 }
             }
         }
@@ -49,7 +50,11 @@ class HomeViewPresenter:ObservableObject {
     @objc
     func OnCompleteOnboardingSurvey(){
         showOnBoardingSurveyButton = false
-        UserDefaults.standard.set(true, forKey: "CompleteOnBoardingTask")
+    }
+    
+    @objc
+    func OnCompleteWeeklySurvey(){
+        weeklySurveyButtonIsActive = false
     }
     
     func onBoardingSurveyView() -> some View{
