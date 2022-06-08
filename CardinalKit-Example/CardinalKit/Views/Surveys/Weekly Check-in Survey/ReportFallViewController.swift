@@ -71,6 +71,22 @@ struct ReportFallViewController: UIViewControllerRepresentable {
             
             steps += [safetyForm]
             
+            let instructionsWalk = InstructionsStep(identifier: "InstructionsStep")
+            
+            steps += [instructionsWalk]
+            
+            var recordConfiguration:[ORKRecorderConfiguration] = []
+            recordConfiguration.append(ORKPedometerRecorderConfiguration.init(identifier: "PedometerConfig"))
+            let acelerometerConfig = ORKAccelerometerRecorderConfiguration.init(identifier: "AcelerometerConfig", frequency: 100)
+            recordConfiguration.append(acelerometerConfig)
+            recordConfiguration.append(ORKDeviceMotionRecorderConfiguration.init(identifier: "DevicemotionConfig", frequency: 100))
+            
+            let walkingStep = ORKWalkingTaskStep(identifier: "WalkingStep")
+            
+            
+            steps += [walkingStep]
+            
+            
             return ORKOrderedTask(identifier: "SurveyTask", steps: steps)
         }()
         

@@ -31,6 +31,8 @@
 		634363052851029400357EF9 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634363042851029400357EF9 /* Date+Extensions.swift */; };
 		6343630728510E1900357EF9 /* VideoStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6343630628510E1900357EF9 /* VideoStep.swift */; };
 		6343630928510F7500357EF9 /* Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6343630828510E6F00357EF9 /* Video.mp4 */; };
+		636E278C28514BA800A2F555 /* InstructionsStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E278B28514BA800A2F555 /* InstructionsStep.swift */; };
+		636E278E28515B1E00A2F555 /* WalkStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E278D28515B1E00A2F555 /* WalkStep.swift */; };
 		638340E92847F8F50050FD25 /* CodeSignInStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638340E82847F8F40050FD25 /* CodeSignInStep.swift */; };
 		63EE800528490BA9005E80F0 /* FinalStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EE800428490BA9005E80F0 /* FinalStep.swift */; };
 		8E0A43AC244A4A0400656518 /* CKStudyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A4382244A4A0400656518 /* CKStudyUser.swift */; };
@@ -156,6 +158,8 @@
 		634363042851029400357EF9 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		6343630628510E1900357EF9 /* VideoStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoStep.swift; sourceTree = "<group>"; };
 		6343630828510E6F00357EF9 /* Video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Video.mp4; sourceTree = "<group>"; };
+		636E278B28514BA800A2F555 /* InstructionsStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsStep.swift; sourceTree = "<group>"; };
+		636E278D28515B1E00A2F555 /* WalkStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkStep.swift; sourceTree = "<group>"; };
 		638340E82847F8F40050FD25 /* CodeSignInStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSignInStep.swift; sourceTree = "<group>"; };
 		63EE800428490BA9005E80F0 /* FinalStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalStep.swift; sourceTree = "<group>"; };
 		8E0A4378244A4A0300656518 /* CardinalKit_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CardinalKit_Example-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -382,6 +386,8 @@
 			children = (
 				6343630628510E1900357EF9 /* VideoStep.swift */,
 				10C6BA8C27B8480D0022429C /* ReportFallViewController.swift */,
+				636E278B28514BA800A2F555 /* InstructionsStep.swift */,
+				636E278D28515B1E00A2F555 /* WalkStep.swift */,
 			);
 			path = "Weekly Check-in Survey";
 			sourceTree = "<group>";
@@ -933,6 +939,7 @@
 				8E9CDEA925916E6600C8A228 /* ScheduleViewController.swift in Sources */,
 				D36BC87127C860320019311B /* NotificationStep.swift in Sources */,
 				D3C49CC527C57A08004520CD /* LaunchUIViewController.swift in Sources */,
+				636E278C28514BA800A2F555 /* InstructionsStep.swift in Sources */,
 				2BD5328526C30F2E00C4636E /* CloudTaskItem.swift in Sources */,
 				D253D132250D1BDB00A363E4 /* CKSignInWithAppleStep.swift in Sources */,
 				8E6E1E0D25351D8F0024B8DF /* PageViewController.swift in Sources */,
@@ -946,6 +953,7 @@
 				8E9CDF832592844A00C8A228 /* LearnUIView.swift in Sources */,
 				8E9CDEA725916B2800C8A228 /* ScheduleViewControllerRepresentable.swift in Sources */,
 				2B932F84276BF8D300AB3A02 /* CKReviewConsentDocument.swift in Sources */,
+				636E278E28515B1E00A2F555 /* WalkStep.swift in Sources */,
 				E235077724F7082700CC1899 /* SceneDelegate.swift in Sources */,
 				D3590D1927DAA845008BB288 /* SurveyItemViewControllerReportFall.swift in Sources */,
 				D3CD04D327B0EC1E00C5F5A3 /* HomeUIView.swift in Sources */,

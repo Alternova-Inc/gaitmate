@@ -63,7 +63,7 @@ class HomeViewPresenter:ObservableObject {
     }
     
     func weeklySurveyView() -> some View{
-        return ReportFallViewController()
+        return AnyView(CKTaskViewController(tasks: OnboardingSurvey.weeklyCheckInSurvey))
     }
     
 }
