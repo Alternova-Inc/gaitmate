@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class HomeViewPresenter:ObservableObject {
     @Published var showOnBoardingSurveyButton:Bool
@@ -28,6 +29,21 @@ class HomeViewPresenter:ObservableObject {
         else {
             NotificationCenter.default.addObserver(self, selector: #selector(OnCompleteOnboardingSurvey), name: Notification.Name("CompleteOnBoardingTask"), object: nil)
         }
+        
+        let date = Date()
+        // if is between noon sunday -  noon Wednesday and is not answered on this week
+        let dayOfWeek = date.dayNumberOfWeek()!
+        let dateHour = date.hour()!
+        
+        if dayOfWeek <= 4 {
+            if !((dayOfWeek == 1 && dateHour < 12) || (dayOfWeek == 4 && dateHour >= 12)) {
+                let weekNumber = date.weekNumber()!
+                // Check if not complete
+                if !(UserDefaults.standard.bool(forKey: "WeekleySurveyOn-\(weekNumber)")){
+                    weeklySurveyButtonIsActive = true
+                }
+            }
+        }
     }
     
     @objc
@@ -35,4 +51,13 @@ class HomeViewPresenter:ObservableObject {
         showOnBoardingSurveyButton = false
         UserDefaults.standard.set(true, forKey: "CompleteOnBoardingTask")
     }
+    
+    func onBoardingSurveyView() -> some View{
+        return AnyView(CKTaskViewController(tasks: OnboardingSurvey.onboardingSurvey))
+    }
+    
+    func weeklySurveyView() -> some View{
+        return ReportFallViewController()
+    }
+    
 }

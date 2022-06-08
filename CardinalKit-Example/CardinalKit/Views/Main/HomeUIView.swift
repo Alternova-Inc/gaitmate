@@ -57,7 +57,7 @@ struct HomeUIView: View {
                                 .cornerRadius(10)
                                 .shadow(radius: 2)
                                 .sheet(isPresented: $presenter.presentOnboardingSurvey) {
-                                    return AnyView(CKTaskViewController(tasks: OnboardingSurvey.onboardingSurvey))
+                                    presenter.onBoardingSurveyView()
                                 }
                             Spacer()
                         }
@@ -84,7 +84,7 @@ struct HomeUIView: View {
                             .cornerRadius(10)
                             .shadow(radius: 2)
                             .sheet(isPresented: $presenter.presentWeeklySurvey) {
-                              ReportFallViewController()
+                                presenter.weeklySurveyView()
                             }
                         Spacer()
                     }
