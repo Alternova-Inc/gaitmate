@@ -292,6 +292,7 @@
 		607FACD21AFB9204008FA782 /* CardinalKit-Example */ = {
 			isa = PBXGroup;
 			children = (
+				634362E82850F22700357EF9 /* Views */,
 				8E0A4383244A4A0400656518 /* Supporting Files */,
 				8E9CDEAA25916F2A00C8A228 /* Components */,
 				8E0A43C5244A4A5700656518 /* Library */,
@@ -312,6 +313,55 @@
 				07D78DA16FC9C3C7709EA243 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		634362E82850F22700357EF9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A4379244A4A0400656518 /* Profile */,
+				634362EB2850F24800357EF9 /* Surveys */,
+				634362EA2850F24300357EF9 /* Main */,
+				634362E92850F22E00357EF9 /* OnBoarding */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		634362E92850F22E00357EF9 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				2B8FB80227552ADD000B2D7B /* SignUp */,
+				8E0A439C244A4A0400656518 /* Steps */,
+				8E6E1E2125352C780024B8DF /* OnboardingUIView.swift */,
+				8E6E1E082534F4100024B8DF /* OnboardingViewController.swift */,
+				8E6E1E0A2534FF640024B8DF /* OnboardingViewController+Coordinator.swift */,
+				8E6E1E0C25351D8F0024B8DF /* PageViewController.swift */,
+				8E6E1E13253520440024B8DF /* PasscodeViewController.swift */,
+				E2680B1A260A72DD00B755EA /* LoginExistingUserViewController.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		634362EA2850F24300357EF9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E29143FB24E74AD100EE97B2 /* LaunchUIView.swift */,
+				8E6E1E23253537580024B8DF /* MainUIView.swift */,
+				D3CD04D227B0EC1E00C5F5A3 /* HomeUIView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		634362EB2850F24800357EF9 /* Surveys */ = {
+			isa = PBXGroup;
+			children = (
+				10C6BA8C27B8480D0022429C /* ReportFallViewController.swift */,
+				D314690927B4B8E20096E8D4 /* BaselineSurveyViewController.swift */,
+				104C940927A2791A00340E2F /* SurveyViewController.swift */,
+				D314690527B48E0E0096E8D4 /* ActiveViewController.swift */,
+				D314690727B4914C0096E8D4 /* GaitViewController.swift */,
+				104C940B27A28E7600340E2F /* SurveyViewCoordinator.swift */,
+			);
+			path = Surveys;
 			sourceTree = "<group>";
 		};
 		8E0A4379244A4A0400656518 /* Profile */ = {
@@ -359,14 +409,6 @@
 		8E0A4399244A4A0400656518 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				2B8FB80227552ADD000B2D7B /* SignUp */,
-				8E0A439C244A4A0400656518 /* Steps */,
-				8E6E1E2125352C780024B8DF /* OnboardingUIView.swift */,
-				8E6E1E082534F4100024B8DF /* OnboardingViewController.swift */,
-				8E6E1E0A2534FF640024B8DF /* OnboardingViewController+Coordinator.swift */,
-				8E6E1E0C25351D8F0024B8DF /* PageViewController.swift */,
-				8E6E1E13253520440024B8DF /* PasscodeViewController.swift */,
-				E2680B1A260A72DD00B755EA /* LoginExistingUserViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -462,21 +504,11 @@
 		8E9CDEAA25916F2A00C8A228 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				8E6E1E23253537580024B8DF /* MainUIView.swift */,
-				D3CD04D227B0EC1E00C5F5A3 /* HomeUIView.swift */,
-				10C6BA8C27B8480D0022429C /* ReportFallViewController.swift */,
-				D314690927B4B8E20096E8D4 /* BaselineSurveyViewController.swift */,
-				104C940927A2791A00340E2F /* SurveyViewController.swift */,
-				D314690527B48E0E0096E8D4 /* ActiveViewController.swift */,
-				D314690727B4914C0096E8D4 /* GaitViewController.swift */,
-				104C940B27A28E7600340E2F /* SurveyViewCoordinator.swift */,
-				E29143FB24E74AD100EE97B2 /* LaunchUIView.swift */,
 				8E0A4399244A4A0400656518 /* Onboarding */,
 				8E9CDEA525915F6600C8A228 /* Schedule */,
 				D36BC86727C82E800019311B /* Notifications */,
 				8E9CDEB42591818200C8A228 /* Care Team */,
 				8E0A438D244A4A0400656518 /* Tasks */,
-				8E0A4379244A4A0400656518 /* Profile */,
 			);
 			path = Components;
 			sourceTree = "<group>";
