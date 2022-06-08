@@ -1070,7 +1070,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "CardinalKit-Example.entitlements";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UX98524U82;
+				DEVELOPMENT_TEAM = 9J8J9PDSXS;
 				INFOPLIST_FILE = "CardinalKit/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1079,7 +1079,7 @@
 				);
 				MARKETING_VERSION = 2.0.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alternova.gaitmate;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.gaitmate;
 				PRODUCT_NAME = "CardinalKit Example";
 				SWIFT_OBJC_BRIDGING_HEADER = "CardinalKit/Supporting Files/CardinalKit_Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1096,7 +1096,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CardinalKit_ExampleRelease.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UX98524U82;
+				DEVELOPMENT_TEAM = 9J8J9PDSXS;
 				INFOPLIST_FILE = "CardinalKit/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1105,7 +1105,7 @@
 				);
 				MARKETING_VERSION = 2.0.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alternova.gaitmate;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.gaitmate;
 				PRODUCT_NAME = "CardinalKit Example";
 				SWIFT_OBJC_BRIDGING_HEADER = "CardinalKit/Supporting Files/CardinalKit_Example-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
