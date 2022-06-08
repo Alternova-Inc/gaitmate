@@ -45,6 +45,7 @@ class HomeViewPresenter:ObservableObject {
                 }
             }
         }
+        weeklySurveyButtonIsActive = true
     }
     
     @objc

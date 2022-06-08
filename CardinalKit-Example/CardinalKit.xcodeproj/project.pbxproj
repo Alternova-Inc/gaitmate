@@ -29,6 +29,8 @@
 		634363002850FE2A00357EF9 /* OnBoardingSurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634362FE2850FE2A00357EF9 /* OnBoardingSurveyView.swift */; };
 		634363022850FF7800357EF9 /* OnboardingSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634362FF2850FE2A00357EF9 /* OnboardingSurvey.swift */; };
 		634363052851029400357EF9 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634363042851029400357EF9 /* Date+Extensions.swift */; };
+		6343630728510E1900357EF9 /* VideoStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6343630628510E1900357EF9 /* VideoStep.swift */; };
+		6343630928510F7500357EF9 /* Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6343630828510E6F00357EF9 /* Video.mp4 */; };
 		638340E92847F8F50050FD25 /* CodeSignInStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638340E82847F8F40050FD25 /* CodeSignInStep.swift */; };
 		63EE800528490BA9005E80F0 /* FinalStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EE800428490BA9005E80F0 /* FinalStep.swift */; };
 		8E0A43AC244A4A0400656518 /* CKStudyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A4382244A4A0400656518 /* CKStudyUser.swift */; };
@@ -152,6 +154,8 @@
 		634362FE2850FE2A00357EF9 /* OnBoardingSurveyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingSurveyView.swift; sourceTree = "<group>"; };
 		634362FF2850FE2A00357EF9 /* OnboardingSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSurvey.swift; sourceTree = "<group>"; };
 		634363042851029400357EF9 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		6343630628510E1900357EF9 /* VideoStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoStep.swift; sourceTree = "<group>"; };
+		6343630828510E6F00357EF9 /* Video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Video.mp4; sourceTree = "<group>"; };
 		638340E82847F8F40050FD25 /* CodeSignInStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSignInStep.swift; sourceTree = "<group>"; };
 		63EE800428490BA9005E80F0 /* FinalStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalStep.swift; sourceTree = "<group>"; };
 		8E0A4378244A4A0300656518 /* CardinalKit_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CardinalKit_Example-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				6343630828510E6F00357EF9 /* Video.mp4 */,
 				270AF36127872C13002945A7 /* CardinalKit_ExampleRelease.entitlements */,
 				8E0A438B244A4A0400656518 /* CardinalKit-Example.entitlements */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
@@ -363,7 +368,6 @@
 			children = (
 				634362FD2850FE2A00357EF9 /* OnBoardingSurvey */,
 				634362F02850F35800357EF9 /* Weekly Check-in Survey */,
-				10C6BA8C27B8480D0022429C /* ReportFallViewController.swift */,
 				D314690927B4B8E20096E8D4 /* BaselineSurveyViewController.swift */,
 				104C940927A2791A00340E2F /* SurveyViewController.swift */,
 				D314690527B48E0E0096E8D4 /* ActiveViewController.swift */,
@@ -376,6 +380,8 @@
 		634362F02850F35800357EF9 /* Weekly Check-in Survey */ = {
 			isa = PBXGroup;
 			children = (
+				6343630628510E1900357EF9 /* VideoStep.swift */,
+				10C6BA8C27B8480D0022429C /* ReportFallViewController.swift */,
 			);
 			path = "Weekly Check-in Survey";
 			sourceTree = "<group>";
@@ -720,6 +726,7 @@
 				E2F1FD7824D62064006C39DF /* CKConfiguration.plist in Resources */,
 				8E0A43C1244A4A0400656518 /* LoginCustomWaitStepView.xib in Resources */,
 				D308EBDA27CD8B6F00438BF4 /* Assets.xcassets in Resources */,
+				6343630928510F7500357EF9 /* Video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -913,6 +920,7 @@
 				8E0A43B5244A4A0400656518 /* LocalTaskItem.swift in Sources */,
 				2BD5328326C2CC4E00C4636E /* CkResearchSurveysManager.swift in Sources */,
 				D314690627B48E0E0096E8D4 /* ActiveViewController.swift in Sources */,
+				6343630728510E1900357EF9 /* VideoStep.swift in Sources */,
 				638340E92847F8F50050FD25 /* CodeSignInStep.swift in Sources */,
 				8E6E1E2C253539AE0024B8DF /* ChangePasscodeView.swift in Sources */,
 				D314690827B4914C0096E8D4 /* GaitViewController.swift in Sources */,

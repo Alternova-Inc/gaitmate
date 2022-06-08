@@ -28,4 +28,14 @@ class SurveyViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
         
         taskViewController.dismiss(animated: true, completion: nil)
     }
+    
+    func taskViewController(_ taskViewController: ORKTaskViewController, viewControllerFor step: ORKStep) -> ORKStepViewController? {
+        switch step{
+            case is VideoStep:
+                return VideoStepViewController(step: step)
+            default:
+                return nil
+        }
+    }
+    
 }
