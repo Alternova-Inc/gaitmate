@@ -15,6 +15,12 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
     public func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         switch reason {
         case .completed:
+            if taskViewController.result.identifier == "SurveyTask" {
+                let date = Date()
+                let weekNumber = date.weekNumber()!
+                UserDefaults.standard.set(true, forKey: "WeekleySurveyOn-\(weekNumber)")
+                NotificationCenter.default.post(name: NSNotification.Name(Constants.weeklySurveyComplete), object: true)
+            }
             do {
                 // (1) convert the result of the ResearchKit task into a JSON dictionary
                 //if let json = try CKTaskResultAsJson(taskViewController.result) {
@@ -27,8 +33,8 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
                     if let associatedFiles = taskViewController.outputDirectory {
                         if let taskType = json["identifier"] as? String {
                             if taskType == "onboardingSurvey" {
-                                UserDefaults.standard.set(true, forKey: "CompleteOnBoardingTask")
-                                NotificationCenter.default.post(name: NSNotification.Name("CompleteOnBoardingTask"), object: true)
+                                UserDefaults.standard.set(true, forKey: Constants.onboardingSurveyDidComplete)
+                                NotificationCenter.default.post(name: NSNotification.Name(Constants.onboardingSurveyDidComplete), object: true)
                             }
                             
                             if taskType == "ShortWalkTask" {
@@ -119,6 +125,19 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
             let identifier = dateFormatter.string(from: now)
             
             try CKSendHelper.sendToCloudStorage(files, collection: collection, withIdentifier: identifier)
+        }
+    }
+    
+    func taskViewController(_ taskViewController: ORKTaskViewController, viewControllerFor step: ORKStep) -> ORKStepViewController? {
+        switch step{
+        case is VideoStep:
+            return VideoStepViewController(step: step)
+        case is InstructionsStep:
+            return InstructionsStepViewController(step: step)
+        case is ORKWalkingTaskStep:
+            return WalkStepViewController(step: step)
+        default:
+            return nil
         }
     }
     

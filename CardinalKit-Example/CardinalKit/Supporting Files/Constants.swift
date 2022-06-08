@@ -26,5 +26,8 @@ class Constants {
     static let dataBucketMetrics = "metrics"
     
     static let onboardingDidComplete = "didCompleteOnboarding"
+    static let onboardingSurveyDidComplete = "didCompleteOnboardingSurvey"
+    static let weeklySurveyComplete = "didWeekleSurveyComplete"
+    
     
 }
