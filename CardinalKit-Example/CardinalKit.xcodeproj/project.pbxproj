@@ -13,7 +13,7 @@
 		10C6BA8D27B8480D0022429C /* ReportFallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C6BA8C27B8480D0022429C /* ReportFallViewController.swift */; };
 		2B8FB80427552B02000B2D7B /* CKMultipleSignInStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8FB80327552B02000B2D7B /* CKMultipleSignInStep.swift */; };
 		2B932F84276BF8D300AB3A02 /* CKReviewConsentDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B932F83276BF8D300AB3A02 /* CKReviewConsentDocument.swift */; };
-		2BF6451826C1D0040020C206 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		2BF6451826C1D0040020C206 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		2BF6452026C1DBE70020C206 /* CK_ORKSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF6451F26C1DBE70020C206 /* CK_ORKSerialization.swift */; };
 		2F94C5F22536543600DF8866 /* SceneDelegate+CardinalKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C5F12536543600DF8866 /* SceneDelegate+CardinalKit.swift */; };
 		4AB6AAAB14B361668A8DCF0C /* Pods_CardinalKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F26823E0F81D89B49F12C44 /* Pods_CardinalKit_Example.framework */; };
@@ -38,7 +38,6 @@
 		8E0A43C2244A4A0400656518 /* ConsentDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A43A2244A4A0400656518 /* ConsentDocument.swift */; };
 		8E0A43C3244A4A0400656518 /* LoginCustomWaitStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A43A3244A4A0400656518 /* LoginCustomWaitStepViewController.swift */; };
 		8E0A43D5244A693D00656518 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0A43D4244A693D00656518 /* HealthKit.framework */; };
-		8E40DC042471E5940027536B /* CKNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E40DC032471E5940027536B /* CKNetworkManager.swift */; };
 		8E6E1E092534F4100024B8DF /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E1E082534F4100024B8DF /* OnboardingViewController.swift */; };
 		8E6E1E0B2534FF640024B8DF /* OnboardingViewController+Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E1E0A2534FF640024B8DF /* OnboardingViewController+Coordinator.swift */; };
 		8E6E1E0D25351D8F0024B8DF /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E1E0C25351D8F0024B8DF /* PageViewController.swift */; };
@@ -65,12 +64,8 @@
 		8E9CDEAF259172C200C8A228 /* CKCareKitManager+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9CDEAE259172C200C8A228 /* CKCareKitManager+Sample.swift */; };
 		8E9CDEB6259181B400C8A228 /* CareTeamViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9CDEB5259181B400C8A228 /* CareTeamViewControllerRepresentable.swift */; };
 		8E9CDEBA2591843200C8A228 /* CKConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9CDEB92591843200C8A228 /* CKConfig.swift */; };
-		8E9CDED02591AC4A00C8A228 /* CKHealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9CDECF2591AC4A00C8A228 /* CKHealthKitManager.swift */; };
-		8E9CDF142591B73900C8A228 /* CKHealthRecordsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9CDF132591B73900C8A228 /* CKHealthRecordsManager.swift */; };
 		8E9CDFAE2592B79900C8A228 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9CDFAD2592B79900C8A228 /* Metrics.swift */; };
 		8EA6648725930B6B00B6A45A /* CKHealthRecordsStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6648625930B6B00B6A45A /* CKHealthRecordsStepViewController.swift */; };
-		8EA664892593213000B6A45A /* CKSendHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA664882593213000B6A45A /* CKSendHelper.swift */; };
-		8EA664AD2593380D00B6A45A /* SendRecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA664AC2593380D00B6A45A /* SendRecordsView.swift */; };
 		8EA664B42594387900B6A45A /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA664B32594387900B6A45A /* Errors.swift */; };
 		8EBE6F9C24B3C0E60093D07C /* AppDelegate+CardinalKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBE6F9B24B3C0E60093D07C /* AppDelegate+CardinalKit.swift */; };
 		D253D132250D1BDB00A363E4 /* CKSignInWithAppleStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253D131250D1BDB00A363E4 /* CKSignInWithAppleStep.swift */; };
@@ -145,7 +140,6 @@
 		8E0A43A3244A4A0400656518 /* LoginCustomWaitStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCustomWaitStepViewController.swift; sourceTree = "<group>"; };
 		8E0A43C9244A4C6500656518 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E0A43D4244A693D00656518 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		8E40DC032471E5940027536B /* CKNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKNetworkManager.swift; sourceTree = "<group>"; };
 		8E6E1E082534F4100024B8DF /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		8E6E1E0A2534FF640024B8DF /* OnboardingViewController+Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingViewController+Coordinator.swift"; sourceTree = "<group>"; };
 		8E6E1E0C25351D8F0024B8DF /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -168,12 +162,8 @@
 		8E9CDEAE259172C200C8A228 /* CKCareKitManager+Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKCareKitManager+Sample.swift"; sourceTree = "<group>"; };
 		8E9CDEB5259181B400C8A228 /* CareTeamViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareTeamViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		8E9CDEB92591843200C8A228 /* CKConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKConfig.swift; sourceTree = "<group>"; };
-		8E9CDECF2591AC4A00C8A228 /* CKHealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKHealthKitManager.swift; sourceTree = "<group>"; };
-		8E9CDF132591B73900C8A228 /* CKHealthRecordsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKHealthRecordsManager.swift; sourceTree = "<group>"; };
 		8E9CDFAD2592B79900C8A228 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		8EA6648625930B6B00B6A45A /* CKHealthRecordsStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKHealthRecordsStepViewController.swift; sourceTree = "<group>"; };
-		8EA664882593213000B6A45A /* CKSendHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKSendHelper.swift; sourceTree = "<group>"; };
-		8EA664AC2593380D00B6A45A /* SendRecordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendRecordsView.swift; sourceTree = "<group>"; };
 		8EA664B32594387900B6A45A /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		8EBE6F9B24B3C0E60093D07C /* AppDelegate+CardinalKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+CardinalKit.swift"; sourceTree = "<group>"; };
 		901D8AC056E411362004396F /* Pods-CardinalKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardinalKit_Example.release.xcconfig"; path = "Target Support Files/Pods-CardinalKit_Example/Pods-CardinalKit_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -257,8 +247,8 @@
 		607FACD21AFB9204008FA782 /* CardinalKit-Example */ = {
 			isa = PBXGroup;
 			children = (
-				634362E82850F22700357EF9 /* Views */,
 				8E0A4383244A4A0400656518 /* Supporting Files */,
+				634362E82850F22700357EF9 /* Views */,
 				8E9CDEAA25916F2A00C8A228 /* Components */,
 				8E0A43C5244A4A5700656518 /* Library */,
 				8E0A4396244A4A0400656518 /* AppDelegate.swift */,
@@ -428,8 +418,6 @@
 			children = (
 				634363032851028400357EF9 /* Date */,
 				8E9CDF802591E6B800C8A228 /* Configuration */,
-				8E9CDECE2591ABDF00C8A228 /* HealthKit */,
-				8E40DC022471E5590027536B /* Networking */,
 				8E0A4380244A4A0400656518 /* Auth */,
 				8E9CDF812591E6D000C8A228 /* ResearchKit */,
 				8E9CDEAB25916F6E00C8A228 /* CareKit */,
@@ -441,15 +429,6 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
-		8E40DC022471E5590027536B /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				8E40DC032471E5940027536B /* CKNetworkManager.swift */,
-				8EA664882593213000B6A45A /* CKSendHelper.swift */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
 		8E6E1E3025353AA70024B8DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,7 +438,6 @@
 				8E6E1E292535398D0024B8DF /* HelpView.swift */,
 				8E6E1E2B253539AE0024B8DF /* ChangePasscodeView.swift */,
 				8E6E1E2D25353A1E0024B8DF /* PatientIDView.swift */,
-				8EA664AC2593380D00B6A45A /* SendRecordsView.swift */,
 				D34849D827CF101A0042E654 /* AboutStudyView.swift */,
 				D34849DA27CF2E520042E654 /* AboutStudyViewText.swift */,
 			);
@@ -489,15 +467,6 @@
 				8E9CDEB5259181B400C8A228 /* CareTeamViewControllerRepresentable.swift */,
 			);
 			path = "Care Team";
-			sourceTree = "<group>";
-		};
-		8E9CDECE2591ABDF00C8A228 /* HealthKit */ = {
-			isa = PBXGroup;
-			children = (
-				8E9CDECF2591AC4A00C8A228 /* CKHealthKitManager.swift */,
-				8E9CDF132591B73900C8A228 /* CKHealthRecordsManager.swift */,
-			);
-			path = HealthKit;
 			sourceTree = "<group>";
 		};
 		8E9CDF802591E6B800C8A228 /* Configuration */ = {
@@ -754,13 +723,11 @@
 				2B8FB80427552B02000B2D7B /* CKMultipleSignInStep.swift in Sources */,
 				8EA6648725930B6B00B6A45A /* CKHealthRecordsStepViewController.swift in Sources */,
 				8E0A43C0244A4A0400656518 /* PasswordlessLoginStep.swift in Sources */,
-				8EA664AD2593380D00B6A45A /* SendRecordsView.swift in Sources */,
 				8E6E1E2225352C780024B8DF /* OnboardingUIView.swift in Sources */,
 				104C940C27A28E7600340E2F /* SurveyViewCoordinator.swift in Sources */,
 				8E6E1E2E25353A1E0024B8DF /* PatientIDView.swift in Sources */,
 				104C940A27A2791A00340E2F /* SurveyViewController.swift in Sources */,
 				8E6E1E0B2534FF640024B8DF /* OnboardingViewController+Coordinator.swift in Sources */,
-				8E40DC042471E5940027536B /* CKNetworkManager.swift in Sources */,
 				8E9CDEBA2591843200C8A228 /* CKConfig.swift in Sources */,
 				2F94C5F22536543600DF8866 /* SceneDelegate+CardinalKit.swift in Sources */,
 				8E9CDFAE2592B79900C8A228 /* Metrics.swift in Sources */,
@@ -776,15 +743,13 @@
 				8E9CDEAD259170AD00C8A228 /* CKCareKitManager.swift in Sources */,
 				634362F32850F3FA00357EF9 /* HomeViewPresenter.swift in Sources */,
 				10C6BA8D27B8480D0022429C /* ReportFallViewController.swift in Sources */,
-				8EA664892593213000B6A45A /* CKSendHelper.swift in Sources */,
 				8E6E1E3425353AFE0024B8DF /* EmailHelper.swift in Sources */,
 				8E6E1E24253537580024B8DF /* MainUIView.swift in Sources */,
 				8E6E1E182535263F0024B8DF /* CKTaskViewController.swift in Sources */,
-				8E9CDF142591B73900C8A228 /* CKHealthRecordsManager.swift in Sources */,
 				8EA664B42594387900B6A45A /* Errors.swift in Sources */,
 				8E6E1E1225351F830024B8DF /* DocumentPreviewViewController.swift in Sources */,
 				8E6E1E20253529760024B8DF /* DocumentView.swift in Sources */,
-				2BF6451826C1D0040020C206 /* (null) in Sources */,
+				2BF6451826C1D0040020C206 /* BuildFile in Sources */,
 				D314690627B48E0E0096E8D4 /* ActiveViewController.swift in Sources */,
 				6343630728510E1900357EF9 /* VideoStep.swift in Sources */,
 				638340E92847F8F50050FD25 /* CodeSignInStep.swift in Sources */,
@@ -814,7 +779,6 @@
 				E2680B1B260A72DD00B755EA /* LoginExistingUserViewController.swift in Sources */,
 				634363022850FF7800357EF9 /* OnboardingSurvey.swift in Sources */,
 				8E6E1E2A2535398D0024B8DF /* HelpView.swift in Sources */,
-				8E9CDED02591AC4A00C8A228 /* CKHealthKitManager.swift in Sources */,
 				8E0A43C2244A4A0400656518 /* ConsentDocument.swift in Sources */,
 				63EE800528490BA9005E80F0 /* FinalStep.swift in Sources */,
 			);
