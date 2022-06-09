@@ -26,18 +26,11 @@ struct LoginExistingUserViewController: UIViewControllerRepresentable {
         
         var loginSteps: [ORKStep]
         let codeSignInStep = CodeSignInStep(identifier: "SignInStep")
-//        CKMultipleSignInStep(identifier: "SignInButtons")
-//        let loginUserPassword = ORKLoginStep(identifier: "LoginExistingStep", title: "Login", text: "Log into this study.", loginViewControllerClass: LoginViewController.self)
+        let healthDataStep = CKHealthDataStep(identifier: "HealthKit")
         loginSteps = [codeSignInStep]
-//                      loginUserPassword
         
         // schedule notifications
-        //let notificationStep = NotificationStep(identifier: "Notifications")
-        
-        // set health data permissions
-//        let healthDataStep = CKHealthDataStep(identifier: "HealthKit")
-//        let healthRecordsStep = CKHealthRecordsStep(identifier: "HealthRecords")
-        
+//        let notificationStep = NotificationStep(identifier: "Notifications")
         //add consent if user dont have consent in cloud
         
         let consentDocument = ConsentDocument()
@@ -53,33 +46,16 @@ struct LoginExistingUserViewController: UIViewControllerRepresentable {
         let consentReview = CKReviewConsentDocument(identifier: "ConsentReview")
         
         
-//        // set passcode
-//        let passcodeStep = ORKPasscodeStep(identifier: "Passcode")
-//        let type = config.read(query: "Passcode Type")
-//        if type == "6" {
-//            passcodeStep.passcodeType = .type6Digit
-//        } else {
-//            passcodeStep.passcodeType = .type4Digit
-//        }
-//        passcodeStep.text = config.read(query: "Passcode Text")
-        
         let finalStep = FinalStep(identifier: "FinalStep")
         // create a task with each step
-        loginSteps += [consentReview, reviewConsentStep, finalStep]
-        // healthRecordsStep
-        // notificationStep
-        // healthDataStep
-        // passcodeStep
-        
-        
+        loginSteps += [healthDataStep, consentReview, reviewConsentStep, finalStep]
         
         let navigableTask = ORKNavigableOrderedTask(identifier: "StudyLoginTask", steps: loginSteps)
-//        let orderedTask = ORKOrderedTask(identifier: "StudyLoginTask", steps: loginSteps)
         
         let resultSelector = ORKResultSelector(resultIdentifier: "SignInStep")
         let booleanAnswerType = ORKResultPredicate.predicateForBooleanQuestionResult(with: resultSelector, expectedAnswer: true)
         let predicateRule = ORKPredicateStepNavigationRule(resultPredicates: [booleanAnswerType],
-                                                           destinationStepIdentifiers: ["ConsentReview"],
+                                                           destinationStepIdentifiers: ["HealthKit"],
                                                            defaultStepIdentifier: "FinalStep",
                                                            validateArrays: true)
         navigableTask.setNavigationRule(predicateRule, forTriggerStepIdentifier: "SignInStep")
