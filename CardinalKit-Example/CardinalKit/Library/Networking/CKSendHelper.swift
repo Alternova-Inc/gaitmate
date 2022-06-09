@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import CardinalKit
 
 class CKSendHelper {
     private static func firestoreDb()->Firestore{
@@ -229,9 +230,33 @@ class CKSendHelper {
             }
             
             let storageRef = Storage.storage().reference()
-            let ref = storageRef.child("\(authCollection)\(Constants.dataBucketStorage)\(collection)/\(identifier ?? UUID().uuidString)/\(file.lastPathComponent)")
+            let childPath = "\(authCollection)\(Constants.dataBucketStorage)\(collection)/\(identifier ?? UUID().uuidString)/\(file.lastPathComponent)"
+            let ref = storageRef.child(childPath)
             
             let uploadTask = ref.putFile(from: file, metadata: nil)
+            
+            do{
+                let contents = try String(contentsOf: file)
+                let data = contents.data(using: .utf8)!
+                do {
+                    if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Dictionary<String,AnyObject>
+                    {
+                        let dataType:String = file.lastPathComponent.contains("accel") ? "Acelerometer" : file.lastPathComponent.contains("deviceMotion") ? "DeviceMotion" : "Other"
+                        let dateString = Date().toString(dateFormat: "MM-dd-yyyy")
+                        CKApp.sendData(route: "\(authCollection)SensorsData/\(dateString)/\(dataType)/\(file.lastPathComponent)", data: jsonArray, params: nil)
+                        
+                    } else {
+                        print("bad json")
+                    }
+                } catch let error as NSError {
+                    print(error)
+                }
+            }
+            catch{
+                
+            }
+            
+            
             
             uploadTask.observe(.success) { snapshot in
                 print("[CKSendHelper] sendToCloudStorage() - file uploaded successfully!")

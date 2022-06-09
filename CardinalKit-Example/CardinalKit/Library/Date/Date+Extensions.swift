@@ -20,4 +20,11 @@ extension Date{
     func weekNumber() -> Int? {
         return Calendar.current.dateComponents([.weekOfYear], from: self).weekOfYear
     }
+    
+    func toString(dateFormat: String?) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormat ?? "MM/dd/yyyy"
+        let dateString = dateFormatter.string(from: self)
+        return dateString
+    }
 }
