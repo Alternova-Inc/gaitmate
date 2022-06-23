@@ -16,19 +16,26 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
     public func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         switch reason {
         case .completed:
-            if taskViewController.result.identifier == "SurveyTask" {
+            if taskViewController.result.identifier == "WeeklySurvey" {
                 let date = Date()
                 let weekNumber = date.weekNumber()!
                 UserDefaults.standard.set(true, forKey: "WeekleySurveyOn-\(weekNumber)")
                 NotificationCenter.default.post(name: NSNotification.Name(Constants.weeklySurveyComplete), object: true)
+                Notifications.programNotificaitions(withOffset: true)
             }
             if taskViewController.result.identifier == "onboardingSurvey" {
                 UserDefaults.standard.set(true, forKey: Constants.onboardingSurveyDidComplete)
                 NotificationCenter.default.post(name: NSNotification.Name(Constants.onboardingSurveyDidComplete), object: true)
             }
-             
             
-            
+            if taskViewController.result.identifier == "reportAFall" {
+                let resultDate = ((taskViewController.result.result(forIdentifier: "fallDateStep") as? ORKStepResult)?.result(forIdentifier: "fallDateStep") as? ORKDateQuestionResult)?.dateAnswer
+                let resultTimeDay = ((taskViewController.result.result(forIdentifier: "timeStep") as? ORKStepResult)?.result(forIdentifier: "timeStep") as? ORKChoiceQuestionResult)?.choiceAnswers?[0].description
+                if let date = resultDate,
+                let timeDay = resultTimeDay{
+                    sendFallDateJson(date: date.toString(dateFormat:"MM-dd-yyyy_HH:mm"), timeDay: timeDay)
+                }
+            }
             
             do {
                 // (1) convert the result of the ResearchKit task into a JSON dictionary
@@ -104,6 +111,15 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
              }
         let route = "\(authCollection)\(Constants.dataBucketSurveys)/\(identifier)"
         CKApp.sendData(route: route, data: ["results": FieldValue.arrayUnion([json])], params: ["userId":"\(userId)","merge":true])
+    }
+    
+    func sendFallDateJson(date: String,timeDay: String) {
+        guard let authCollection = CKStudyUser.shared.authCollection
+        else{
+            return
+        }
+        let route = "\(authCollection)\(Constants.dataBucketSurveys)/reportAFall/falls/\(date)/"
+        CKApp.sendData(route: route, data: ["date":date,"timeDate":timeDay], params: [])
     }
     
     /**

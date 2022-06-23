@@ -88,6 +88,29 @@ struct HomeUIView: View {
                             }
                         Spacer()
                     }
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            presenter.presentReportFall.toggle()
+                        }, label: {
+                            Image(systemName: "square.and.pencil")
+                            Text("Report A Fall")
+                        })
+                            .padding(Metrics.PADDING_BUTTON_LABEL)
+                            .foregroundColor(Color.white)
+                            .font(.title)
+                            .padding(.leading, Metrics.PADDING_HORIZONTAL_MAIN)
+                            .padding(.trailing, Metrics.PADDING_HORIZONTAL_MAIN)
+                            .frame(minWidth:300)
+                            .frame(maxWidth:300)
+                            .background(  self.color )
+                            .cornerRadius(10)
+                            .shadow(radius: 2)
+                            .sheet(isPresented: $presenter.presentReportFall) {
+                                presenter.reportAFallView()
+                            }
+                        Spacer()
+                    }
                 }
             )
     }

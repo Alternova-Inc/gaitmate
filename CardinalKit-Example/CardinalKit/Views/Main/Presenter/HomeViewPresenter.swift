@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import CardinalKit
 
 class HomeViewPresenter:ObservableObject {
     @Published var showOnBoardingSurveyButton:Bool
@@ -15,6 +16,11 @@ class HomeViewPresenter:ObservableObject {
     
     @Published var presentOnboardingSurvey:Bool
     @Published var presentWeeklySurvey:Bool
+    @Published var presentReportFall:Bool
+    
+    var fallsDict:[String:Int] = [:]
+    
+    var integer:Int = 1
     
     init(){
         showOnBoardingSurveyButton = true
@@ -22,6 +28,8 @@ class HomeViewPresenter:ObservableObject {
         
         weeklySurveyButtonIsActive = false
         presentWeeklySurvey = false
+        
+        presentReportFall = false
         
         if let completed = UserDefaults.standard.object(forKey: Constants.onboardingSurveyDidComplete) as? Bool {
            showOnBoardingSurveyButton = !completed
@@ -45,6 +53,28 @@ class HomeViewPresenter:ObservableObject {
                 }
             }
         }
+        // Get Falls last week from firebase
+        
+        guard let authCollection = CKStudyUser.shared.authCollection
+        else{
+            return
+        }
+        let route = "\(authCollection)\(Constants.dataBucketSurveys)/reportAFall/falls"
+        
+        CKApp.requestData(route: route){
+            response in
+            let startDate = Date().addDays(days: -7)
+            if let response = response as? [String:Any]{
+                for (strDate, _) in response {
+                    let date = strDate.toDate()
+                    if date > startDate {
+                        let dateStr = date.toString(dateFormat: "MM-dd-yyyy")
+                        let fallsCounter = (self.fallsDict[dateStr] ?? 0)+1
+                        self.fallsDict[dateStr] = fallsCounter
+                    }
+                }
+            }
+        }
     }
     
     @objc
@@ -62,7 +92,19 @@ class HomeViewPresenter:ObservableObject {
     }
     
     func weeklySurveyView() -> some View{
-        return AnyView(CKTaskViewController(tasks: OnboardingSurvey.weeklyCheckInSurvey))
+        var description =  ["Date", "Falls Count"].map({$0.padding(toLength: 18, withPad: " ", startingAt: 0)}).joined(separator: " | ")
+        var fallsNumber = 0
+        for (date, number) in fallsDict {
+            description+="\n"
+            description+=["\(date)","\(number)"].map({$0.padding(toLength: 15, withPad: " ", startingAt: 0)}).joined(separator: " | ")
+            fallsNumber+=number
+        }
+        
+        return AnyView(CKTaskViewController(tasks: OnboardingSurvey.weeklyCheckInSurvey(fallsNumber: fallsNumber, fallsDescription: description)))
+    }
+    
+    func reportAFallView() -> some View{
+        return AnyView(CKTaskViewController(tasks: OnboardingSurvey.reportAFallSurvey))
     }
     
 }

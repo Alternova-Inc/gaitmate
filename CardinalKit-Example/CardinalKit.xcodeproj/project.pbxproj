@@ -8,15 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		104C940827A276F000340E2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 104C940727A276F000340E2F /* GoogleService-Info.plist */; };
-		104C940A27A2791A00340E2F /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C940927A2791A00340E2F /* SurveyViewController.swift */; };
 		104C940C27A28E7600340E2F /* SurveyViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C940B27A28E7600340E2F /* SurveyViewCoordinator.swift */; };
-		10C6BA8D27B8480D0022429C /* ReportFallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C6BA8C27B8480D0022429C /* ReportFallViewController.swift */; };
 		2B8FB80427552B02000B2D7B /* CKMultipleSignInStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8FB80327552B02000B2D7B /* CKMultipleSignInStep.swift */; };
 		2B932F84276BF8D300AB3A02 /* CKReviewConsentDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B932F83276BF8D300AB3A02 /* CKReviewConsentDocument.swift */; };
 		2BF6451826C1D0040020C206 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		2BF6452026C1DBE70020C206 /* CK_ORKSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF6451F26C1DBE70020C206 /* CK_ORKSerialization.swift */; };
 		2F94C5F22536543600DF8866 /* SceneDelegate+CardinalKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C5F12536543600DF8866 /* SceneDelegate+CardinalKit.swift */; };
-		4AB6AAAB14B361668A8DCF0C /* Pods_CardinalKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F26823E0F81D89B49F12C44 /* Pods_CardinalKit_Example.framework */; };
+		631A223B2864B29400C6389D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631A223A2864B29400C6389D /* Notifications.swift */; };
 		634362F32850F3FA00357EF9 /* HomeViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634362F22850F3FA00357EF9 /* HomeViewPresenter.swift */; };
 		634363002850FE2A00357EF9 /* OnBoardingSurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634362FE2850FE2A00357EF9 /* OnBoardingSurveyView.swift */; };
 		634363022850FF7800357EF9 /* OnboardingSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634362FF2850FE2A00357EF9 /* OnboardingSurvey.swift */; };
@@ -68,11 +66,11 @@
 		8EA6648725930B6B00B6A45A /* CKHealthRecordsStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6648625930B6B00B6A45A /* CKHealthRecordsStepViewController.swift */; };
 		8EA664B42594387900B6A45A /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA664B32594387900B6A45A /* Errors.swift */; };
 		8EBE6F9C24B3C0E60093D07C /* AppDelegate+CardinalKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBE6F9B24B3C0E60093D07C /* AppDelegate+CardinalKit.swift */; };
+		CF6EA07CCFE5EC8CF1E2A1EA /* Pods_CardinalKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D210B9CDF9DEFA6ED3F727 /* Pods_CardinalKit_Example.framework */; };
 		D253D132250D1BDB00A363E4 /* CKSignInWithAppleStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253D131250D1BDB00A363E4 /* CKSignInWithAppleStep.swift */; };
 		D308EBDA27CD8B6F00438BF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E0A4388244A4A0400656518 /* Assets.xcassets */; };
 		D314690627B48E0E0096E8D4 /* ActiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314690527B48E0E0096E8D4 /* ActiveViewController.swift */; };
 		D314690827B4914C0096E8D4 /* GaitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314690727B4914C0096E8D4 /* GaitViewController.swift */; };
-		D314690A27B4B8E20096E8D4 /* BaselineSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314690927B4B8E20096E8D4 /* BaselineSurveyViewController.swift */; };
 		D34849D927CF101A0042E654 /* AboutStudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34849D827CF101A0042E654 /* AboutStudyView.swift */; };
 		D34849DB27CF2E520042E654 /* AboutStudyViewText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34849DA27CF2E520042E654 /* AboutStudyViewText.swift */; };
 		D36BC87127C860320019311B /* NotificationStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36BC87027C860320019311B /* NotificationStep.swift */; };
@@ -101,11 +99,8 @@
 
 /* Begin PBXFileReference section */
 		07D78DA16FC9C3C7709EA243 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		0F26823E0F81D89B49F12C44 /* Pods_CardinalKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardinalKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		104C940727A276F000340E2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		104C940927A2791A00340E2F /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
 		104C940B27A28E7600340E2F /* SurveyViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewCoordinator.swift; sourceTree = "<group>"; };
-		10C6BA8C27B8480D0022429C /* ReportFallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportFallViewController.swift; sourceTree = "<group>"; };
 		270AF36127872C13002945A7 /* CardinalKit_ExampleRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CardinalKit_ExampleRelease.entitlements; sourceTree = "<group>"; };
 		2B8FB80327552B02000B2D7B /* CKMultipleSignInStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKMultipleSignInStep.swift; sourceTree = "<group>"; };
 		2B932F83276BF8D300AB3A02 /* CKReviewConsentDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKReviewConsentDocument.swift; sourceTree = "<group>"; };
@@ -114,6 +109,7 @@
 		41DC264876E45FE5A3FD8701 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* CardinalKit Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CardinalKit Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62AA5CD1C2188D392530510F /* CardinalKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CardinalKit.podspec; path = ../CardinalKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		631A223A2864B29400C6389D /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		634362F22850F3FA00357EF9 /* HomeViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewPresenter.swift; sourceTree = "<group>"; };
 		634362FE2850FE2A00357EF9 /* OnBoardingSurveyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingSurveyView.swift; sourceTree = "<group>"; };
 		634362FF2850FE2A00357EF9 /* OnboardingSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSurvey.swift; sourceTree = "<group>"; };
@@ -124,6 +120,7 @@
 		636E278D28515B1E00A2F555 /* WalkStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkStep.swift; sourceTree = "<group>"; };
 		638340E82847F8F40050FD25 /* CodeSignInStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSignInStep.swift; sourceTree = "<group>"; };
 		63EE800428490BA9005E80F0 /* FinalStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalStep.swift; sourceTree = "<group>"; };
+		74CB19AE12BD46A3EE6542B4 /* Pods-CardinalKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardinalKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-CardinalKit_Example/Pods-CardinalKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		8E0A4378244A4A0300656518 /* CardinalKit_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CardinalKit_Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		8E0A4382244A4A0400656518 /* CKStudyUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKStudyUser.swift; sourceTree = "<group>"; };
 		8E0A4384244A4A0400656518 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -166,12 +163,11 @@
 		8EA6648625930B6B00B6A45A /* CKHealthRecordsStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKHealthRecordsStepViewController.swift; sourceTree = "<group>"; };
 		8EA664B32594387900B6A45A /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		8EBE6F9B24B3C0E60093D07C /* AppDelegate+CardinalKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+CardinalKit.swift"; sourceTree = "<group>"; };
-		901D8AC056E411362004396F /* Pods-CardinalKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardinalKit_Example.release.xcconfig"; path = "Target Support Files/Pods-CardinalKit_Example/Pods-CardinalKit_Example.release.xcconfig"; sourceTree = "<group>"; };
-		B407C8AA0EA2CF5364B7A54B /* Pods-CardinalKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardinalKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-CardinalKit_Example/Pods-CardinalKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		91D210B9CDF9DEFA6ED3F727 /* Pods_CardinalKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardinalKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9493CB710BCA26F29326D231 /* Pods-CardinalKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardinalKit_Example.release.xcconfig"; path = "Target Support Files/Pods-CardinalKit_Example/Pods-CardinalKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D253D131250D1BDB00A363E4 /* CKSignInWithAppleStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKSignInWithAppleStep.swift; sourceTree = "<group>"; };
 		D314690527B48E0E0096E8D4 /* ActiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveViewController.swift; sourceTree = "<group>"; };
 		D314690727B4914C0096E8D4 /* GaitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaitViewController.swift; sourceTree = "<group>"; };
-		D314690927B4B8E20096E8D4 /* BaselineSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaselineSurveyViewController.swift; sourceTree = "<group>"; };
 		D34849D827CF101A0042E654 /* AboutStudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutStudyView.swift; sourceTree = "<group>"; };
 		D34849DA27CF2E520042E654 /* AboutStudyViewText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutStudyViewText.swift; sourceTree = "<group>"; };
 		D36BC87027C860320019311B /* NotificationStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationStep.swift; sourceTree = "<group>"; };
@@ -195,7 +191,7 @@
 				8E0A43D5244A693D00656518 /* HealthKit.framework in Frameworks */,
 				8E9CDE912591534B00C8A228 /* CareKitStore in Frameworks */,
 				8E9CDE932591534B00C8A228 /* CareKitFHIR in Frameworks */,
-				4AB6AAAB14B361668A8DCF0C /* Pods_CardinalKit_Example.framework in Frameworks */,
+				CF6EA07CCFE5EC8CF1E2A1EA /* Pods_CardinalKit_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				8E0A43D4244A693D00656518 /* HealthKit.framework */,
-				0F26823E0F81D89B49F12C44 /* Pods_CardinalKit_Example.framework */,
+				91D210B9CDF9DEFA6ED3F727 /* Pods_CardinalKit_Example.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -270,6 +266,13 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		631A22392864B28400C6389D /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		634362E82850F22700357EF9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,8 +315,6 @@
 			children = (
 				634362FD2850FE2A00357EF9 /* OnBoardingSurvey */,
 				634362F02850F35800357EF9 /* Weekly Check-in Survey */,
-				D314690927B4B8E20096E8D4 /* BaselineSurveyViewController.swift */,
-				104C940927A2791A00340E2F /* SurveyViewController.swift */,
 				D314690527B48E0E0096E8D4 /* ActiveViewController.swift */,
 				D314690727B4914C0096E8D4 /* GaitViewController.swift */,
 				104C940B27A28E7600340E2F /* SurveyViewCoordinator.swift */,
@@ -325,7 +326,6 @@
 			isa = PBXGroup;
 			children = (
 				6343630628510E1900357EF9 /* VideoStep.swift */,
-				10C6BA8C27B8480D0022429C /* ReportFallViewController.swift */,
 				636E278B28514BA800A2F555 /* InstructionsStep.swift */,
 				636E278D28515B1E00A2F555 /* WalkStep.swift */,
 			);
@@ -353,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				634363042851029400357EF9 /* Date+Extensions.swift */,
+				631A223A2864B29400C6389D /* Notifications.swift */,
 			);
 			path = Date;
 			sourceTree = "<group>";
@@ -416,6 +417,7 @@
 		8E0A43C5244A4A5700656518 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				631A22392864B28400C6389D /* Notifications */,
 				634363032851028400357EF9 /* Date */,
 				8E9CDF802591E6B800C8A228 /* Configuration */,
 				8E0A4380244A4A0400656518 /* Auth */,
@@ -494,8 +496,8 @@
 		A562A578C883F67F0DAE1385 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B407C8AA0EA2CF5364B7A54B /* Pods-CardinalKit_Example.debug.xcconfig */,
-				901D8AC056E411362004396F /* Pods-CardinalKit_Example.release.xcconfig */,
+				74CB19AE12BD46A3EE6542B4 /* Pods-CardinalKit_Example.debug.xcconfig */,
+				9493CB710BCA26F29326D231 /* Pods-CardinalKit_Example.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -507,13 +509,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "CardinalKit_Example" */;
 			buildPhases = (
-				A3E401A6F55D8DF6464B4B9C /* [CP] Check Pods Manifest.lock */,
+				4809716557D96AD5D14534C0 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				8E0A43D0244A60D800656518 /* Embed Frameworks */,
-				4F97D63A9808CEC02B523967 /* [CP] Embed Pods Frameworks */,
-				3A7D8AE33279D84F99C4A09C /* [CP] Copy Pods Resources */,
+				0FB8C84EFF42CF542C10C07C /* [CP] Embed Pods Frameworks */,
+				E6A6A8A295DED04D2A9D9667 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -585,25 +587,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3A7D8AE33279D84F99C4A09C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CardinalKit_Example/Pods-CardinalKit_Example-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/CardinalKit/CardinalKit.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CardinalKit.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CardinalKit_Example/Pods-CardinalKit_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4F97D63A9808CEC02B523967 /* [CP] Embed Pods Frameworks */ = {
+		0FB8C84EFF42CF542C10C07C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -687,7 +671,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CardinalKit_Example/Pods-CardinalKit_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A3E401A6F55D8DF6464B4B9C /* [CP] Check Pods Manifest.lock */ = {
+		4809716557D96AD5D14534C0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -709,6 +693,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E6A6A8A295DED04D2A9D9667 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CardinalKit_Example/Pods-CardinalKit_Example-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/CardinalKit/CardinalKit.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CardinalKit.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CardinalKit_Example/Pods-CardinalKit_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -726,7 +728,6 @@
 				8E6E1E2225352C780024B8DF /* OnboardingUIView.swift in Sources */,
 				104C940C27A28E7600340E2F /* SurveyViewCoordinator.swift in Sources */,
 				8E6E1E2E25353A1E0024B8DF /* PatientIDView.swift in Sources */,
-				104C940A27A2791A00340E2F /* SurveyViewController.swift in Sources */,
 				8E6E1E0B2534FF640024B8DF /* OnboardingViewController+Coordinator.swift in Sources */,
 				8E9CDEBA2591843200C8A228 /* CKConfig.swift in Sources */,
 				2F94C5F22536543600DF8866 /* SceneDelegate+CardinalKit.swift in Sources */,
@@ -737,12 +738,11 @@
 				8E0A43B9244A4A0400656518 /* AppDelegate.swift in Sources */,
 				8E6E1E3225353ABE0024B8DF /* ProfileUIView.swift in Sources */,
 				8E6E1E1E253528F50024B8DF /* SupportView.swift in Sources */,
-				D314690A27B4B8E20096E8D4 /* BaselineSurveyViewController.swift in Sources */,
 				8E6E1E1C253528D70024B8DF /* ReportView.swift in Sources */,
 				634363052851029400357EF9 /* Date+Extensions.swift in Sources */,
+				631A223B2864B29400C6389D /* Notifications.swift in Sources */,
 				8E9CDEAD259170AD00C8A228 /* CKCareKitManager.swift in Sources */,
 				634362F32850F3FA00357EF9 /* HomeViewPresenter.swift in Sources */,
-				10C6BA8D27B8480D0022429C /* ReportFallViewController.swift in Sources */,
 				8E6E1E3425353AFE0024B8DF /* EmailHelper.swift in Sources */,
 				8E6E1E24253537580024B8DF /* MainUIView.swift in Sources */,
 				8E6E1E182535263F0024B8DF /* CKTaskViewController.swift in Sources */,
@@ -908,22 +908,22 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B407C8AA0EA2CF5364B7A54B /* Pods-CardinalKit_Example.debug.xcconfig */;
+			baseConfigurationReference = 74CB19AE12BD46A3EE6542B4 /* Pods-CardinalKit_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "CardinalKit-Example.entitlements";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9J8J9PDSXS;
+				DEVELOPMENT_TEAM = UX98524U82;
 				INFOPLIST_FILE = "CardinalKit/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 1.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.gaitmate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alternova.gaitmate;
 				PRODUCT_NAME = "CardinalKit Example";
 				SWIFT_OBJC_BRIDGING_HEADER = "CardinalKit/Supporting Files/CardinalKit_Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -934,22 +934,22 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 901D8AC056E411362004396F /* Pods-CardinalKit_Example.release.xcconfig */;
+			baseConfigurationReference = 9493CB710BCA26F29326D231 /* Pods-CardinalKit_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CardinalKit_ExampleRelease.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9J8J9PDSXS;
+				DEVELOPMENT_TEAM = UX98524U82;
 				INFOPLIST_FILE = "CardinalKit/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 1.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.gaitmate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alternova.gaitmate;
 				PRODUCT_NAME = "CardinalKit Example";
 				SWIFT_OBJC_BRIDGING_HEADER = "CardinalKit/Supporting Files/CardinalKit_Example-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

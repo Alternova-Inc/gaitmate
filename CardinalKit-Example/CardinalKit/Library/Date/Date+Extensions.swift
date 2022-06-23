@@ -9,6 +9,13 @@
 import Foundation
 
 extension Date{
+    func addDays(days:Int) -> Date {
+        var dateComponent = DateComponents()
+        dateComponent.day = days
+        let futureDate = Calendar.current.date(byAdding: dateComponent, to: self)
+        return futureDate!
+    }
+    
     func dayNumberOfWeek() -> Int? {
         return Calendar.current.dateComponents([.weekday], from: self).weekday
     }
@@ -26,5 +33,18 @@ extension Date{
         dateFormatter.dateFormat = dateFormat ?? "MM/dd/yyyy"
         let dateString = dateFormatter.string(from: self)
         return dateString
+    }
+}
+
+extension String{
+    func toDate() -> Date {
+        let dateFormatter = DateFormatter()
+        let date = dateFormatter.date(from: self)
+        if let date = date {
+            return date
+        }
+        else {
+            return Date()
+        }
     }
 }

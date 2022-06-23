@@ -369,37 +369,14 @@ struct OnboardingSurvey {
     }()
     
     
-    static let weeklyCheckInSurvey: ORKOrderedTask = {
+    static func weeklyCheckInSurvey(fallsNumber:Int, fallsDescription: String) -> ORKOrderedTask  {
         var steps = [ORKStep]()
         
-        // Calendar choice for date
-        let fallDateAnswerFormat = ORKAnswerFormat.dateAnswerFormat()
-        let fallDateStep = ORKQuestionStep(identifier: "fallDateStep", title: "Date of Fall", question: "What day did the fall happen?", answer: fallDateAnswerFormat)
+        let instructionsStep = ORKInstructionStep(identifier: "FallsResume")
+        instructionsStep.title = "Last Week Falls Resume"
+        instructionsStep.text = "last week you reported \(fallsNumber) falls \n\n\n\n\(fallsDescription)"
         
-        steps += [fallDateStep]
-        
-        let timeChoices = [
-            ORKTextChoice(text: "Morning", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Mid-day", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Evening", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Night Time", value: 3 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Do not recall", value: 4 as NSCoding & NSCopying & NSObjectProtocol)
-        ]
-        let timeChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: timeChoices)
-        let timeChoiceStep = ORKQuestionStep(identifier: "timeStep", title: "Time of Fall", question: "What time of day did the fall happen?", answer: timeChoiceAnswerFormat)
-        
-        steps += [timeChoiceStep]
-        
-        let injuryChoices = [
-            ORKTextChoice(text: "No", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Yes: resulted in dressing, ice, cleaning of a wound, limb elevation, topical medication, bruise or abrasion.", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Yes: resulted in minor medical care (e.g. suturing, application of steri-strips/skin glue, splinting or muscle/joint strain).", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Yes: resulted in major medical care (e.g. surgery, casting, traction, required consultation for neurological or internal injury)", value: 3 as NSCoding & NSCopying & NSObjectProtocol)
-        ]
-        let injuryChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: injuryChoices)
-        let injuryStep = ORKQuestionStep(identifier: "injuryStep", title: "Injury Associated with Fall", question: "Did this fall result in any type of injury?", answer: injuryChoiceAnswerFormat)
-        
-        steps += [injuryStep]
+        steps += [instructionsStep]
         
         let videoStep = VideoStep(identifier: "VideoInstructionsStep")
         
@@ -431,7 +408,43 @@ struct OnboardingSurvey {
         
         steps += [finalIntructions]
         
-        return ORKOrderedTask(identifier: "SurveyTask", steps: steps)
+        return ORKOrderedTask(identifier: "WeeklySurvey", steps: steps)
+    }
+    
+    static let reportAFallSurvey: ORKOrderedTask = {
+        // Calendar choice for date
+        var steps = [ORKStep]()
+        let fallDateAnswerFormat = ORKAnswerFormat.dateAnswerFormat()
+        let fallDateStep = ORKQuestionStep(identifier: "fallDateStep", title: "Date of Fall", question: "What day did the fall happen?", answer: fallDateAnswerFormat)
+        fallDateStep.isOptional = false
+        
+        steps += [fallDateStep]
+        
+        let timeChoices = [
+            ORKTextChoice(text: "Morning", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "Mid-day", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "Evening", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "Night Time", value: 3 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "Do not recall", value: 4 as NSCoding & NSCopying & NSObjectProtocol)
+        ]
+        let timeChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: timeChoices)
+        let timeChoiceStep = ORKQuestionStep(identifier: "timeStep", title: "Time of Fall", question: "What time of day did the fall happen?", answer: timeChoiceAnswerFormat)
+        timeChoiceStep.isOptional = false
+        
+        steps += [timeChoiceStep]
+        
+        let injuryChoices = [
+            ORKTextChoice(text: "No", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "Yes: resulted in dressing, ice, cleaning of a wound, limb elevation, topical medication, bruise or abrasion.", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "Yes: resulted in minor medical care (e.g. suturing, application of steri-strips/skin glue, splinting or muscle/joint strain).", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "Yes: resulted in major medical care (e.g. surgery, casting, traction, required consultation for neurological or internal injury)", value: 3 as NSCoding & NSCopying & NSObjectProtocol)
+        ]
+        let injuryChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: injuryChoices)
+        let injuryStep = ORKQuestionStep(identifier: "injuryStep", title: "Injury Associated with Fall", question: "Did this fall result in any type of injury?", answer: injuryChoiceAnswerFormat)
+        injuryStep.isOptional = false
+        
+        steps += [injuryStep]
+        return ORKOrderedTask(identifier: "reportAFall", steps: steps)
     }()
 }
 
