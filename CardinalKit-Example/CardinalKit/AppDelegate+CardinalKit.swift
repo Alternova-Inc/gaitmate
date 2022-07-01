@@ -21,9 +21,10 @@ extension AppDelegate {
         
         // (1) lock the app and prompt for passcode before continuing
         // CKLockApp()
-        
+        var ckOptions = CKAppOptions()
+        ckOptions.userDataProviderDelegate = UserDataProvider()
         // (2) setup the CardinalKit SDK
-        CKApp.configure(CKAppOptions())
+        CKApp.configure(ckOptions)
         
         var hkTypesToReadInBackground: Set<HKSampleType> = [
             HKObjectType.quantityType(forIdentifier: .walkingSpeed)!,
@@ -48,6 +49,8 @@ extension AppDelegate {
             CKApp.startBackgroundDeliveryData()
         }
         CKStudyUser.shared.save()
+        
+        
     }
     
 }

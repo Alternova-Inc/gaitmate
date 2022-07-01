@@ -95,25 +95,30 @@ public class CodeSignInStepViewController: ORKQuestionStepViewController {
     
     @objc
     func signInAction(){
-        let nText:String = uiTextField.text!
+        let nText:String = uiTextField.text!.removeSpecialCharsFromString()
         
-        let url = URL(string: "https://us-central1-cardinalkit-testing.cloudfunctions.net/userIdVerification?userId=\(nText)")!
-        
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-            guard let data = data else { return }
-            let response = String(data: data, encoding: .utf8)!
-            OperationQueue.main.addOperation {
-                if response == "true"{
-                    UserDefaults.standard.set(nText, forKey: "UserId")
-                    self.setAnswer(true)
+        let url = URL(string: "https://us-central1-cardinalkit-testing.cloudfunctions.net/userIdVerification?userId=\(nText)")
+        if let url = url {
+            let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+                guard let data = data else { return }
+                let response = String(data: data, encoding: .utf8)!
+                OperationQueue.main.addOperation {
+                    if response == "true"{
+                        UserDefaults.standard.set(nText, forKey: "UserId")
+                        self.setAnswer(true)
+                    }
+                    else{
+                        self.setAnswer(false)
+                    }
+                    super.goForward()
                 }
-                else{
-                    self.setAnswer(false)
-                }
-                super.goForward()
             }
+            task.resume()
         }
-        task.resume()
+        else{
+            self.setAnswer(false)
+            super.goForward()
+        }
     }
 }
 
