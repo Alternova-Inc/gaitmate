@@ -7,7 +7,7 @@ struct OnboardingSurvey {
         // Instruction step
         let instructionStep = ORKInstructionStep(identifier: "IntroStep")
         instructionStep.title = "GaitMate Baseline Survey"
-        instructionStep.text = "This survey should take around 10 minutes to complete. This survey will help us understand some things about you to help us understand fall risk. If you are unsure about how to answer a question, please give the best answer you can. If you feel uncomfortable, you can skip any question."
+        instructionStep.text = " • This survey should take around 10 minutes to complete. \n • This survey will help us understand some things about you to help us understand fall risk. \n • If you are unsure about how to answer a question, please give the best answer you can. \n • If you feel uncomfortable, you can skip any question."
         
         steps += [instructionStep]
         

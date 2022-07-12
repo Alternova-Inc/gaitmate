@@ -25,7 +25,7 @@ public class WalkStep: ORKWalkingTaskStep{
         self.shouldContinueOnFinish = true
         self.isOptional = true
         self.shouldStartTimerAutomatically = true
-        self.stepDuration = 15
+        self.stepDuration = 10000
         self.shouldVibrateOnStart = true
         self.shouldPlaySoundOnStart = true
     }
