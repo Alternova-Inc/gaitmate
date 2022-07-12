@@ -37,8 +37,9 @@ extension Date{
 }
 
 extension String{
-    func toDate() -> Date {
+    func toDate(_ dateFormat: String?) -> Date {
         let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormat ?? "MM/dd/yyyy"
         let date = dateFormatter.date(from: self)
         if let date = date {
             return date

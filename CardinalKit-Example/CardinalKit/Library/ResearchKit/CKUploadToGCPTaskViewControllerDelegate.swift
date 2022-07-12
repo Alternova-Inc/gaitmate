@@ -33,8 +33,9 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
                 let resultTimeDay = ((taskViewController.result.result(forIdentifier: "timeStep") as? ORKStepResult)?.result(forIdentifier: "timeStep") as? ORKChoiceQuestionResult)?.choiceAnswers?[0].description
                 if let date = resultDate,
                 let timeDay = resultTimeDay{
-                    sendFallDateJson(date: date.toString(dateFormat:"MM-dd-yyyy_HH:mm"), timeDay: timeDay)
+                    sendFallDateJson(date: date, timeDay: timeDay)
                 }
+                NotificationCenter.default.post(name: NSNotification.Name(Constants.fallsSurveyComplete), object: true)
             }
             
             do {
@@ -113,13 +114,15 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
         CKApp.sendData(route: route, data: ["results": FieldValue.arrayUnion([json])], params: ["userId":"\(userId)","merge":true])
     }
     
-    func sendFallDateJson(date: String,timeDay: String) {
+    func sendFallDateJson(date: Date,timeDay: String) {
+        let dateIdentifier = date.toString(dateFormat:"MM-dd-yyyy_HH:mm")
+        let dateStr = date.toString(dateFormat:"MM-dd-yyyy")
         guard let authCollection = CKStudyUser.shared.authCollection
         else{
             return
         }
-        let route = "\(authCollection)\(Constants.dataBucketSurveys)/reportAFall/falls/\(date)/"
-        CKApp.sendData(route: route, data: ["date":date,"timeDate":timeDay], params: [])
+        let route = "\(authCollection)\(Constants.dataBucketSurveys)/reportAFall/falls/\(dateIdentifier)/"
+        CKApp.sendData(route: route, data: ["date":dateStr,"timeDate":timeDay], params: [])
     }
     
     /**

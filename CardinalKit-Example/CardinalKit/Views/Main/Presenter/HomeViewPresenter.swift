@@ -37,6 +37,7 @@ class HomeViewPresenter:ObservableObject {
         else {
             NotificationCenter.default.addObserver(self, selector: #selector(OnCompleteOnboardingSurvey), name: Notification.Name(Constants.onboardingSurveyDidComplete), object: nil)
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(requestFalls), name: Notification.Name(Constants.fallsSurveyComplete), object: nil)
         
         let date = Date()
         // if is between noon sunday -  noon Wednesday and is not answered on this week
@@ -53,6 +54,11 @@ class HomeViewPresenter:ObservableObject {
                 }
             }
         }
+        requestFalls()
+    }
+    
+    @objc
+    func requestFalls(){
         // Get Falls last week from firebase
         
         guard let authCollection = CKStudyUser.shared.authCollection
@@ -60,17 +66,19 @@ class HomeViewPresenter:ObservableObject {
             return
         }
         let route = "\(authCollection)\(Constants.dataBucketSurveys)/reportAFall/falls"
-        
         CKApp.requestData(route: route){
             response in
+            self.fallsDict = [:]
             let startDate = Date().addDays(days: -7)
             if let response = response as? [String:Any]{
-                for (strDate, _) in response {
-                    let date = strDate.toDate()
-                    if date > startDate {
-                        let dateStr = date.toString(dateFormat: "MM-dd-yyyy")
-                        let fallsCounter = (self.fallsDict[dateStr] ?? 0)+1
-                        self.fallsDict[dateStr] = fallsCounter
+                for (_, data) in response {
+                    if let data = data as? [String:Any],
+                    let date = data["date"] as? String{
+                        let dateAsDate = date.toDate("MM-dd-yyyy")
+                        if dateAsDate>startDate {
+                            let fallsCounter = (self.fallsDict[date] ?? 0)+1
+                            self.fallsDict[date] = fallsCounter
+                        }
                     }
                 }
             }
@@ -92,6 +100,7 @@ class HomeViewPresenter:ObservableObject {
     }
     
     func weeklySurveyView() -> some View{
+        requestFalls()
         var description =  ["Date", "Falls Count"].map({$0.padding(toLength: 18, withPad: " ", startingAt: 0)}).joined(separator: " | ")
         var fallsNumber = 0
         for (date, number) in fallsDict {
