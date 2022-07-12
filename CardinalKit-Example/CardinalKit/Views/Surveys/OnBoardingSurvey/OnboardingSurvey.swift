@@ -12,8 +12,10 @@ struct OnboardingSurvey {
         steps += [instructionStep]
         
         //Part 2: Demographics:
-        let demoAgeFormat = ORKAnswerFormat.scale(withMaximumValue: 120, minimumValue: 65, defaultValue: 80, step: 5, vertical: false, maximumValueDescription: "100+", minimumValueDescription: "65")
-        let ageItem = ORKFormItem(identifier: "age", text: "What is your age in years:", answerFormat: demoAgeFormat)
+//        let demoAgeFormat = ORKAnswerFormat.scale(withMaximumValue: 120, minimumValue: 65, defaultValue: 80, step: 5, vertical: false, maximumValueDescription: "100+", minimumValueDescription: "65")
+        let demoAgeFormat = ORKAnswerFormat.integerAnswerFormat(withUnit: "years")
+//        let ageItem = ORKFormItem(identifier: "age", text: "What is your age in years:", answerFormat: demoAgeFormat)
+        let ageItem = ORKFormItem(identifier: "AGE", text: "What is your age in years?", detailText: "", learnMoreItem: nil, showsProgress: true, answerFormat: demoAgeFormat, tagText: nil, optional: false)
         
         let sexChoices = [
             ORKTextChoice(text: "Male", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
@@ -44,7 +46,8 @@ struct OnboardingSurvey {
         let ethnicityChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: ethnicityChoices)
         let ethnicityItem = ORKFormItem(identifier: "hisp", text: "Describe your ethnicity", answerFormat: ethnicityChoiceAnswerFormat)
         
-        let heightFormat = ORKAnswerFormat.scale(withMaximumValue: 11, minimumValue: 0, defaultValue: 6, step: 1, vertical: false, maximumValueDescription: "11", minimumValueDescription: "0")
+//        let heightFormat = ORKAnswerFormat.scale(withMaximumValue: 11, minimumValue: 0, defaultValue: 6, step: 1, vertical: false, maximumValueDescription: "11", minimumValueDescription: "0")
+        let heightFormat = ORKAnswerFormat.heightAnswerFormat(with: .USC)
         let heightItem = ORKFormItem(identifier: "height", text: "How tall are you? (in inches):", answerFormat: heightFormat)
         
         let weightChoices = [
@@ -55,13 +58,13 @@ struct OnboardingSurvey {
             ORKTextChoice(text: "201-250", value: 4 as NSCoding & NSCopying & NSObjectProtocol),
             ORKTextChoice(text: ">250", value: 5 as NSCoding & NSCopying & NSObjectProtocol),
         ]
-        let weightChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .multipleChoice, textChoices: weightChoices)
+        let weightChoiceAnswerFormat = ORKAnswerFormat.weightAnswerFormat(with: .USC)
         let weightItem = ORKFormItem(identifier: "weight", text: "Approximately how much do you weigh in pounds?", answerFormat: weightChoiceAnswerFormat)
         
         
         
         let demoStep = ORKFormStep(identifier: "demoStep", title: "Demographics", text: "The following questions concern your demographic information")
-        demoStep.formItems = [ageItem, sexItem, raceItem, ethnicityItem, heightItem, weightItem]
+        demoStep.formItems = [sexItem, heightItem, weightItem,ageItem, raceItem, ethnicityItem]
         
         steps += [demoStep]
         
@@ -153,11 +156,21 @@ struct OnboardingSurvey {
         let anxietyFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: anxietyChoices)
         let anxietyItem = ORKFormItem(identifier: "eq_anx", text: "How is your mental health?", answerFormat: anxietyFormat)
         
-        let overallFormat = ORKAnswerFormat.scale(withMaximumValue: 100, minimumValue: 0, defaultValue: 50, step: 50, vertical: false, maximumValueDescription: "100", minimumValueDescription: "0")
-        let overallItem = ORKFormItem(identifier: "eq_health", text: "How would you rate your current overall health from 0-100, where 0 is the worst health you can imagine, and 100 is the best?", answerFormat: overallFormat)
+        let otherItem = ORKFormItem(sectionTitle: "", detailText: "", learnMoreItem: nil, showsProgress: true)
+        let overallFormat = ORKAnswerFormat.integerAnswerFormat(withUnit: " ")
+        overallFormat.maximum = 100
+        overallFormat.minimum = 0
+        overallFormat.placeholder = " 0 - 100"
         
+        var overallItem = ORKFormItem(identifier: "eq_health", text: "", answerFormat: overallFormat)
+        overallItem.detailText = "How would you rate your current overall health from 0-100, where 0 is the worst health you can imagine, and 100 is the best?"
+
+      
         let qualityStep = ORKFormStep(identifier: "qualityStep", title: "Quality of Life", text: "Under each heading, please tick ONE box that best describes your health TODAY")
-        qualityStep.formItems = [mobilityItem, careItem, activitiesItem, painItem, anxietyItem, overallItem]
+        qualityStep.formItems = [overallItem,mobilityItem, careItem, activitiesItem, painItem, anxietyItem ]
+        qualityStep.buildInBodyItems = false
+        qualityStep.accessibilityNavigationStyle = .separate
+        qualityStep.useSurveyMode = true
         
         steps += [qualityStep]
         
