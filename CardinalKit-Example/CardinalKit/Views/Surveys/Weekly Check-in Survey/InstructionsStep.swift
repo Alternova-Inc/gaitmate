@@ -12,11 +12,11 @@ import ResearchKit
 public class InstructionsStep: ORKInstructionStep{
     public override init(identifier: String) {
         super.init(identifier: identifier)
-        self.title = "Final Instructions"
-        self.text = "Put your device in a pocket or bag. \nWalk up to 10 feet in a straight line. \nWalk back yo your chair. \nSit down. \n\n\nClick the Start Button when you are ready."
-        self.shouldTintImages = true
-        self.imageContentMode = .center
-        self.image = UIImage(named: "pocket", in: Bundle(for: ORKInstructionStep.self), compatibleWith: nil)
+        self.title = ""
+        self.text = ""
+//        self.shouldTintImages = true
+//        self.imageContentMode = .center
+//        self.image = UIImage(named: "pocket", in: Bundle(for: ORKInstructionStep.self), compatibleWith: nil)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -26,7 +26,7 @@ public class InstructionsStep: ORKInstructionStep{
 
 public class InstructionsStepViewController: ORKInstructionStepViewController{
     override public func viewDidLoad() {
-        self.continueButtonTitle = "Start"
+        self.continueButtonTitle = "Ready"
         super.viewDidLoad()
     }
 }

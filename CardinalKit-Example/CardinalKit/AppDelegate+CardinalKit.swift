@@ -21,26 +21,36 @@ extension AppDelegate {
         
         // (1) lock the app and prompt for passcode before continuing
         // CKLockApp()
-        
+        var ckOptions = CKAppOptions()
+        ckOptions.userDataProviderDelegate = UserDataProvider()
         // (2) setup the CardinalKit SDK
-        var options = CKAppOptions()
-//        options.networkDeliveryDelegate = CKAppNetworkManager()
-//        options.networkReceiverDelegate = CKAppNetworkManager()
-        CKApp.configure(options)
+        CKApp.configure(ckOptions)
+        
+        var hkTypesToReadInBackground: Set<HKSampleType> = [
+            HKObjectType.quantityType(forIdentifier: .walkingSpeed)!,
+            HKObjectType.quantityType(forIdentifier: .walkingStepLength)!,
+            HKObjectType.quantityType(forIdentifier: .walkingAsymmetryPercentage)!,
+            HKObjectType.quantityType(forIdentifier: .walkingDoubleSupportPercentage)!,
+            HKObjectType.quantityType(forIdentifier: .stepCount)!,
+            HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
+            HKObjectType.quantityType(forIdentifier: .stairAscentSpeed)!,
+            HKObjectType.quantityType(forIdentifier: .stairDescentSpeed)!,
+            HKObjectType.quantityType(forIdentifier: .sixMinuteWalkTestDistance)!
+        ]
+        if #available(iOS 15.0, *) {
+            hkTypesToReadInBackground.insert(HKObjectType.quantityType(forIdentifier: .appleWalkingSteadiness)!)
+        }
+        
+        CKApp.configureHealthKitTypes(types: hkTypesToReadInBackground)
         
         // (3) if we have already logged in
         if CKStudyUser.shared.isLoggedIn {
             CKStudyUser.shared.save()
-            
-            // (4) then start the requested HK data collection (if any).
-            let manager = CKHealthKitManager.shared
-            manager.getHealthAuthorization { (success, error) in
-                if let error = error {
-                    print(error)
-                }
-            }
+            CKApp.startBackgroundDeliveryData()
         }
         CKStudyUser.shared.save()
+        
+        
     }
     
 }

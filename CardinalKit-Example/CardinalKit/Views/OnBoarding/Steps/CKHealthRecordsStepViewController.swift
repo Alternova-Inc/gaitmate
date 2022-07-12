@@ -53,15 +53,16 @@ class CKHealthRecordsStepViewController: ORKInstructionStepViewController {
      Relies on a `CKHealthDataStep` instance as `self.step`.
     */
     override func goForward() {
-        let manager = CKHealthRecordsManager.shared
-        manager.getAuth { succeeded, _ in
-            if succeeded {
-                manager.upload()
-            }
-            
-            OperationQueue.main.addOperation {
-                super.goForward()
-            }
-        }
+//        let manager = CKHealthRecordsManager.shared
+//        manager.getAuth { succeeded, _ in
+//            if succeeded {
+//                manager.upload()
+//            }
+//
+//            OperationQueue.main.addOperation {
+//                super.goForward()
+//            }
+//        }
+        super.goForward()
     }
 }

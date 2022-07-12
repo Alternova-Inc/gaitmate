@@ -47,9 +47,6 @@ extension SceneDelegate: ORKPasscodeDelegate {
      to hide app content from the iOS App Switcher (Privacy/Security).
     */
     func CKLockDidEnterBackground() {
-        if ORKPasscodeViewController.isPasscodeStoredInKeychain() {
-            toggleContainer(hidden: true)
-        }
     }
     
     func passcodeViewControllerDidFinish(withSuccess viewController: UIViewController) {

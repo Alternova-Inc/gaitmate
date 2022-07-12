@@ -28,6 +28,7 @@ class Constants {
     static let onboardingDidComplete = "didCompleteOnboarding"
     static let onboardingSurveyDidComplete = "didCompleteOnboardingSurvey"
     static let weeklySurveyComplete = "didWeekleSurveyComplete"
+    static let fallsSurveyComplete = "onFallsSurveyCompletion"
     
     
 }

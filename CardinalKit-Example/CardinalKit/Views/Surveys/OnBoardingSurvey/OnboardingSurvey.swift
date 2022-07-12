@@ -7,13 +7,15 @@ struct OnboardingSurvey {
         // Instruction step
         let instructionStep = ORKInstructionStep(identifier: "IntroStep")
         instructionStep.title = "GaitMate Baseline Survey"
-        instructionStep.text = "This survey should take around 10 minutes to complete. This survey will help us understand some things about you to help us understand fall risk. If you are unsure about how to answer a question, please give the best answer you can. If you feel uncomfortable, you can skip any question."
+        instructionStep.text = " • This survey should take around 10 minutes to complete. \n • This survey will help us understand some things about you to help us understand fall risk. \n • If you are unsure about how to answer a question, please give the best answer you can. \n • If you feel uncomfortable, you can skip any question."
         
         steps += [instructionStep]
         
         //Part 2: Demographics:
-        let demoAgeFormat = ORKAnswerFormat.scale(withMaximumValue: 120, minimumValue: 65, defaultValue: 80, step: 5, vertical: false, maximumValueDescription: "100+", minimumValueDescription: "65")
-        let ageItem = ORKFormItem(identifier: "age", text: "What is your age in years:", answerFormat: demoAgeFormat)
+//        let demoAgeFormat = ORKAnswerFormat.scale(withMaximumValue: 120, minimumValue: 65, defaultValue: 80, step: 5, vertical: false, maximumValueDescription: "100+", minimumValueDescription: "65")
+        let demoAgeFormat = ORKAnswerFormat.integerAnswerFormat(withUnit: "years")
+//        let ageItem = ORKFormItem(identifier: "age", text: "What is your age in years:", answerFormat: demoAgeFormat)
+        let ageItem = ORKFormItem(identifier: "AGE", text: "What is your age in years?", detailText: "", learnMoreItem: nil, showsProgress: true, answerFormat: demoAgeFormat, tagText: nil, optional: false)
         
         let sexChoices = [
             ORKTextChoice(text: "Male", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
@@ -44,7 +46,8 @@ struct OnboardingSurvey {
         let ethnicityChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: ethnicityChoices)
         let ethnicityItem = ORKFormItem(identifier: "hisp", text: "Describe your ethnicity", answerFormat: ethnicityChoiceAnswerFormat)
         
-        let heightFormat = ORKAnswerFormat.scale(withMaximumValue: 11, minimumValue: 0, defaultValue: 6, step: 1, vertical: false, maximumValueDescription: "11", minimumValueDescription: "0")
+//        let heightFormat = ORKAnswerFormat.scale(withMaximumValue: 11, minimumValue: 0, defaultValue: 6, step: 1, vertical: false, maximumValueDescription: "11", minimumValueDescription: "0")
+        let heightFormat = ORKAnswerFormat.heightAnswerFormat(with: .USC)
         let heightItem = ORKFormItem(identifier: "height", text: "How tall are you? (in inches):", answerFormat: heightFormat)
         
         let weightChoices = [
@@ -55,13 +58,13 @@ struct OnboardingSurvey {
             ORKTextChoice(text: "201-250", value: 4 as NSCoding & NSCopying & NSObjectProtocol),
             ORKTextChoice(text: ">250", value: 5 as NSCoding & NSCopying & NSObjectProtocol),
         ]
-        let weightChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .multipleChoice, textChoices: weightChoices)
+        let weightChoiceAnswerFormat = ORKAnswerFormat.weightAnswerFormat(with: .USC)
         let weightItem = ORKFormItem(identifier: "weight", text: "Approximately how much do you weigh in pounds?", answerFormat: weightChoiceAnswerFormat)
         
         
         
         let demoStep = ORKFormStep(identifier: "demoStep", title: "Demographics", text: "The following questions concern your demographic information")
-        demoStep.formItems = [ageItem, sexItem, raceItem, ethnicityItem, heightItem, weightItem]
+        demoStep.formItems = [sexItem, heightItem, weightItem,ageItem, raceItem, ethnicityItem]
         
         steps += [demoStep]
         
@@ -153,11 +156,21 @@ struct OnboardingSurvey {
         let anxietyFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: anxietyChoices)
         let anxietyItem = ORKFormItem(identifier: "eq_anx", text: "How is your mental health?", answerFormat: anxietyFormat)
         
-        let overallFormat = ORKAnswerFormat.scale(withMaximumValue: 100, minimumValue: 0, defaultValue: 50, step: 50, vertical: false, maximumValueDescription: "100", minimumValueDescription: "0")
-        let overallItem = ORKFormItem(identifier: "eq_health", text: "How would you rate your current overall health from 0-100, where 0 is the worst health you can imagine, and 100 is the best?", answerFormat: overallFormat)
+        let otherItem = ORKFormItem(sectionTitle: "", detailText: "", learnMoreItem: nil, showsProgress: true)
+        let overallFormat = ORKAnswerFormat.integerAnswerFormat(withUnit: " ")
+        overallFormat.maximum = 100
+        overallFormat.minimum = 0
+        overallFormat.placeholder = " 0 - 100"
         
+        var overallItem = ORKFormItem(identifier: "eq_health", text: "", answerFormat: overallFormat)
+        overallItem.detailText = "How would you rate your current overall health from 0-100, where 0 is the worst health you can imagine, and 100 is the best?"
+
+      
         let qualityStep = ORKFormStep(identifier: "qualityStep", title: "Quality of Life", text: "Under each heading, please tick ONE box that best describes your health TODAY")
-        qualityStep.formItems = [mobilityItem, careItem, activitiesItem, painItem, anxietyItem, overallItem]
+        qualityStep.formItems = [overallItem,mobilityItem, careItem, activitiesItem, painItem, anxietyItem ]
+        qualityStep.buildInBodyItems = false
+        qualityStep.accessibilityNavigationStyle = .separate
+        qualityStep.useSurveyMode = true
         
         steps += [qualityStep]
         
@@ -179,7 +192,7 @@ struct OnboardingSurvey {
             ORKTextChoice(text: "Yes", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
         ]
         let yesNoFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: yesNoChoices)
-        let drowsyItem = ORKFormItem(identifier: "med_dizzy", text: "Do any of these medications make you drizzy or drowsy?", answerFormat: yesNoFormat)
+        let drowsyItem = ORKFormItem(identifier: "med_dizzy", text: "Do any of these medications make you dizzy or drowsy?", answerFormat: yesNoFormat)
         
         let medNumStep = ORKFormStep(identifier: "medicationStep", title: "Medications", text: "The following question corresponds your recent medications")
         medNumStep.formItems = [medNumItem, drowsyItem]
@@ -205,7 +218,7 @@ struct OnboardingSurvey {
             ORKTextChoice(text: "10 or more", value: 4 as NSCoding & NSCopying & NSObjectProtocol)
         ]
         let numStandardFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: numStandardChoices)
-        let numStandardItem = ORKFormItem(identifier: "auditc_2", text: "How many standard drinks containing alcohol do you have on a typical day when you were drinking?", answerFormat: numStandardFormat)
+        let numStandardItem = ORKFormItem(identifier: "auditc_2", text: "How many standard drinks containing alcohol do you have on a typical day when you are drinking?", answerFormat: numStandardFormat)
         
         let occasionDrinkChoices = [
             ORKTextChoice(text: "Never", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
@@ -266,10 +279,10 @@ struct OnboardingSurvey {
         ]
         let floorsYesNoFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: floorYesNoChoices)
         let floorsItem1 = ORKFormItem(identifier: "floor_1", text: "When you walk through a room, do you have to walk around furniture?", answerFormat: floorsYesNoFormat)
-        let floorsItem2 = ORKFormItem(identifier: "floor_2", text: "Do you have throw rungs on the floor?", answerFormat: floorsYesNoFormat)
+        let floorsItem2 = ORKFormItem(identifier: "floor_2", text: "Do you have throw rugs on the floor?", answerFormat: floorsYesNoFormat)
         let floorsItem3 = ORKFormItem(identifier: "floor_3", text: "Are there papers, shoes, books, or other objects on the floor where you walk?", answerFormat: floorsYesNoFormat)
-        let floorsItem4 = ORKFormItem(identifier: "floor_4", text: "Do you have to walk over or around wires or cords (like lamp, telephone, or extension cords?", answerFormat: floorsYesNoFormat)
-        let floorsItem5 = ORKFormItem(identifier: "floor_5", text: "Do you have a dog that sometimes walks under you", answerFormat: floorsYesNoFormat)
+        let floorsItem4 = ORKFormItem(identifier: "floor_4", text: "Do you have to walk over or around wires or cords (like lamp, telephone, or extension cords?)", answerFormat: floorsYesNoFormat)
+        let floorsItem5 = ORKFormItem(identifier: "floor_5", text: "Do you have a dog that sometimes walks under you?", answerFormat: floorsYesNoFormat)
         
         
         let bedroomYesNoChoices = [
@@ -313,7 +326,7 @@ struct OnboardingSurvey {
         let fallItem7 = ORKFormItem(identifier: "cdc_f7", text: "I have some trouble stepping up onto a curb", answerFormat: fallYesNoFormat)
         let fallItem8 = ORKFormItem(identifier: "cdc_f8", text: "I often have to rush to the toilet", answerFormat: fallYesNoFormat)
         let fallItem9 = ORKFormItem(identifier: "cdc_f9", text: "I have lost some feeling in my feet", answerFormat: fallYesNoFormat)
-        let fallItem10 = ORKFormItem(identifier: "cdc_f10", text: "I take medicine that sometiems makes me feel light-hearted or more tired than usual", answerFormat: fallYesNoFormat)
+        let fallItem10 = ORKFormItem(identifier: "cdc_f10", text: "I take medicine that sometiems makes me feel light-headed or more tired than usual", answerFormat: fallYesNoFormat)
         let fallItem11 = ORKFormItem(identifier: "cdc_f11", text: "I take medicine to help me sleep or improve my mood", answerFormat: fallYesNoFormat)
         let fallItem12 = ORKFormItem(identifier: "cdc_f12", text: "I often feel sad or depressed", answerFormat: fallYesNoFormat)
 
@@ -326,19 +339,19 @@ struct OnboardingSurvey {
         // Page 9: PA Survey
         let timeSpendChoices = [
             ORKTextChoice(text: "No time", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "<30 Minutes", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "less than 30 Minutes", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
             ORKTextChoice(text: "30 min - 1 hour", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
             ORKTextChoice(text: "1-2 hours", value: 3 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: ">2 hours", value: 3 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "more than 2 hours", value: 3 as NSCoding & NSCopying & NSObjectProtocol),
         ]
         let timeSpendFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: timeSpendChoices)
-        let timeSpendItem1 = ORKFormItem(identifier: "pa_1", text: "In a typical day, approximately how much time do you spend Walking?", answerFormat: timeSpendFormat)
-        let timeSpendItem2 = ORKFormItem(identifier: "pa_2", text: "In a typical day, approximately how much time do you spend Jogging?", answerFormat: timeSpendFormat)
-        let timeSpendItem3 = ORKFormItem(identifier: "pa_3", text: "In a typical day, approximately how much time do you spend Bicycling?", answerFormat: timeSpendFormat)
-        let timeSpendItem4 = ORKFormItem(identifier: "pa_4", text: "In a typical day, approximately how much time do you spend Swimming?", answerFormat: timeSpendFormat)
-        let timeSpendItem5 = ORKFormItem(identifier: "pa_5", text: "In a typical day, approximately how much time do you spend doing Any other exercise that raises your heart rate?", answerFormat: timeSpendFormat)
+        let timeSpendItem1 = ORKFormItem(identifier: "pa_1", text: "Walking?", answerFormat: timeSpendFormat)
+        let timeSpendItem2 = ORKFormItem(identifier: "pa_2", text: "Jogging?", answerFormat: timeSpendFormat)
+        let timeSpendItem3 = ORKFormItem(identifier: "pa_3", text: "Bicycling?", answerFormat: timeSpendFormat)
+        let timeSpendItem4 = ORKFormItem(identifier: "pa_4", text: "Swimming?", answerFormat: timeSpendFormat)
+        let timeSpendItem5 = ORKFormItem(identifier: "pa_5", text: "doing Any other exercise that raises your heart rate?", answerFormat: timeSpendFormat)
         
-        let PASurveyStep = ORKFormStep(identifier: "PASurveyStep", title: "PA Survey", text: "The following questions regard your physical activity")
+        let PASurveyStep = ORKFormStep(identifier: "PASurveyStep", title: "Activity Survey", text: "The following questions regard your physical activity \n In a typical day, approximately how much time do you spend doing each of the following activities: ")
         PASurveyStep.formItems = [timeSpendItem1, timeSpendItem2, timeSpendItem3, timeSpendItem4, timeSpendItem5]
         
         steps += [PASurveyStep]
@@ -369,37 +382,14 @@ struct OnboardingSurvey {
     }()
     
     
-    static let weeklyCheckInSurvey: ORKOrderedTask = {
+    static func weeklyCheckInSurvey(fallsNumber:Int, fallsDescription: String) -> ORKOrderedTask  {
         var steps = [ORKStep]()
         
-        // Calendar choice for date
-        let fallDateAnswerFormat = ORKAnswerFormat.dateAnswerFormat()
-        let fallDateStep = ORKQuestionStep(identifier: "fallDateStep", title: "Date of Fall", question: "What day did the fall happen?", answer: fallDateAnswerFormat)
+        let instructionsStep = ORKInstructionStep(identifier: "FallsResume")
+        instructionsStep.title = "Last Week Falls Resume"
+        instructionsStep.text = "last week you reported \(fallsNumber) falls \n\n\n\n\(fallsDescription)"
         
-        steps += [fallDateStep]
-        
-        let timeChoices = [
-            ORKTextChoice(text: "Morning", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Mid-day", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Evening", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Night Time", value: 3 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Do not recall", value: 4 as NSCoding & NSCopying & NSObjectProtocol)
-        ]
-        let timeChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: timeChoices)
-        let timeChoiceStep = ORKQuestionStep(identifier: "timeStep", title: "Time of Fall", question: "What time of day did the fall happen?", answer: timeChoiceAnswerFormat)
-        
-        steps += [timeChoiceStep]
-        
-        let injuryChoices = [
-            ORKTextChoice(text: "No", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Yes: resulted in dressing, ice, cleaning of a wound, limb elevation, topical medication, bruise or abrasion.", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Yes: resulted in minor medical care (e.g. suturing, application of steri-strips/skin glue, splinting or muscle/joint strain).", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Yes: resulted in major medical care (e.g. surgery, casting, traction, required consultation for neurological or internal injury)", value: 3 as NSCoding & NSCopying & NSObjectProtocol)
-        ]
-        let injuryChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: injuryChoices)
-        let injuryStep = ORKQuestionStep(identifier: "injuryStep", title: "Injury Associated with Fall", question: "Did this fall result in any type of injury?", answer: injuryChoiceAnswerFormat)
-        
-        steps += [injuryStep]
+        steps += [instructionsStep]
         
         let videoStep = VideoStep(identifier: "VideoInstructionsStep")
         
@@ -431,7 +421,43 @@ struct OnboardingSurvey {
         
         steps += [finalIntructions]
         
-        return ORKOrderedTask(identifier: "SurveyTask", steps: steps)
+        return ORKOrderedTask(identifier: "WeeklySurvey", steps: steps)
+    }
+    
+    static let reportAFallSurvey: ORKOrderedTask = {
+        // Calendar choice for date
+        var steps = [ORKStep]()
+        let fallDateAnswerFormat = ORKAnswerFormat.dateAnswerFormat()
+        let fallDateStep = ORKQuestionStep(identifier: "fallDateStep", title: "Date of Fall", question: "What day did the fall happen?", answer: fallDateAnswerFormat)
+        fallDateStep.isOptional = false
+        
+        steps += [fallDateStep]
+        
+        let timeChoices = [
+            ORKTextChoice(text: "Morning", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "Mid-day", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "Evening", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "Night", value: 3 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "Do not recall", value: 4 as NSCoding & NSCopying & NSObjectProtocol)
+        ]
+        let timeChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: timeChoices)
+        let timeChoiceStep = ORKQuestionStep(identifier: "timeStep", title: "Time of Fall", question: "What time of day did the fall happen?", answer: timeChoiceAnswerFormat)
+        timeChoiceStep.isOptional = false
+        
+        steps += [timeChoiceStep]
+        
+        let injuryChoices = [
+            ORKTextChoice(text: "No", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "Yes: resulted in dressing, ice, cleaning of a wound, limb elevation, topical medication, bruise or abrasion.", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "Yes: resulted in minor medical care (e.g. suturing, application of steri-strips/skin glue, splinting or muscle/joint strain).", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "Yes: resulted in major medical care (e.g. surgery, casting, traction, required consultation for neurological or internal injury)", value: 3 as NSCoding & NSCopying & NSObjectProtocol)
+        ]
+        let injuryChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: injuryChoices)
+        let injuryStep = ORKQuestionStep(identifier: "injuryStep", title: "Injury Associated with Fall", question: "Did this fall result in any type of injury?", answer: injuryChoiceAnswerFormat)
+        injuryStep.isOptional = false
+        
+        steps += [injuryStep]
+        return ORKOrderedTask(identifier: "reportAFall", steps: steps)
     }()
 }
 

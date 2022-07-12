@@ -223,7 +223,7 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
-  - CardinalKit (2.0.0):
+  - CardinalKit (2.1.0):
     - Firebase/Analytics
     - Firebase/Auth
     - Firebase/Core
@@ -473,7 +473,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   CardinalKit:
-    :commit: c62d69f4ff7774bba084b304c4e88ca657688fd3
+    :commit: d75b35b56602dfa5d9ca12b43071886cf875e5a6
     :git: https://github.com/Alternova-Inc/CardinalKit.git
   Granola:
     :commit: 4b6a421bab81bea5fad4b124b0441b3dd2d82c6b
@@ -486,7 +486,7 @@ SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
-  CardinalKit: 65abcd5d29e4c05f63d7fe5a791007286628faf7
+  CardinalKit: 6e2369244a1bed8421cd6b7d8d0893232d2077ed
   FBAEMKit: 56c0bb9b42e3747cd82b67934f0c2b19325382ea
   FBSDKCoreKit: 75368765d9c2303073145a7925dfaa9d60bcd77b
   FBSDKCoreKit_Basics: 39865aff97e5f6951a78fb3e89dc4460e35e1895
@@ -524,4 +524,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 3f82bd3c28ed7195df8003e7ce8bf68dde7ee3b1
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

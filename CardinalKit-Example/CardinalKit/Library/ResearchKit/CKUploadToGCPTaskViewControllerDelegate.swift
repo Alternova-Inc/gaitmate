@@ -9,18 +9,35 @@ import Foundation
 import CareKit
 import ResearchKit
 import Firebase
+import CardinalKit
 
 class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerDelegate {
     
     public func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         switch reason {
         case .completed:
-            if taskViewController.result.identifier == "SurveyTask" {
+            if taskViewController.result.identifier == "WeeklySurvey" {
                 let date = Date()
                 let weekNumber = date.weekNumber()!
                 UserDefaults.standard.set(true, forKey: "WeekleySurveyOn-\(weekNumber)")
                 NotificationCenter.default.post(name: NSNotification.Name(Constants.weeklySurveyComplete), object: true)
+                Notifications.programNotificaitions(withOffset: true)
             }
+            if taskViewController.result.identifier == "onboardingSurvey" {
+                UserDefaults.standard.set(true, forKey: Constants.onboardingSurveyDidComplete)
+                NotificationCenter.default.post(name: NSNotification.Name(Constants.onboardingSurveyDidComplete), object: true)
+            }
+            
+            if taskViewController.result.identifier == "reportAFall" {
+                let resultDate = ((taskViewController.result.result(forIdentifier: "fallDateStep") as? ORKStepResult)?.result(forIdentifier: "fallDateStep") as? ORKDateQuestionResult)?.dateAnswer
+                let resultTimeDay = ((taskViewController.result.result(forIdentifier: "timeStep") as? ORKStepResult)?.result(forIdentifier: "timeStep") as? ORKChoiceQuestionResult)?.choiceAnswers?[0].description
+                if let date = resultDate,
+                let timeDay = resultTimeDay{
+                    sendFallDateJson(date: date, timeDay: timeDay)
+                }
+                NotificationCenter.default.post(name: NSNotification.Name(Constants.fallsSurveyComplete), object: true)
+            }
+            
             do {
                 // (1) convert the result of the ResearchKit task into a JSON dictionary
                 //if let json = try CKTaskResultAsJson(taskViewController.result) {
@@ -31,18 +48,7 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
                     
                     // (3) if we have any files, send those using Google Storage
                     if let associatedFiles = taskViewController.outputDirectory {
-                        if let taskType = json["identifier"] as? String {
-                            if taskType == "onboardingSurvey" {
-                                UserDefaults.standard.set(true, forKey: Constants.onboardingSurveyDidComplete)
-                                NotificationCenter.default.post(name: NSNotification.Name(Constants.onboardingSurveyDidComplete), object: true)
-                            }
-                            
-                            if taskType == "ShortWalkTask" {
-                                try sendWalkTaskResults(associatedFiles, result: json)
-                            } else {
-                                try CKSendFiles(associatedFiles, result: json)
-                            }
-                        }
+                        try CKSendFiles(associatedFiles, result: json)
                     }
                 }
             } catch {
@@ -100,31 +106,45 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
     func CKSendJSON(_ json: [String:Any]) throws {
         let identifier = (json["identifier"] as? String) ?? UUID().uuidString
         
-        try CKSendHelper.appendResearchKitResultToFirestore(json: json, collection: Constants.dataBucketSurveys, withIdentifier: identifier, onCompletion: nil)
+        guard let authCollection = CKStudyUser.shared.authCollection,
+              let userId = CKStudyUser.shared.currentUser else{
+                 return
+             }
+        let route = "\(authCollection)\(Constants.dataBucketSurveys)/\(identifier)"
+        CKApp.sendData(route: route, data: ["results": FieldValue.arrayUnion([json])], params: ["userId":"\(userId)","merge":true])
+    }
+    
+    func sendFallDateJson(date: Date,timeDay: String) {
+        let dateIdentifier = date.toString(dateFormat:"MM-dd-yyyy_HH:mm")
+        let dateStr = date.toString(dateFormat:"MM-dd-yyyy")
+        guard let authCollection = CKStudyUser.shared.authCollection
+        else{
+            return
+        }
+        let route = "\(authCollection)\(Constants.dataBucketSurveys)/reportAFall/falls/\(dateIdentifier)/"
+        CKApp.sendData(route: route, data: ["date":dateStr,"timeDate":timeDay], params: [])
     }
     
     /**
      Given a file, use the Firebase SDK to store it in Google Storage.
      */
     func CKSendFiles(_ files: URL, result: [String:Any]) throws {
-        if  let collection = result["identifier"] as? String,
-            let taskUUID = result["taskRunUUID"] as? String {
-            
-            try CKSendHelper.sendToCloudStorage(files, collection: collection, withIdentifier: taskUUID)
-        }
-    }
-    
-    func sendWalkTaskResults(_ files: URL, result: [String: Any]) throws {
-        if let collection = result["identifier"] as? String,
-           let taskUUID = result["taskRunUUID"] as? String {
-            
-            // use the current date & time as the name of the folder in Cloud Storage
-            let now = Date()
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM-dd-yyyy_HH:mm"
-            let identifier = dateFormatter.string(from: now)
-            
-            try CKSendHelper.sendToCloudStorage(files, collection: collection, withIdentifier: identifier)
+        
+        guard let authCollection = CKStudyUser.shared.authCollection
+            else{
+                 return
+             }
+        
+        if  let collection = result["identifier"] as? String
+        {
+            let identifier = Date().toString(dateFormat: "MM-dd-yyyy_HH:mm")
+            let route = "\(authCollection)\(Constants.dataBucketSurveys)\(collection)/\(identifier)"
+            let dateString = Date().toString(dateFormat: "MM-dd-yyyy")
+            let firestoreRoute = "\(authCollection)SensorsData/\(dateString)"
+            CKApp.sendDataToCloudStorafe(route: route, files: files, alsoSendToFirestore: true, firestoreRoute: firestoreRoute){
+                succes in
+            }
+//            try CKSendHelper.sendToCloudStorage(files, collection: collection, withIdentifier: identifier)
         }
     }
     
