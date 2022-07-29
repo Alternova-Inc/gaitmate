@@ -473,7 +473,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   CardinalKit:
-    :commit: c854d6974d7adaeedbf41b6198b48eab2c8e2d06
+    :commit: 8f209645c4f6eb2ffcf47b439c593f4747e0ee54
     :git: https://github.com/Alternova-Inc/CardinalKit.git
   Granola:
     :commit: 4b6a421bab81bea5fad4b124b0441b3dd2d82c6b

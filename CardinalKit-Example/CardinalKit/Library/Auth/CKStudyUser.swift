@@ -78,7 +78,7 @@ class CKStudyUser {
             settings.isPersistenceEnabled = false
             let db = Firestore.firestore()
             db.settings = settings
-            db.collection(rootAuthCollection).document(uid).setData(["userID":uid, "lastActive":Date().ISOStringFromDate()])
+            db.collection(rootAuthCollection).document(uid).setData(["userID":uid, "lastActive":Date().ISOStringFromDate(),"UpdatedBy":uid])
         }
     }
 }
