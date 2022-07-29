@@ -140,7 +140,7 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
             let identifier = Date().toString(dateFormat: "MM-dd-yyyy_HH:mm")
             let route = "\(authCollection)\(Constants.dataBucketSurveys)\(collection)/\(identifier)"
             let dateString = Date().toString(dateFormat: "MM-dd-yyyy")
-            let firestoreRoute = "\(authCollection)SensorsData/\(dateString)"
+            let firestoreRoute = "\(authCollection)gm_sensorsData/\(dateString)"
             CKApp.sendDataToCloudStorage(route: route, files: files, alsoSendToFirestore: true, firestoreRoute: firestoreRoute){
                 succes in
             }
