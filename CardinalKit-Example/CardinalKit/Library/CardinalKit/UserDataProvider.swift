@@ -10,27 +10,28 @@ import Foundation
 import CardinalKit
 
 class UserDataProvider: UserDataProviderDelegate {
+    
+    public var dataBucketClinicalRecords = "gm_clinicalRecords"
+    public var dataBucketHealthKit = "gm_healthKit"
+    public var dataBucketStorage = "gm_storage"
+    public var dataBucketMetrics = "gm_metrics"
+    
     var currentUserId: String? {
         return CKStudyUser.shared.currentUser
     }
     
     public var authCollection: String? {
-        if let userId = CKStudyUser.shared.currentUser,
-            let root = rootAuthCollection {
-            return "\(root)\(userId)/"
-        }
-        
-        return nil
-    }
-    
-    fileprivate var rootAuthCollection: String? {
-        if let bundleId = Bundle.main.bundleIdentifier {
-            return "/studies/\(bundleId)/users/"
+        if let authCollection = CKStudyUser.shared.authCollection{
+            return authCollection
         }
         return nil
     }
     
     var currentUserEmail: String? {
-        return ""
+        return CKStudyUser.shared.userEmail
+    }
+    
+    public var scheduleCollection: String? {
+        return "\(CKStudyUser.shared.rootCollection)gm_schedule"
     }
 }

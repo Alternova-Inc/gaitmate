@@ -19,11 +19,11 @@ class Constants {
     
     static let notificationUserLogin = "NOTIFICATION_USER_LOGIN"
     
-    static let dataBucketUserDetails = "userDetails"
-    static let dataBucketSurveys = "surveys"
-    static let dataBucketHealthKit = "healthKit"
-    static let dataBucketStorage = "storage"
-    static let dataBucketMetrics = "metrics"
+    static let dataBucketUserDetails = "gm_userDetails"
+    static let dataBucketSurveys = "gm_surveys"
+    static let dataBucketHealthKit = "gm_healthKit"
+    static let dataBucketStorage = "gm_storage"
+    static let dataBucketMetrics = "gm_metrics"
     
     static let onboardingDidComplete = "didCompleteOnboarding"
     static let onboardingSurveyDidComplete = "didCompleteOnboardingSurvey"

@@ -8,6 +8,7 @@
 import Foundation
 import CardinalKit
 import Firebase
+import FirebaseAuth
 
 class CKStudyUser {
     
@@ -17,9 +18,17 @@ class CKStudyUser {
      * the current user only resolves if we are logged in
     **************************************************************/
     var currentUser: String? {
-        // this is a reference to the
-        // Firebase + Google Identity User
-        return UserDefaults.standard.string(forKey: "UserId")
+        if let user = Auth.auth().currentUser?.uid {
+         return user
+        }
+        return nil
+    }
+    
+    var userEmail: String? {
+        if let user = Auth.auth().currentUser{
+            return user.email
+        }
+        return nil
     }
     
     /* **************************************************************
@@ -27,35 +36,30 @@ class CKStudyUser {
      * be compatible with CardinalKit GCP rules.
     **************************************************************/
     var authCollection: String? {
-        if let userId = currentUser,
-            let root = rootAuthCollection {
-            return "\(root)\(userId)/"
+        if let userId = currentUser{
+            return "\(rootAuthCollection)\(userId)/"
         }
-        
         return nil
     }
     
     var surveysCollection: String? {
         if let bundleId = Bundle.main.bundleIdentifier {
-            return "/studies/\(bundleId)/surveys/"
+            return "/studies/\(bundleId)/gm_surveys/"
         }
         
         return nil
     }
     
     var studyCollection: String?{
-        if let bundleId = Bundle.main.bundleIdentifier {
-            return "/studies/\(bundleId)/"
-        }
-        return nil
+       return rootCollection
     }
     
-    fileprivate var rootAuthCollection: String? {
-        if let bundleId = Bundle.main.bundleIdentifier {
-            return "/studies/\(bundleId)/users/"
-        }
-        
-        return nil
+    var rootCollection: String{
+        return "/edu.stanford.gaitmate/gm_study/"
+    }
+    
+    fileprivate var rootAuthCollection: String {
+        return "\(rootCollection)gm_users/"
     }
     
     var isLoggedIn: Bool {
@@ -68,14 +72,13 @@ class CKStudyUser {
     Save a snapshot of our current user into Firestore.
     */
     func save() {
-        if let dataBucket = rootAuthCollection,
-            let uid = currentUser {
+        if let uid = currentUser {
             CKSession.shared.userId = uid
             let settings = FirestoreSettings()
             settings.isPersistenceEnabled = false
             let db = Firestore.firestore()
             db.settings = settings
-            db.collection(dataBucket).document(uid).setData(["userID":uid, "lastActive":Date().ISOStringFromDate()])
+            db.collection(rootAuthCollection).document(uid).setData(["userID":uid, "lastActive":Date().ISOStringFromDate()])
         }
     }
 }

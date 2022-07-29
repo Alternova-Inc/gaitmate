@@ -13,9 +13,11 @@ struct OnboardingSurvey {
         
         //Part 2: Demographics:
 //        let demoAgeFormat = ORKAnswerFormat.scale(withMaximumValue: 120, minimumValue: 65, defaultValue: 80, step: 5, vertical: false, maximumValueDescription: "100+", minimumValueDescription: "65")
+        let ageSeparator = ORKFormItem.init(sectionTitle: "What is your age in years?")
         let demoAgeFormat = ORKAnswerFormat.integerAnswerFormat(withUnit: "years")
 //        let ageItem = ORKFormItem(identifier: "age", text: "What is your age in years:", answerFormat: demoAgeFormat)
-        let ageItem = ORKFormItem(identifier: "AGE", text: "What is your age in years?", detailText: "", learnMoreItem: nil, showsProgress: true, answerFormat: demoAgeFormat, tagText: nil, optional: false)
+        
+        let ageItem = ORKFormItem(identifier: "AGE", text: "Age: ", detailText: "", learnMoreItem: nil, showsProgress: true, answerFormat: demoAgeFormat, tagText: nil, optional: false)
         
         let sexChoices = [
             ORKTextChoice(text: "Male", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
@@ -45,10 +47,12 @@ struct OnboardingSurvey {
         ]
         let ethnicityChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: ethnicityChoices)
         let ethnicityItem = ORKFormItem(identifier: "hisp", text: "Describe your ethnicity", answerFormat: ethnicityChoiceAnswerFormat)
-        
+        let heightSeparator = ORKFormItem.init(sectionTitle: "How tall are you? ")
 //        let heightFormat = ORKAnswerFormat.scale(withMaximumValue: 11, minimumValue: 0, defaultValue: 6, step: 1, vertical: false, maximumValueDescription: "11", minimumValueDescription: "0")
         let heightFormat = ORKAnswerFormat.heightAnswerFormat(with: .USC)
-        let heightItem = ORKFormItem(identifier: "height", text: "How tall are you? (in inches):", answerFormat: heightFormat)
+        let heightItem = ORKFormItem(identifier: "height", text: "in inches:", answerFormat: heightFormat)
+        
+        
         
         let weightChoices = [
             ORKTextChoice(text: "<100", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
@@ -58,13 +62,14 @@ struct OnboardingSurvey {
             ORKTextChoice(text: "201-250", value: 4 as NSCoding & NSCopying & NSObjectProtocol),
             ORKTextChoice(text: ">250", value: 5 as NSCoding & NSCopying & NSObjectProtocol),
         ]
+        let weightSeparator = ORKFormItem.init(sectionTitle: "Approximately how much do you weigh? ")
         let weightChoiceAnswerFormat = ORKAnswerFormat.weightAnswerFormat(with: .USC)
-        let weightItem = ORKFormItem(identifier: "weight", text: "Approximately how much do you weigh in pounds?", answerFormat: weightChoiceAnswerFormat)
+        let weightItem = ORKFormItem(identifier: "weight", text: "in pounds:", answerFormat: weightChoiceAnswerFormat)
         
         
         
         let demoStep = ORKFormStep(identifier: "demoStep", title: "Demographics", text: "The following questions concern your demographic information")
-        demoStep.formItems = [sexItem, heightItem, weightItem,ageItem, raceItem, ethnicityItem]
+        demoStep.formItems = [ageSeparator,ageItem,sexItem, heightSeparator,heightItem, weightSeparator,weightItem, raceItem, ethnicityItem]
         
         steps += [demoStep]
         
@@ -162,12 +167,13 @@ struct OnboardingSurvey {
         overallFormat.minimum = 0
         overallFormat.placeholder = " 0 - 100"
         
-        var overallItem = ORKFormItem(identifier: "eq_health", text: "", answerFormat: overallFormat)
-        overallItem.detailText = "How would you rate your current overall health from 0-100, where 0 is the worst health you can imagine, and 100 is the best?"
+        let overallItemSeparator = ORKFormItem.init(sectionTitle: "How would you rate your current overall health from 0-100, where 0 is the worst health you can imagine, and 100 is the best?")
+        var overallItem = ORKFormItem(identifier: "eq_health", text: "0 - 100: ", answerFormat: overallFormat)
+//        overallItem.detailText = "How would you rate your current overall health from 0-100, where 0 is the worst health you can imagine, and 100 is the best?"
 
       
         let qualityStep = ORKFormStep(identifier: "qualityStep", title: "Quality of Life", text: "Under each heading, please tick ONE box that best describes your health TODAY")
-        qualityStep.formItems = [overallItem,mobilityItem, careItem, activitiesItem, painItem, anxietyItem ]
+        qualityStep.formItems = [overallItemSeparator, overallItem,mobilityItem, careItem, activitiesItem, painItem, anxietyItem ]
         qualityStep.buildInBodyItems = false
         qualityStep.accessibilityNavigationStyle = .separate
         qualityStep.useSurveyMode = true
@@ -239,14 +245,14 @@ struct OnboardingSurvey {
         // Page 7: Environment --------------------------------------------------------------
         let stepsChoices = [
             ORKTextChoice(text: "No times", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "One", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "One time", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
             ORKTextChoice(text: "Two or three times", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
             ORKTextChoice(text: "More than three times", value: 3 as NSCoding & NSCopying & NSObjectProtocol)
         ]
         let stepsFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: stepsChoices)
 //        let stepsItem = ork(identifier: "steps_1", text: "In a typical day how about many times do you go down a set of steps?", answerFormat: stepsFormat)
         
-        let stepsQuestion = ORKQuestionStep(identifier: "steps_1", title: "Environment", question: "In a typical day how about many times do you go down a set of steps?", answer: stepsFormat)
+        let stepsQuestion = ORKQuestionStep(identifier: "steps_1", title: "Environment", question: "In a typical day, about how many times do you go down a set of stairs?", answer: stepsFormat)
         
         
         let steps2Choices = [
@@ -395,17 +401,7 @@ struct OnboardingSurvey {
         
         steps += [videoStep]
         
-        let safe1Question = ORKFormItem(identifier: "safe_1", text: "Have you cleared a 10-foot-long space with no throw rugs or obstructions?", answerFormat: ORKBooleanAnswerFormat(yesString: "yes", noString: "no"))
-        
-        let safe2Question = ORKFormItem(identifier: "safe_2", text: "Have you set up a chair on one side (ideally with arms)?", answerFormat: ORKBooleanAnswerFormat(yesString: "yes", noString: "no"))
-
-        let safe3Question = ORKFormItem(identifier: "safe_3", text: "Are you wearing regular footwear?", answerFormat: ORKBooleanAnswerFormat(yesString: "yes", noString: "no"))
-        let safe4Question = ORKFormItem(identifier: "safe_4", text: "Do you have someone present who can assist you if needed?", answerFormat: ORKBooleanAnswerFormat(yesString: "yes", noString: "no"))
-
-        let safe5Question = ORKFormItem(identifier: "safe_5", text: "Have you put on the belt with pouch to hold your phone?", answerFormat: ORKBooleanAnswerFormat(yesString: "yes", noString: "no"))
-
-        let safetyForm = ORKFormStep(identifier: "safetyCheck", title: "Safety Check", text: "Ensure that each of these safety conditions is met prior to your mobility assessment")
-        safetyForm.formItems = [safe1Question, safe2Question, safe3Question, safe4Question, safe5Question]
+        let safetyForm = SafetyForm(identifier: "safetyCheck", title: "Safety Check", text: "Ensure that each of these safety conditions is met prior to your mobility assessment")
         steps += [safetyForm]
         
         let instructionsWalk = InstructionsStep(identifier: "InstructionsStep")
@@ -457,7 +453,8 @@ struct OnboardingSurvey {
         injuryStep.isOptional = false
         
         steps += [injuryStep]
-        return ORKOrderedTask(identifier: "reportAFall", steps: steps)
+        let ordered = ORKOrderedTask(identifier: "reportAFall", steps: steps)
+        return ordered
     }()
 }
 

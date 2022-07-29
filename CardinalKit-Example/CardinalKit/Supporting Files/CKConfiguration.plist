@@ -61,12 +61,12 @@
 	<key>Login-Sign-In-With-Google</key>
 	<dict>
 		<key>Enabled</key>
-		<true/>
+		<false/>
 	</dict>
 	<key>Login-Sign-In-With-UserPassword</key>
 	<dict>
 		<key>Enabled</key>
-		<true/>
+		<false/>
 	</dict>
 	<key>Login-Sign-In-With-Apple</key>
 	<dict>

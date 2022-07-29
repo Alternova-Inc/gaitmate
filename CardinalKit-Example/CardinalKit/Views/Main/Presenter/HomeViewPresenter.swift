@@ -54,6 +54,7 @@ class HomeViewPresenter:ObservableObject {
                 }
             }
         }
+        weeklySurveyButtonIsActive = true
         requestFalls()
     }
     

@@ -97,7 +97,7 @@ public class CodeSignInStepViewController: ORKQuestionStepViewController {
     func signInAction(){
         let nText:String = uiTextField.text!.removeSpecialCharsFromString()
         
-        let url = URL(string: "https://us-central1-cardinalkit-testing.cloudfunctions.net/userIdVerification?userId=\(nText)")
+        let url = URL(string: "https://us-central1-gaitmateapp.cloudfunctions.net/userIdVerification?userId=\(nText)")
         if let url = url {
             let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
                 guard let data = data else { return }

@@ -141,7 +141,7 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
             let route = "\(authCollection)\(Constants.dataBucketSurveys)\(collection)/\(identifier)"
             let dateString = Date().toString(dateFormat: "MM-dd-yyyy")
             let firestoreRoute = "\(authCollection)SensorsData/\(dateString)"
-            CKApp.sendDataToCloudStorafe(route: route, files: files, alsoSendToFirestore: true, firestoreRoute: firestoreRoute){
+            CKApp.sendDataToCloudStorage(route: route, files: files, alsoSendToFirestore: true, firestoreRoute: firestoreRoute){
                 succes in
             }
 //            try CKSendHelper.sendToCloudStorage(files, collection: collection, withIdentifier: identifier)
@@ -156,6 +156,8 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
             return InstructionsStepViewController(step: step)
         case is ORKWalkingTaskStep:
             return WalkStepViewController(step: step)
+        case is SafetyForm:
+            return SafetyFormViewController(step: step)
         default:
             return nil
         }

@@ -41,7 +41,7 @@ extension AppDelegate {
             hkTypesToReadInBackground.insert(HKObjectType.quantityType(forIdentifier: .appleWalkingSteadiness)!)
         }
         
-        CKApp.configureHealthKitTypes(types: hkTypesToReadInBackground)
+        CKApp.configureHealthKitTypes(types: hkTypesToReadInBackground, clinicalTypes: [])
         
         // (3) if we have already logged in
         if CKStudyUser.shared.isLoggedIn {

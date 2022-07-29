@@ -11,7 +11,8 @@
 		104C940C27A28E7600340E2F /* SurveyViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C940B27A28E7600340E2F /* SurveyViewCoordinator.swift */; };
 		2B8FB80427552B02000B2D7B /* CKMultipleSignInStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8FB80327552B02000B2D7B /* CKMultipleSignInStep.swift */; };
 		2B932F84276BF8D300AB3A02 /* CKReviewConsentDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B932F83276BF8D300AB3A02 /* CKReviewConsentDocument.swift */; };
-		2BF6451826C1D0040020C206 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		2B9885A028931D9000725D10 /* SafetyForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B98859F28931D9000725D10 /* SafetyForm.swift */; };
+		2BF6451826C1D0040020C206 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		2BF6452026C1DBE70020C206 /* CK_ORKSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF6451F26C1DBE70020C206 /* CK_ORKSerialization.swift */; };
 		2F94C5F22536543600DF8866 /* SceneDelegate+CardinalKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C5F12536543600DF8866 /* SceneDelegate+CardinalKit.swift */; };
 		631A223B2864B29400C6389D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631A223A2864B29400C6389D /* Notifications.swift */; };
@@ -106,6 +107,7 @@
 		270AF36127872C13002945A7 /* CardinalKit_ExampleRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CardinalKit_ExampleRelease.entitlements; sourceTree = "<group>"; };
 		2B8FB80327552B02000B2D7B /* CKMultipleSignInStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKMultipleSignInStep.swift; sourceTree = "<group>"; };
 		2B932F83276BF8D300AB3A02 /* CKReviewConsentDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKReviewConsentDocument.swift; sourceTree = "<group>"; };
+		2B98859F28931D9000725D10 /* SafetyForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyForm.swift; sourceTree = "<group>"; };
 		2BF6451F26C1DBE70020C206 /* CK_ORKSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CK_ORKSerialization.swift; sourceTree = "<group>"; };
 		2F94C5F12536543600DF8866 /* SceneDelegate+CardinalKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+CardinalKit.swift"; sourceTree = "<group>"; };
 		41DC264876E45FE5A3FD8701 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				6343630628510E1900357EF9 /* VideoStep.swift */,
 				636E278B28514BA800A2F555 /* InstructionsStep.swift */,
 				636E278D28515B1E00A2F555 /* WalkStep.swift */,
+				2B98859F28931D9000725D10 /* SafetyForm.swift */,
 			);
 			path = "Weekly Check-in Survey";
 			sourceTree = "<group>";
@@ -529,7 +532,7 @@
 				607FACCE1AFB9204008FA782 /* Resources */,
 				8E0A43D0244A60D800656518 /* Embed Frameworks */,
 				0FB8C84EFF42CF542C10C07C /* [CP] Embed Pods Frameworks */,
-				B91C4FCBFC5561EE028C8AAF /* [CP] Copy Pods Resources */,
+				DF288C3D20C3B13BF2DBA237 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -707,7 +710,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B91C4FCBFC5561EE028C8AAF /* [CP] Copy Pods Resources */ = {
+		DF288C3D20C3B13BF2DBA237 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -745,6 +748,7 @@
 				8E6E1E0B2534FF640024B8DF /* OnboardingViewController+Coordinator.swift in Sources */,
 				8E9CDEBA2591843200C8A228 /* CKConfig.swift in Sources */,
 				2F94C5F22536543600DF8866 /* SceneDelegate+CardinalKit.swift in Sources */,
+				2B9885A028931D9000725D10 /* SafetyForm.swift in Sources */,
 				8E9CDFAE2592B79900C8A228 /* Metrics.swift in Sources */,
 				8E6E1E092534F4100024B8DF /* OnboardingViewController.swift in Sources */,
 				8E7FFFB425DCE9B7002982B4 /* CKUploadToGCPTaskViewControllerDelegate.swift in Sources */,
@@ -763,7 +767,7 @@
 				8EA664B42594387900B6A45A /* Errors.swift in Sources */,
 				8E6E1E1225351F830024B8DF /* DocumentPreviewViewController.swift in Sources */,
 				8E6E1E20253529760024B8DF /* DocumentView.swift in Sources */,
-				2BF6451826C1D0040020C206 /* (null) in Sources */,
+				2BF6451826C1D0040020C206 /* BuildFile in Sources */,
 				D314690627B48E0E0096E8D4 /* ActiveViewController.swift in Sources */,
 				6343630728510E1900357EF9 /* VideoStep.swift in Sources */,
 				638340E92847F8F50050FD25 /* CodeSignInStep.swift in Sources */,

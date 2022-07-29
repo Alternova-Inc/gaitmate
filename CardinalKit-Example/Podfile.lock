@@ -473,7 +473,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   CardinalKit:
-    :commit: d75b35b56602dfa5d9ca12b43071886cf875e5a6
+    :commit: c854d6974d7adaeedbf41b6198b48eab2c8e2d06
     :git: https://github.com/Alternova-Inc/CardinalKit.git
   Granola:
     :commit: 4b6a421bab81bea5fad4b124b0441b3dd2d82c6b
@@ -524,4 +524,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 3f82bd3c28ed7195df8003e7ce8bf68dde7ee3b1
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.10.2
