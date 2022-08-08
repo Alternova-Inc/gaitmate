@@ -15,9 +15,6 @@ public class InstructionsStep: ORKInstructionStep{
         super.init(identifier: identifier)
         self.title = ""
         self.text = ""
-//        self.shouldTintImages = true
-//        self.imageContentMode = .center
-//        self.image = UIImage(named: "pocket", in: Bundle(for: ORKInstructionStep.self), compatibleWith: nil)
     }
     
     required init(coder aDecoder: NSCoder) {
