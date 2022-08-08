@@ -1,5 +1,6 @@
 import ResearchKit
 
+/// Defines the content of the onboarding survey,
 struct OnboardingSurvey {
     static let onboardingSurvey: ORKNavigableOrderedTask = {
         var steps = [ORKStep]()
@@ -364,80 +365,5 @@ struct OnboardingSurvey {
         
         navigableTask.setNavigationRule(predicateRule, forTriggerStepIdentifier: "steps_1")
         
-        
-        
-        
         return navigableTask
     }()
-    
-    
-    static func weeklyCheckInSurvey(fallsNumber:Int, fallsDescription: String) -> ORKOrderedTask  {
-        var steps = [ORKStep]()
-        
-        let instructionsStep = ORKInstructionStep(identifier: "FallsResume")
-        instructionsStep.title = "Last Week Falls Resume"
-        instructionsStep.text = "last week you reported \(fallsNumber) falls \n\n\n\n\(fallsDescription)"
-        
-        steps += [instructionsStep]
-        
-        let videoStep = VideoStep(identifier: "VideoInstructionsStep")
-        
-        steps += [videoStep]
-        
-        let safetyForm = SafetyForm(identifier: "safetyCheck", title: "Safety Check", text: "Ensure that each of these safety conditions is met prior to your mobility assessment")
-        steps += [safetyForm]
-        
-        let instructionsWalk = InstructionsStep(identifier: "InstructionsStep")
-        steps += [instructionsWalk]
-        
-        let walkingStep = WalkStep(identifier: "WalkingStep")
-        steps += [walkingStep]
-        
-        let finalIntructions = ORKCompletionStep(identifier: "CompletionStep")
-        finalIntructions.title = "Activity Complete"
-        finalIntructions.text = "Your data will be analyzed and you will be notified when your results are ready"
-        finalIntructions.shouldTintImages = true
-        
-        steps += [finalIntructions]
-        
-        return ORKOrderedTask(identifier: "WeeklySurvey", steps: steps)
-    }
-    
-    static let reportAFallSurvey: ORKOrderedTask = {
-        // Calendar choice for date
-        var steps = [ORKStep]()
-        let fallDateAnswerFormat = ORKAnswerFormat.dateAnswerFormat()
-        let fallDateStep = ORKQuestionStep(identifier: "fallDateStep", title: "Date of Fall", question: "What day did the fall happen?", answer: fallDateAnswerFormat)
-        fallDateStep.isOptional = false
-        
-        steps += [fallDateStep]
-        
-        let timeChoices = [
-            ORKTextChoice(text: "Morning", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Mid-day", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Evening", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Night", value: 3 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Do not recall", value: 4 as NSCoding & NSCopying & NSObjectProtocol)
-        ]
-        let timeChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: timeChoices)
-        let timeChoiceStep = ORKQuestionStep(identifier: "timeStep", title: "Time of Fall", question: "What time of day did the fall happen?", answer: timeChoiceAnswerFormat)
-        timeChoiceStep.isOptional = false
-        
-        steps += [timeChoiceStep]
-        
-        let injuryChoices = [
-            ORKTextChoice(text: "No", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Yes: resulted in dressing, ice, cleaning of a wound, limb elevation, topical medication, bruise or abrasion.", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Yes: resulted in minor medical care (e.g. suturing, application of steri-strips/skin glue, splinting or muscle/joint strain).", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "Yes: resulted in major medical care (e.g. surgery, casting, traction, required consultation for neurological or internal injury)", value: 3 as NSCoding & NSCopying & NSObjectProtocol)
-        ]
-        let injuryChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: injuryChoices)
-        let injuryStep = ORKQuestionStep(identifier: "injuryStep", title: "Injury Associated with Fall", question: "Did this fall result in any type of injury?", answer: injuryChoiceAnswerFormat)
-        injuryStep.isOptional = false
-        
-        steps += [injuryStep]
-        let ordered = ORKOrderedTask(identifier: "reportAFall", steps: steps)
-        return ordered
-    }()
-}
-
