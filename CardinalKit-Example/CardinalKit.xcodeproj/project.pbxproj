@@ -29,7 +29,7 @@
 		63EAEBE5286F3C5F0053FCAE /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EAEBE4286F3C5F0053FCAE /* ExtensionString.swift */; };
 		63EE800528490BA9005E80F0 /* FinalStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EE800428490BA9005E80F0 /* FinalStep.swift */; };
 		89E8661D28A2C4090083E852 /* WeeklyCheckInSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E8661C28A2C4090083E852 /* WeeklyCheckInSurvey.swift */; };
-		89E8662028A2C4BA0083E852 /* ReportAFallSurvey in Resources */ = {isa = PBXBuildFile; fileRef = 89E8661F28A2C4BA0083E852 /* ReportAFallSurvey */; };
+		89E8662728A2CD1A0083E852 /* ReportAFallSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E8662628A2CD1A0083E852 /* ReportAFallSurvey.swift */; };
 		8E0A43AC244A4A0400656518 /* CKStudyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A4382244A4A0400656518 /* CKStudyUser.swift */; };
 		8E0A43AD244A4A0400656518 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A4384244A4A0400656518 /* Constants.swift */; };
 		8E0A43AE244A4A0400656518 /* ORKESerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0A4386244A4A0400656518 /* ORKESerialization.m */; };
@@ -130,7 +130,7 @@
 		63EE800428490BA9005E80F0 /* FinalStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalStep.swift; sourceTree = "<group>"; };
 		74CB19AE12BD46A3EE6542B4 /* Pods-CardinalKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardinalKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-CardinalKit_Example/Pods-CardinalKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		89E8661C28A2C4090083E852 /* WeeklyCheckInSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyCheckInSurvey.swift; sourceTree = "<group>"; };
-		89E8661F28A2C4BA0083E852 /* ReportAFallSurvey */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ReportAFallSurvey; sourceTree = "<group>"; };
+		89E8662628A2CD1A0083E852 /* ReportAFallSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportAFallSurvey.swift; sourceTree = "<group>"; };
 		8E0A4378244A4A0300656518 /* CardinalKit_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CardinalKit_Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		8E0A4382244A4A0400656518 /* CKStudyUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKStudyUser.swift; sourceTree = "<group>"; };
 		8E0A4384244A4A0400656518 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -332,11 +332,9 @@
 		634362EB2850F24800357EF9 /* Surveys */ = {
 			isa = PBXGroup;
 			children = (
-				89E8661F28A2C4BA0083E852 /* ReportAFallSurvey */,
+				89E8662128A2C8C70083E852 /* ReportAFallSurvey */,
 				634362FD2850FE2A00357EF9 /* OnBoardingSurvey */,
 				634362F02850F35800357EF9 /* Weekly Check-in Survey */,
-				D314690527B48E0E0096E8D4 /* ActiveViewController.swift */,
-				D314690727B4914C0096E8D4 /* GaitViewController.swift */,
 				104C940B27A28E7600340E2F /* SurveyViewCoordinator.swift */,
 			);
 			path = Surveys;
@@ -377,6 +375,14 @@
 				634363042851029400357EF9 /* Date+Extensions.swift */,
 			);
 			path = Date;
+			sourceTree = "<group>";
+		};
+		89E8662128A2C8C70083E852 /* ReportAFallSurvey */ = {
+			isa = PBXGroup;
+			children = (
+				89E8662628A2CD1A0083E852 /* ReportAFallSurvey.swift */,
+			);
+			path = ReportAFallSurvey;
 			sourceTree = "<group>";
 		};
 		8E0A4379244A4A0400656518 /* Profile */ = {
@@ -602,7 +608,6 @@
 				104C940827A276F000340E2F /* GoogleService-Info.plist in Resources */,
 				E2F1FD7824D62064006C39DF /* CKConfiguration.plist in Resources */,
 				8E0A43C1244A4A0400656518 /* LoginCustomWaitStepView.xib in Resources */,
-				89E8662028A2C4BA0083E852 /* ReportAFallSurvey in Resources */,
 				D308EBDA27CD8B6F00438BF4 /* Assets.xcassets in Resources */,
 				6343630928510F7500357EF9 /* Video.mp4 in Resources */,
 			);
@@ -752,6 +757,7 @@
 				8E6E1E2225352C780024B8DF /* OnboardingUIView.swift in Sources */,
 				104C940C27A28E7600340E2F /* SurveyViewCoordinator.swift in Sources */,
 				8E6E1E2E25353A1E0024B8DF /* PatientIDView.swift in Sources */,
+				89E8662728A2CD1A0083E852 /* ReportAFallSurvey.swift in Sources */,
 				8E6E1E0B2534FF640024B8DF /* OnboardingViewController+Coordinator.swift in Sources */,
 				8E9CDEBA2591843200C8A228 /* CKConfig.swift in Sources */,
 				2F94C5F22536543600DF8866 /* SceneDelegate+CardinalKit.swift in Sources */,
