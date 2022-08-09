@@ -367,3 +367,4 @@ struct OnboardingSurvey {
         
         return navigableTask
     }()
+}
