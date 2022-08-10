@@ -102,15 +102,15 @@ class HomeViewPresenter:ObservableObject {
     /// Returns a view of the weekly survey content.
     func weeklySurveyView() -> some View{
         requestFalls()
-        var description =  ["Date", "Falls Count"].map({$0.padding(toLength: 18, withPad: " ", startingAt: 0)}).joined(separator: " | ")
-        var fallsNumber = 0
+        var fallsSummary =  ["Date", "Falls Count"].map({$0.padding(toLength: 18, withPad: " ", startingAt: 0)}).joined(separator: " | ")
+        var totalFalls = 0
         for (date, number) in fallsDict {
-            description+="\n"
-            description+=["\(date)","\(number)"].map({$0.padding(toLength: 15, withPad: " ", startingAt: 0)}).joined(separator: " | ")
-            fallsNumber+=number
+            fallsSummary+="\n"
+            fallsSummary+=["\(date)","\(number)"].map({$0.padding(toLength: 15, withPad: " ", startingAt: 0)}).joined(separator: " | ")
+            totalFalls+=number
         }
         
-        return AnyView(CKTaskViewController(tasks: WeeklyCheckInSurvey.weeklyCheckInSurvey(fallsNumber: fallsNumber, fallsDescription: description)))
+        return AnyView(CKTaskViewController(tasks: WeeklyCheckInSurvey.weeklyCheckInSurvey(totalFalls: totalFalls, fallsSummary: fallsSummary)))
     }
     
     /// Returns a view of the report a fall survey.
