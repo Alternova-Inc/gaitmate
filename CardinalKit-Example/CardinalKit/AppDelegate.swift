@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // (2) initialize CardinalKit API
         CKAppLaunch()
         
+        // Changes the appearance of all UIView (UIKit) that are within ORKTaskViewController
         let config = CKPropertyReader(file: "CKConfiguration")
         UIView.appearance(whenContainedInInstancesOf: [ORKTaskViewController.self]).tintColor = config.readColor(query: "Tint Color")
         
