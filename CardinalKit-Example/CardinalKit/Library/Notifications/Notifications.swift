@@ -8,14 +8,17 @@
 
 import Foundation
 
+/// Schedule reminders of Gait Task on sundays.
 public class Notifications {
-    
+    /// Schedule two notifications, both with the same content but they trigger at different times,
+    /// first one at 12:00 PM and the second one at 8:00 PM (User's local time)
+    /// - Parameter withOffset: Sets a time offset for the second notification.
     public static func programNotificaitions(withOffset:Bool = false){
         // Request permission to send user notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             if granted {
-                // Remove previous notifications programed
                 
+                // Remove previous notifications programed
                 UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
                 
                //------------------Report Fall Notification--------------------//
@@ -24,19 +27,19 @@ public class Notifications {
                 content.subtitle = "Time for your monthly mobility assessment"
                 content.sound = UNNotificationSound.default
 
-                // Configure the recurring date
+                // Configure the recurring date for first notification.
                 var dateComponents1 = DateComponents()
                 dateComponents1.calendar = Calendar.current
                 dateComponents1.weekday = 1  // Sunday
-                dateComponents1.hour = 12    // 12 m
+                dateComponents1.hour = 12    // 12:00 pm
                 dateComponents1.minute = 00
                 let trigger1 = UNCalendarNotificationTrigger(
                          dateMatching: dateComponents1, repeats: true)
                 
-                // show this notification five seconds from now
-                //let trigger1 = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
                 // choose a random identifier
                 let request1 = UNNotificationRequest(identifier: "Gait_Task_1", content: content, trigger: trigger1)
+                
+                // Configure the recurring date for second notification.
                 var dateComponents2 = DateComponents()
                 
                 if(withOffset){
@@ -56,6 +59,7 @@ public class Notifications {
                 
                 let trigger2 = UNCalendarNotificationTrigger(
                          dateMatching: dateComponents2, repeats: true)
+                print("print on \(#function) of 2nd notification next trigger date")
                 print(trigger2.nextTriggerDate() ?? "nil")
                 
                 // choose a random identifier
