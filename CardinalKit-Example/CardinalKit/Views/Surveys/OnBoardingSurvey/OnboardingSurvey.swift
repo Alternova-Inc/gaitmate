@@ -12,17 +12,14 @@ struct OnboardingSurvey {
         steps += [instructionStep]
         
         //Part 2: Demographics:
-//        let demoAgeFormat = ORKAnswerFormat.scale(withMaximumValue: 120, minimumValue: 65, defaultValue: 80, step: 5, vertical: false, maximumValueDescription: "100+", minimumValueDescription: "65")
         let ageSeparator = ORKFormItem.init(sectionTitle: "What is your age in years?")
         let demoAgeFormat = ORKAnswerFormat.integerAnswerFormat(withUnit: "years")
-//        let ageItem = ORKFormItem(identifier: "age", text: "What is your age in years:", answerFormat: demoAgeFormat)
         
         let ageItem = ORKFormItem(identifier: "AGE", text: "Age: ", detailText: "", learnMoreItem: nil, showsProgress: true, answerFormat: demoAgeFormat, tagText: nil, optional: false)
         
         let sexChoices = [
             ORKTextChoice(text: "Male", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
             ORKTextChoice(text: "Female", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
-            //ORKTextChoice(text: "Prefer not to Answer", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
         ]
         let demoSexFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: sexChoices)
         let sexItem = ORKFormItem(identifier: "sex", text: "What sex were you assigned at birth, on your original birth certificate?", answerFormat: demoSexFormat)
@@ -48,11 +45,8 @@ struct OnboardingSurvey {
         let ethnicityChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: ethnicityChoices)
         let ethnicityItem = ORKFormItem(identifier: "hisp", text: "Describe your ethnicity", answerFormat: ethnicityChoiceAnswerFormat)
         let heightSeparator = ORKFormItem.init(sectionTitle: "How tall are you? ")
-//        let heightFormat = ORKAnswerFormat.scale(withMaximumValue: 11, minimumValue: 0, defaultValue: 6, step: 1, vertical: false, maximumValueDescription: "11", minimumValueDescription: "0")
         let heightFormat = ORKAnswerFormat.heightAnswerFormat(with: .USC)
         let heightItem = ORKFormItem(identifier: "height", text: "in inches:", answerFormat: heightFormat)
-        
-        
         
         let weightChoices = [
             ORKTextChoice(text: "<100", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
@@ -65,16 +59,13 @@ struct OnboardingSurvey {
         let weightSeparator = ORKFormItem.init(sectionTitle: "Approximately how much do you weigh? ")
         let weightChoiceAnswerFormat = ORKAnswerFormat.weightAnswerFormat(with: .USC)
         let weightItem = ORKFormItem(identifier: "weight", text: "in pounds:", answerFormat: weightChoiceAnswerFormat)
-        
-        
-        
+
         let demoStep = ORKFormStep(identifier: "demoStep", title: "Demographics", text: "The following questions concern your demographic information")
         demoStep.formItems = [ageSeparator,ageItem,sexItem, heightSeparator,heightItem, weightSeparator,weightItem, raceItem, ethnicityItem]
         
         steps += [demoStep]
         
         //Part 3: Current living situation
-        
         let maritalStatusChoices = [
             ORKTextChoice(text: "Single, never married", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
             ORKTextChoice(text: "Married, or in a domestic partnership", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
@@ -104,7 +95,6 @@ struct OnboardingSurvey {
         let leaveHomeWithItem = ORKFormItem(identifier: "leaveh", text: "How often do you leave your home?", answerFormat: leaveHomeWithFormat)
         
         let livingSituationStep = ORKFormStep(identifier: "livingSituatiomStep", title: "Current Living Situation", text: "The following questions concern your current living situation")
-        //let livingSituationStep = ORKFormStep(identifier: "livingSituatiomStep", title: "Current Living Situation", text: nil)
 
         livingSituationStep.formItems = [maritalStatusWithItem,liveWithItem, leaveHomeWithItem]
         
@@ -169,8 +159,6 @@ struct OnboardingSurvey {
         
         let overallItemSeparator = ORKFormItem.init(sectionTitle: "How would you rate your current overall health from 0-100, where 0 is the worst health you can imagine, and 100 is the best?")
         var overallItem = ORKFormItem(identifier: "eq_health", text: "0 - 100: ", answerFormat: overallFormat)
-//        overallItem.detailText = "How would you rate your current overall health from 0-100, where 0 is the worst health you can imagine, and 100 is the best?"
-
       
         let qualityStep = ORKFormStep(identifier: "qualityStep", title: "Quality of Life", text: "Under each heading, please tick ONE box that best describes your health TODAY")
         qualityStep.formItems = [overallItemSeparator, overallItem,mobilityItem, careItem, activitiesItem, painItem, anxietyItem ]
@@ -179,7 +167,6 @@ struct OnboardingSurvey {
         qualityStep.useSurveyMode = true
         
         steps += [qualityStep]
-        
         
         // Page 5: Medications
         let medNumChoices = [
@@ -242,7 +229,7 @@ struct OnboardingSurvey {
         steps += [alcoholStep]
         
         
-        // Page 7: Environment --------------------------------------------------------------
+        // Page 7: Environment
         let stepsChoices = [
             ORKTextChoice(text: "No times", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
             ORKTextChoice(text: "One time", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
@@ -250,7 +237,6 @@ struct OnboardingSurvey {
             ORKTextChoice(text: "More than three times", value: 3 as NSCoding & NSCopying & NSObjectProtocol)
         ]
         let stepsFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: stepsChoices)
-//        let stepsItem = ork(identifier: "steps_1", text: "In a typical day how about many times do you go down a set of steps?", answerFormat: stepsFormat)
         
         let stepsQuestion = ORKQuestionStep(identifier: "steps_1", title: "Environment", question: "In a typical day, about how many times do you go down a set of stairs?", answer: stepsFormat)
         
@@ -276,8 +262,6 @@ struct OnboardingSurvey {
         ]
         let steps4Format = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: steps3Choices)
         let steps4Item = ORKFormItem(identifier: "steps_4", text: "Are there handrails on both sides of stairs?", answerFormat: steps4Format)
-        
-        
         
         let floorYesNoChoices = [
             ORKTextChoice(text: "No", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
@@ -368,7 +352,6 @@ struct OnboardingSurvey {
         summaryStep.text = "Thanks! We will now guide you through the mobility task. Go back to the home page and click “Weekly Check-In” "
         
         steps += [summaryStep]
-        
         
         let navigableTask = ORKNavigableOrderedTask(identifier: "onboardingSurvey", steps: steps)
         

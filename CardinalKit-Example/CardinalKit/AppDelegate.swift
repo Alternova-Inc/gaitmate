@@ -29,15 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-                
-        // (1) initialize Firebase SDK
-//        FirebaseApp.configure()
         
-        // (2) check if this is the first time
+        // (1) check if this is the first time
         // that the app runs!
         cleanIfFirstRun()
         
-        // (3) initialize CardinalKit API
+        // (2) initialize CardinalKit API
         CKAppLaunch()
         
         let config = CKPropertyReader(file: "CKConfiguration")
@@ -51,11 +48,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                    UINavigationBar.appearance().scrollEdgeAppearance = appearance
                }
         
-        // Set up FB Sign In
-        FBSDKCoreKit.ApplicationDelegate.shared.application(
-                    application,
-                    didFinishLaunchingWithOptions: launchOptions
-                )
+        // Set up FB Sign In - remove
+//        FBSDKCoreKit.ApplicationDelegate.shared.application(
+//                    application,
+//                    didFinishLaunchingWithOptions: launchOptions
+//                )
     
         
         Notifications.programNotificaitions()

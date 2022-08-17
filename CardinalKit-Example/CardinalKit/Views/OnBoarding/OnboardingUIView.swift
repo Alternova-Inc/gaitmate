@@ -68,15 +68,6 @@ struct OnboardingUIView: View {
                 .padding(.leading, Metrics.PADDING_HORIZONTAL_MAIN*7)
                 .padding(.trailing, Metrics.PADDING_HORIZONTAL_MAIN*7)
             
-            /*
-            Text(config.read(query: "Study Title"))
-                .foregroundColor(.white)
-                .multilineTextAlignment(.center)
-                .font(.system(size: 38, weight: .bold, design: .default))
-                .padding(.leading, Metrics.PADDING_HORIZONTAL_MAIN)
-                .padding(.trailing, Metrics.PADDING_HORIZONTAL_MAIN)
-            */
-            
             Spacer()
                 .frame(height: 20)
             
@@ -86,10 +77,6 @@ struct OnboardingUIView: View {
                 .padding(.leading, Metrics.PADDING_HORIZONTAL_MAIN*4)
                 .padding(.trailing, Metrics.PADDING_HORIZONTAL_MAIN*4)
             
-
-            /*
-            PageView(self.onboardingElements.map { InfoView(logo: $0.logo, title: $0.title, description: $0.description, color: self.color) })
-            */
 
             Spacer()
             
@@ -116,53 +103,6 @@ struct OnboardingUIView: View {
         
                 Spacer()
             }
-//
-//            HStack {
-//                Spacer()
-//                Button(action: {
-//                    self.showingLogin.toggle()
-//                }, label: {
-//                     Text("Join Study")
-//                        .padding(Metrics.PADDING_BUTTON_LABEL)
-//                        .frame(maxWidth: .infinity)
-//                        .foregroundColor(.white)
-//                        .font(.system(size: 20, weight: .bold, design: .default))
-//                        .overlay(
-//                                    RoundedRectangle(cornerRadius: Metrics.RADIUS_CORNER_BUTTON)
-//                                        .stroke(.white, lineWidth: 2)
-//                            )
-//                })
-//                .padding(.leading, Metrics.PADDING_HORIZONTAL_MAIN)
-//                .padding(.trailing, Metrics.PADDING_HORIZONTAL_MAIN)
-//                .sheet(isPresented: $showingLogin, onDismiss: {
-//                    self.onComplete?()
-//                }, content: {
-//                    LoginExistingUserViewController().ignoresSafeArea(edges: .all)
-//                })
-//
-//                Spacer()
-//            }
-            /*
-            HStack {
-                Spacer()
-                Button("Survey"){
-                    self.showingSurvey.toggle()
-                    self.showingTask.toggle()
-                }
-                .padding(Metrics.PADDING_BUTTON_LABEL)
-                .foregroundColor(Color.white)
-                .font(.title)
-                .padding(.leading, Metrics.PADDING_HORIZONTAL_MAIN)
-                .padding(.trailing, Metrics.PADDING_HORIZONTAL_MAIN)
-                //.padding()
-                .background(self.color)
-                .cornerRadius(10)
-                .sheet(isPresented: $showingTask) {
-                    SurveyViewController()
-                }
-                Spacer()
-            }
-            */
             Spacer()
                 .frame(height: 30)
         }
