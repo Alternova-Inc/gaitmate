@@ -31,6 +31,8 @@ class HomeViewPresenter:ObservableObject {
         
         presentReportFall = false
         
+        // If onboarding survey was complete, sets the button to not to show
+        // If not,
         if let completed = UserDefaults.standard.object(forKey: Constants.onboardingSurveyDidComplete) as? Bool {
            showOnBoardingSurveyButton = !completed
         }
@@ -39,19 +41,17 @@ class HomeViewPresenter:ObservableObject {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(requestFalls), name: Notification.Name(Constants.fallsSurveyComplete), object: nil)
         
-        let date = Date()
         // if is between noon sunday -  noon Wednesday and is not answered on this week
+        let date = Date()
         let dayOfWeek = date.dayNumberOfWeek()!
         let dateHour = date.hour()!
         
-        if dayOfWeek <= 4 {
-            if !((dayOfWeek == 1 && dateHour < 12) || (dayOfWeek == 4 && dateHour >= 12)) {
-                let weekNumber = date.weekNumber()!
-                // Check if not complete
-                if !(UserDefaults.standard.bool(forKey: "WeekleySurveyOn-\(weekNumber)")){
-                    weeklySurveyButtonIsActive = true
-                    NotificationCenter.default.addObserver(self, selector: #selector(OnCompleteWeeklySurvey), name: Notification.Name(Constants.weeklySurveyComplete), object: nil)
-                }
+        if dayOfWeek <= 4 && !((dayOfWeek == 1 && dateHour < 12) || (dayOfWeek == 4 && dateHour >= 12)) {
+            let weekNumber = date.weekNumber()!
+            // Check if not complete
+            if !(UserDefaults.standard.bool(forKey: "WeekleySurveyOn-\(weekNumber)")){
+                weeklySurveyButtonIsActive = true
+                NotificationCenter.default.addObserver(self, selector: #selector(OnCompleteWeeklySurvey), name: Notification.Name(Constants.weeklySurveyComplete), object: nil)
             }
         }
         requestFalls()
@@ -59,8 +59,8 @@ class HomeViewPresenter:ObservableObject {
     
     @objc
     func requestFalls(){
-        // Get Falls last week from firebase
         
+        // Get Falls last week from firebase
         guard let authCollection = CKStudyUser.shared.authCollection
         else{
             return
@@ -99,6 +99,7 @@ class HomeViewPresenter:ObservableObject {
         return AnyView(CKTaskViewController(tasks: OnboardingSurvey.onboardingSurvey))
     }
     
+    /// Returns a view of the weekly survey content.
     func weeklySurveyView() -> some View{
         requestFalls()
         var description =  ["Date", "Falls Count"].map({$0.padding(toLength: 18, withPad: " ", startingAt: 0)}).joined(separator: " | ")
@@ -109,11 +110,12 @@ class HomeViewPresenter:ObservableObject {
             fallsNumber+=number
         }
         
-        return AnyView(CKTaskViewController(tasks: OnboardingSurvey.weeklyCheckInSurvey(fallsNumber: fallsNumber, fallsDescription: description)))
+        return AnyView(CKTaskViewController(tasks: WeeklyCheckInSurvey.weeklyCheckInSurvey(fallsNumber: fallsNumber, fallsDescription: description)))
     }
     
+    /// Returns a view of the report a fall survey.
     func reportAFallView() -> some View{
-        return AnyView(CKTaskViewController(tasks: OnboardingSurvey.reportAFallSurvey))
+        return AnyView(CKTaskViewController(tasks: ReportAFallSurvey.reportAFallSurvey))
     }
     
 }
