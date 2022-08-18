@@ -10,7 +10,7 @@ import SwiftUI
 import ResearchKit
 import CardinalKit
 
-/// First view of the `TabView` managed in `MainUIView`. Contains buttons of Onboarding Survey, Weekly Check-In and Report A Fall.
+/// A view that contains buttons of Onboarding Survey, Weekly Check-In and Report A Fall.
 struct HomeUIView: View {
     let color: Color
     let config = CKConfig.shared

@@ -48,7 +48,7 @@ class HomeViewPresenter:ObservableObject {
         // -------------------------------------------------------------------------
         NotificationCenter.default.addObserver(self, selector: #selector(requestFalls), name: Notification.Name(Constants.fallsSurveyComplete), object: nil)
         
-        // if is between noon sunday -  noon Wednesday and is not answered on this week
+        // if date is between noon sunday -  noon Wednesday and is not answered on this week
         let date = Date()
         let dayOfWeek = date.dayNumberOfWeek()!
         let dateHour = date.hour()!

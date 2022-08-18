@@ -17,7 +17,6 @@ struct MainUIView: View {
     let config = CKConfig.shared
     
     init() {
-        // Get primary color from config File
         self.color = Color(config.readColor(query: "Primary Color"))
     }
     
@@ -41,7 +40,6 @@ struct MainUIView: View {
             }
            
         }
-        // Sets the primary colors on the icons of the items
         .accentColor(self.color)
         // Action to perform before the `TabView` appears
         .onAppear(perform: {
