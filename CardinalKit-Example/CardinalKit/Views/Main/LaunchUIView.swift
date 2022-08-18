@@ -12,6 +12,8 @@ import ResearchKit
 import CardinalKit
 import Firebase
 
+/// A view that determines and displays which view should be at launch time.
+/// Also, it is the first view that is called for in `SceneDelegate`
 struct LaunchUIView: View {
     
     @State var didCompleteOnboarding = false

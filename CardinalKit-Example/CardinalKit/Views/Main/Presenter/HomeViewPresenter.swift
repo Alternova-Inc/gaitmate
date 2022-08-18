@@ -14,16 +14,16 @@ import CardinalKit
 /// Controlls when `HomeUIView` should show its buttons and present
 /// their respective sheet.
 class HomeViewPresenter: ObservableObject {
-    @Published var showOnBoardingSurveyButton:Bool
-    @Published var weeklySurveyButtonIsActive:Bool
+    @Published var showOnBoardingSurveyButton: Bool
+    @Published var weeklySurveyButtonIsActive: Bool
     
-    @Published var presentOnboardingSurvey:Bool
-    @Published var presentWeeklySurvey:Bool
-    @Published var presentReportFall:Bool
+    @Published var presentOnboardingSurvey: Bool
+    @Published var presentWeeklySurvey: Bool
+    @Published var presentReportFall: Bool
     
-    var fallsDict:[String:Int] = [:]
+    var fallsDict: [String:Int] = [:]
     
-    var integer:Int = 1
+    var integer: Int = 1
     
     /// Creates an instance that initializes the following properties `showOnBoardingSurveyButton`,
     /// `weeklySurveyButtonIsActive`, `presentOnboardingSurvey`, `presentWeeklySurvey`,
@@ -85,13 +85,13 @@ class HomeViewPresenter: ObservableObject {
             response in
             self.fallsDict = [:]
             let startDate = Date().addDays(days: -7)
-            if let response = response as? [String:Any]{
+            if let response = response as? [String:Any] {
                 for (_, data) in response {
                     if let data = data as? [String:Any],
-                    let date = data["date"] as? String{
+                       let date = data["date"] as? String {
                         let dateAsDate = date.toDate("MM-dd-yyyy")
-                        if dateAsDate>startDate {
-                            let fallsCounter = (self.fallsDict[date] ?? 0)+1
+                        if dateAsDate > startDate {
+                            let fallsCounter = (self.fallsDict[date] ?? 0) + 1
                             self.fallsDict[date] = fallsCounter
                         }
                     }
