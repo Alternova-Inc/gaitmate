@@ -8,12 +8,16 @@
 
 import SwiftUI
 
+/** Main view of the app. (Not the actual `@main` view or  `window.rootViewController` of the project).
+Manage a `TabView` of `HomeUIView`, `CareTeamViewControllerRepresentable` and `ProfileUIView`
+ */
 struct MainUIView: View {
     
     let color: Color
     let config = CKConfig.shared
     
     init() {
+        // Get primary color from config File
         self.color = Color(config.readColor(query: "Primary Color"))
     }
     
@@ -37,7 +41,9 @@ struct MainUIView: View {
             }
            
         }
+        // Sets the primary colors on the icons of the items
         .accentColor(self.color)
+        // Action to perform before the `TabView` appears
         .onAppear(perform: {
             CKCareKitManager.shared.coreDataStore.createContacts()
         })

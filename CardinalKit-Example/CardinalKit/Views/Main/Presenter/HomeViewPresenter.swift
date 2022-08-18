@@ -30,15 +30,22 @@ class HomeViewPresenter:ObservableObject {
         presentWeeklySurvey = false
         
         presentReportFall = false
-        
-        // If onboarding survey was complete, sets the button to not to show
-        // If not,
+        /*
+         if there is a key for Constants.onboardingSurveyDidComplete is because the survey was previously completed
+         and its value will always be true, so if it goes inside of the if let statement we are going to set
+         its opposite value to showOnBoardingSurveyButton so when HomeUIView is called the button will not show.
+         
+         if there is no key, we will add an observer that in the case of the notification is triggered will
+         invoke OnCompleteOnboardingSurvey method and will set the showOnBoardingSurverButton variable to false
+         and the HomeUIView will update its view.
+         */
         if let completed = UserDefaults.standard.object(forKey: Constants.onboardingSurveyDidComplete) as? Bool {
            showOnBoardingSurveyButton = !completed
         }
         else {
             NotificationCenter.default.addObserver(self, selector: #selector(OnCompleteOnboardingSurvey), name: Notification.Name(Constants.onboardingSurveyDidComplete), object: nil)
         }
+        // -------------------------------------------------------------------------
         NotificationCenter.default.addObserver(self, selector: #selector(requestFalls), name: Notification.Name(Constants.fallsSurveyComplete), object: nil)
         
         // if is between noon sunday -  noon Wednesday and is not answered on this week
@@ -95,6 +102,7 @@ class HomeViewPresenter:ObservableObject {
         weeklySurveyButtonIsActive = false
     }
     
+    /// Returns a view of the onboarding survey content.
     func onBoardingSurveyView() -> some View{
         return AnyView(CKTaskViewController(tasks: OnboardingSurvey.onboardingSurvey))
     }

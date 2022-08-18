@@ -22,6 +22,7 @@ struct LaunchUIView: View {
 
     var body: some View {
         VStack(spacing: 10) {
+            // Displays the corresponding view if the user has completed or not the onboarding survey.
             if didCompleteOnboarding && (CKStudyUser.shared.currentUser != nil){
                 MainUIView()
             } else {
@@ -31,7 +32,7 @@ struct LaunchUIView: View {
                        self.didCompleteOnboarding = completed
                     }
                 }
-            }
+            } // Action to perform before the `VStack` appears
         }.onAppear(perform: {
             if let completed = UserDefaults.standard.object(forKey: Constants.onboardingDidComplete) as? Bool {
                self.didCompleteOnboarding = completed
@@ -50,5 +51,6 @@ struct LaunchUIView: View {
 struct LaunchUIView_Previews: PreviewProvider {
     static var previews: some View {
         LaunchUIView()
+            .previewDevice("iPhone 12 Pro")
     }
 }
