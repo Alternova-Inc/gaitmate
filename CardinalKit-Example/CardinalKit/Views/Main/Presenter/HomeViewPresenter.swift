@@ -25,9 +25,7 @@ class HomeViewPresenter: ObservableObject {
     
     var integer: Int = 1
     
-    /// Creates an instance that initializes the following properties `showOnBoardingSurveyButton`,
-    /// `weeklySurveyButtonIsActive`, `presentOnboardingSurvey`, `presentWeeklySurvey`,
-    /// `presentReportFall` needed in `HomeUIView`.
+    /// Creates an instance that initializes the properties needed in `HomeUIView`.
     init() {
         showOnBoardingSurveyButton = true
         presentOnboardingSurvey = false
