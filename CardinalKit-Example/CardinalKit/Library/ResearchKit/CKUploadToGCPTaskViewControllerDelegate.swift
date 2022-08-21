@@ -41,14 +41,26 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
             do {
                 // (1) convert the result of the ResearchKit task into a JSON dictionary
                 //if let json = try CKTaskResultAsJson(taskViewController.result) {
-                if let json = try CK_ORKSerialization.CKTaskAsJson(result: taskViewController.result,task: taskViewController.task!) {
+                // Calule UrlStorage If Neccesary
+                
+                var urlStorage = ""
+                var firestoreFileRoute = ""
+                if let authCollection = CKStudyUser.shared.authCollection{
+                    let identifier = Date().toString(dateFormat: "MM-dd-yyyy")
+                    urlStorage = "\(authCollection)\(Constants.dataBucketSurveys)\(taskViewController.result.identifier)/\(identifier)"
+                    firestoreFileRoute = "\(authCollection)gm_sensorsData/\(identifier)"
+                }
+                
+                
+                
+                if let json = try CK_ORKSerialization.CKTaskAsJson(result: taskViewController.result,task: taskViewController.task!, urlStorage: urlStorage, firestoreFileRoute:firestoreFileRoute) {
                     
                     // (2) send using Firebase
                     try CKSendJSON(json)
                     
                     // (3) if we have any files, send those using Google Storage
                     if let associatedFiles = taskViewController.outputDirectory {
-                        try CKSendFiles(associatedFiles, result: json)
+                        try CKSendFiles(associatedFiles, urlStorage: urlStorage, firestoreRoute: firestoreFileRoute)
                     }
                 }
             } catch {
@@ -128,24 +140,13 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
     /**
      Given a file, use the Firebase SDK to store it in Google Storage.
      */
-    func CKSendFiles(_ files: URL, result: [String:Any]) throws {
+    func CKSendFiles(_ files: URL, urlStorage: String, firestoreRoute: String) throws {
         
-        guard let authCollection = CKStudyUser.shared.authCollection
-            else{
-                 return
-             }
-        
-        if  let collection = result["identifier"] as? String
-        {
-            let identifier = Date().toString(dateFormat: "MM-dd-yyyy_HH:mm")
-            let route = "\(authCollection)\(Constants.dataBucketSurveys)\(collection)/\(identifier)"
-            let dateString = Date().toString(dateFormat: "MM-dd-yyyy")
-            let firestoreRoute = "\(authCollection)gm_sensorsData/\(dateString)"
-            CKApp.sendDataToCloudStorage(route: route, files: files, alsoSendToFirestore: true, firestoreRoute: firestoreRoute){
-                succes in
-            }
-//            try CKSendHelper.sendToCloudStorage(files, collection: collection, withIdentifier: identifier)
+        CKApp.sendDataToCloudStorage(route: urlStorage, files: files, alsoSendToFirestore: true, firestoreRoute: firestoreRoute){
+            succes in
         }
+//            try CKSendHelper.sendToCloudStorage(files, collection: collection, withIdentifier: identifier)
+        
     }
     
     func taskViewController(_ taskViewController: ORKTaskViewController, viewControllerFor step: ORKStep) -> ORKStepViewController? {

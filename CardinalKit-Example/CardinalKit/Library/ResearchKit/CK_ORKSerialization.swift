@@ -20,7 +20,9 @@ class CK_ORKSerialization{
             
      - Returns: [String:Any] dictionary with ResearchKit results (Questions and answers)
     */
-    static func CKTaskAsJson(result: ORKTaskResult, task: ORKTask) throws -> [String:Any]?{
+    static func CKTaskAsJson(result: ORKTaskResult, task: ORKTask, urlStorage: String,firestoreFileRoute:String) throws -> [String:Any]?{
+        var firestoreRoute = firestoreFileRoute
+        firestoreRoute.removeFirst()
         let dictQuestionTypes = ["None","Scale","SingleChoice","MultipleChoice","MultiplePicker","Decimal", "Integer","Boolean","Text","Time of day","DateTime","Date","TimeInterval","Height","Weight","Location","SES"]
         var Result = [String:Any]()
         Result["startDate"] = result.startDate
@@ -57,7 +59,7 @@ class CK_ORKSerialization{
                             if let answerFormat = item.answerFormat{
                             
                                 if let questionResult = step as? ORKStepResult,
-                                   let stepFormResults = (CKResults(results: questionResult, identifier: item.identifier) as? [[String:Any]]){
+                                   let stepFormResults = (CKResults(results: questionResult, identifier: item.identifier, urlStorage: urlStorage, firestoreFileRoute: firestoreRoute) as? [[String:Any]]){
                                     var stepFormTransformed = [[String:Any]]()
                                     for itemFormResult in stepFormResults{
                                         let questionTypeValue = answerFormat.questionType.rawValue
@@ -83,7 +85,7 @@ class CK_ORKSerialization{
                     
                     if !(taskStep is ORKFormStep){
                         if let Results = step as? ORKStepResult{
-                            StepDict["results"] = CKResults(results: Results, identifier: step.identifier)
+                            StepDict["results"] = CKResults(results: Results, identifier: step.identifier, urlStorage:urlStorage, firestoreFileRoute: firestoreRoute)
                         }
                         QuestionsDict.append(StepDict)
                    }
@@ -178,7 +180,7 @@ class CK_ORKSerialization{
         return ChoicesDict
     }
 
-    private static func CKResults(results: ORKStepResult, identifier: String) -> Any{
+    private static func CKResults(results: ORKStepResult, identifier: String, urlStorage: String, firestoreFileRoute: String) -> Any{
         var response = [Any]()
         let result = results.result(forIdentifier: identifier)
         var answer:Any = ""
@@ -249,14 +251,16 @@ class CK_ORKSerialization{
             case is ORKFileResult:
                 let fileUrl = (result as? ORKFileResult)?.fileURL?.absoluteString ?? "No Url"
                 let urlParts = fileUrl.components(separatedBy: "/")
+                let fileName = urlParts[urlParts.count-1]
                 _class = String(describing: ORKFileResult.self)
-                return(["identifier":identifier,"fileURL":fileUrl,"urlStorage":urlParts[urlParts.count-1],"class":_class])
+                let dataType:String = fileName.contains("accel") ? "Acelerometer" : fileName.contains("deviceMotion") ? "DeviceMotion" : "Other"
+            return(["identifier":identifier,"fileURL":fileUrl,"urlStorage": "\(urlStorage)/\(fileName)","class":_class,"firestorePath":"\(firestoreFileRoute)/\(dataType)/\(fileName)" ])
                 
             case .none:
                 if results.identifier == identifier{
                     if let nResults = results.results{
                         for result in nResults{
-                            response.append(CKResults(results: results, identifier: result.identifier))
+                            response.append(CKResults(results: results, identifier: result.identifier, urlStorage: urlStorage, firestoreFileRoute: firestoreFileRoute))
                         }
                         return response
                     }
@@ -264,9 +268,9 @@ class CK_ORKSerialization{
                 break;
             default:
                 let className = String(describing: result.self )
-                return(["identifier":identifier,"class":className,"TODO":"classNotImplemented"]);
+                return([["identifier":identifier,"class":className,"TODO":"classNotImplemented"]]);
         }
-        return ["answer":answer,"class":_class,"identifier":identifier]
+        return [["answer":answer,"class":_class,"identifier":identifier]]
     }
     
     /**
