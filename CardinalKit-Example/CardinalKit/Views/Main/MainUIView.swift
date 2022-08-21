@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+/// Main view of the app. (Not the actual `@main` view or  `window.rootViewController` of the project).
+/// Manage a `TabView` of `HomeUIView`, `CareTeamViewControllerRepresentable` and `ProfileUIView`.
 struct MainUIView: View {
     
     let color: Color
@@ -38,6 +40,7 @@ struct MainUIView: View {
            
         }
         .accentColor(self.color)
+        // Action to perform before the `TabView` appears
         .onAppear(perform: {
             CKCareKitManager.shared.coreDataStore.createContacts()
         })

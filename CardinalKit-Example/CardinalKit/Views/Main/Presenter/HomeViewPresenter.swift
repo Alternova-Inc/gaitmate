@@ -10,19 +10,23 @@ import Foundation
 import SwiftUI
 import CardinalKit
 
-class HomeViewPresenter:ObservableObject {
-    @Published var showOnBoardingSurveyButton:Bool
-    @Published var weeklySurveyButtonIsActive:Bool
+/// A Class that is responsible for all the logic needed in `HomeUIView`.
+/// Controlls when `HomeUIView` should show its buttons and present
+/// their respective sheet.
+class HomeViewPresenter: ObservableObject {
+    @Published var showOnBoardingSurveyButton: Bool
+    @Published var weeklySurveyButtonIsActive: Bool
     
-    @Published var presentOnboardingSurvey:Bool
-    @Published var presentWeeklySurvey:Bool
-    @Published var presentReportFall:Bool
+    @Published var presentOnboardingSurvey: Bool
+    @Published var presentWeeklySurvey: Bool
+    @Published var presentReportFall: Bool
     
-    var fallsDict:[String:Int] = [:]
+    var fallsDict: [String:Int] = [:]
     
-    var integer:Int = 1
+    var integer: Int = 1
     
-    init(){
+    /// Creates an instance that initializes the properties needed in `HomeUIView`.
+    init() {
         showOnBoardingSurveyButton = true
         presentOnboardingSurvey = false
         
@@ -30,18 +34,27 @@ class HomeViewPresenter:ObservableObject {
         presentWeeklySurvey = false
         
         presentReportFall = false
-        
-        // If onboarding survey was complete, sets the button to not to show
-        // If not,
+        /* ******************************************************************
+         * if there is a key for Constants.onboardingSurveyDidComplete is because the
+         * survey was previously completed and its value will always be true, so if it
+         * goes inside of the if let statement we are going to set its opposite value
+         * to showOnBoardingSurveyButton so when HomeUIView is called the button will not show.
+         *
+         * if there is no key, we will add an observer that in the case of the notification
+         * is triggered will invoke OnCompleteOnboardingSurvey method and will set the
+         * showOnBoardingSurverButton variable to false and the HomeUIView will update its view.
+         *******************************************************************/
         if let completed = UserDefaults.standard.object(forKey: Constants.onboardingSurveyDidComplete) as? Bool {
            showOnBoardingSurveyButton = !completed
         }
         else {
             NotificationCenter.default.addObserver(self, selector: #selector(OnCompleteOnboardingSurvey), name: Notification.Name(Constants.onboardingSurveyDidComplete), object: nil)
         }
+        // ******************************************************************
+        
         NotificationCenter.default.addObserver(self, selector: #selector(requestFalls), name: Notification.Name(Constants.fallsSurveyComplete), object: nil)
         
-        // if is between noon sunday -  noon Wednesday and is not answered on this week
+        // if date is between noon sunday - noon Wednesday and is not answered on this week
         let date = Date()
         let dayOfWeek = date.dayNumberOfWeek()!
         let dateHour = date.hour()!
@@ -58,9 +71,9 @@ class HomeViewPresenter:ObservableObject {
     }
     
     @objc
+    /// Access the user's collection to get the data of falls an writes that information to `fallsDict`.
     func requestFalls(){
         
-        // Get Falls last week from firebase
         guard let authCollection = CKStudyUser.shared.authCollection
         else{
             return
@@ -70,13 +83,13 @@ class HomeViewPresenter:ObservableObject {
             response in
             self.fallsDict = [:]
             let startDate = Date().addDays(days: -7)
-            if let response = response as? [String:Any]{
+            if let response = response as? [String:Any] {
                 for (_, data) in response {
                     if let data = data as? [String:Any],
-                    let date = data["date"] as? String{
+                       let date = data["date"] as? String {
                         let dateAsDate = date.toDate("MM-dd-yyyy")
-                        if dateAsDate>startDate {
-                            let fallsCounter = (self.fallsDict[date] ?? 0)+1
+                        if dateAsDate > startDate {
+                            let fallsCounter = (self.fallsDict[date] ?? 0) + 1
                             self.fallsDict[date] = fallsCounter
                         }
                     }
@@ -95,6 +108,7 @@ class HomeViewPresenter:ObservableObject {
         weeklySurveyButtonIsActive = false
     }
     
+    /// Returns a view of the onboarding survey content.
     func onBoardingSurveyView() -> some View{
         return AnyView(CKTaskViewController(tasks: OnboardingSurvey.onboardingSurvey))
     }

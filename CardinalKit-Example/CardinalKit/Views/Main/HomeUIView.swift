@@ -10,6 +10,7 @@ import SwiftUI
 import ResearchKit
 import CardinalKit
 
+/// A view that contains buttons of Onboarding Survey, Weekly Check-In and Report A Fall.
 struct HomeUIView: View {
     let color: Color
     let config = CKConfig.shared
