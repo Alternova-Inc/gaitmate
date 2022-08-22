@@ -150,5 +150,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>aps-environment</key>
+	<string>development</string>
 </dict>
 </plist>

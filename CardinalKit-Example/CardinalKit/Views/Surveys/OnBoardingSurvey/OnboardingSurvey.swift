@@ -336,7 +336,7 @@ struct OnboardingSurvey {
         // Page 9: PA Survey
         let timeSpendChoices = [
             ORKTextChoice(text: "No time", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
-            ORKTextChoice(text: "less than 30 Minutes", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
+            ORKTextChoice(text: "Less than 30 minutes", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
             ORKTextChoice(text: "30 min - 1 hour", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
             ORKTextChoice(text: "1-2 hours", value: 3 as NSCoding & NSCopying & NSObjectProtocol),
             ORKTextChoice(text: "more than 2 hours", value: 3 as NSCoding & NSCopying & NSObjectProtocol),
