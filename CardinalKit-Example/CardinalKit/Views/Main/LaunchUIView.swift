@@ -36,6 +36,7 @@ struct LaunchUIView: View {
                 }
             } // Action to perform before the `VStack` appears
         }.onAppear(perform: {
+            CKStudyUser.shared.save()
             if let completed = UserDefaults.standard.object(forKey: Constants.onboardingDidComplete) as? Bool {
                self.didCompleteOnboarding = completed
             }
