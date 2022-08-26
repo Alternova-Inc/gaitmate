@@ -73,12 +73,13 @@ class CKStudyUser {
     */
     func save() {
         if let uid = currentUser {
+            let participantId = UserDefaults.standard.string(forKey: "UserId")
             CKSession.shared.userId = uid
             let settings = FirestoreSettings()
             settings.isPersistenceEnabled = false
             let db = Firestore.firestore()
             db.settings = settings
-            db.collection(rootAuthCollection).document(uid).setData(["userID":uid, "lastActive":Date().ISOStringFromDate(),"UpdatedBy":uid, "email":userEmail ?? ""])
+            db.collection(rootAuthCollection).document(uid).setData(["userID":uid, "lastActive":Date().ISOStringFromDate(),"UpdatedBy":uid, "email":userEmail ?? "", "enrrollId":participantId ?? "-"])
         }
     }
 }
