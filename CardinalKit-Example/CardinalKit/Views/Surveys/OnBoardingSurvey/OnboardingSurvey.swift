@@ -323,7 +323,7 @@ struct OnboardingSurvey {
         let fallItem7 = ORKFormItem(identifier: "cdc_f7", text: "I have some trouble stepping up onto a curb", answerFormat: fallYesNoFormat, optional: false)
         let fallItem8 = ORKFormItem(identifier: "cdc_f8", text: "I often have to rush to the toilet", answerFormat: fallYesNoFormat, optional: false)
         let fallItem9 = ORKFormItem(identifier: "cdc_f9", text: "I have lost some feeling in my feet", answerFormat: fallYesNoFormat, optional: false)
-        let fallItem10 = ORKFormItem(identifier: "cdc_f10", text: "I take medicine that sometiems makes me feel light-headed or more tired than usual", answerFormat: fallYesNoFormat)
+        let fallItem10 = ORKFormItem(identifier: "cdc_f10", text: "I take medicine that sometimes makes me feel light-headed or more tired than usual", answerFormat: fallYesNoFormat)
         let fallItem11 = ORKFormItem(identifier: "cdc_f11", text: "I take medicine to help me sleep or improve my mood", answerFormat: fallYesNoFormat, optional: false)
         let fallItem12 = ORKFormItem(identifier: "cdc_f12", text: "I often feel sad or depressed", answerFormat: fallYesNoFormat, optional: false)
 
