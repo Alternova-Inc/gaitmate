@@ -12,18 +12,9 @@ import ResearchKit
 struct WeeklyCheckInSurvey {
     /// Returns an `ORKOrderedTask` of the survey content with the information given.
     /// - Parameters:
-    ///   - fallsNumber: Quantity of falls during the weel.
-    ///   - fallsDescription: Description of the falls.
     /// - Returns: `ORKOrderedTask`
-    static func weeklyCheckInSurvey(totalFalls:Int, fallsSummary: String) -> ORKOrderedTask  {
+    static func weeklyCheckInSurvey() -> ORKOrderedTask  {
         var steps = [ORKStep]()
-        
-        // Falls resume
-        let resumeStep = ORKInstructionStep(identifier: "FallsResume")
-        resumeStep.title = "Last Week Falls Resume"
-        resumeStep.text = "last week you reported \(totalFalls) falls \n\n\n\n\(fallsSummary)"
-        
-        steps += [resumeStep]
         
         // Instruction video
         let videoStep = VideoStep(identifier: "VideoInstructionsStep")

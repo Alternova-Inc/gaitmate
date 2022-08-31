@@ -18,14 +18,14 @@ public class WalkStep: ORKWalkingTaskStep{
         recordConfiguration.append(ORKAccelerometerRecorderConfiguration.init(identifier: "AcelerometerConfig", frequency: 100))
         recordConfiguration.append(ORKDeviceMotionRecorderConfiguration.init(identifier: "DevicemotionConfig", frequency: 100))
         
-        self.numberOfStepsPerLeg = 10
+        self.numberOfStepsPerLeg = 100
         self.title = "Gait and Balance"
         self.text = "Walk up to 10 feet in a straight line.\nWalk back to your chair. \nSit down. \nClick the STOP Button"
         self.recorderConfigurations = recordConfiguration
         self.shouldContinueOnFinish = true
         self.isOptional = true
         self.shouldStartTimerAutomatically = true
-        self.stepDuration = 10000
+        self.stepDuration = 1000
         self.shouldVibrateOnStart = true
         self.shouldPlaySoundOnStart = true
     }
@@ -37,7 +37,16 @@ public class WalkStep: ORKWalkingTaskStep{
 
 public class WalkStepViewController: ORKWalkingTaskStepViewController{
     override public func viewDidLoad() {
-        let buttonDone = CustomButton(title: "Done", backGroundColor: UIColor(red: 242, green: 177, blue: 55), textColor: .white, borderColor: nil, action: #selector(action), location: CGRect(x: 200, y: 200, width: 350, height: 75))
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 100, width: view.frame.width - 50, height: 150 ))
+        label.center.x = view.center.x
+        label.textAlignment = NSTextAlignment.center
+        label.numberOfLines = 6
+        label.text = "Press “Done” when the walking task has been completed"
+        
+        self.view.addSubview(label)
+        
+        let buttonDone = CustomButton(title: "Done", backGroundColor: UIColor(red: 242, green: 177, blue: 55), textColor: .white, borderColor: nil, action: #selector(action), location: CGRect(x: 200, y: 350, width: 350, height: 75))
         self.view.addSubview(buttonDone)
         self.view.backgroundColor = UIColor(red: 110, green: 237, blue: 251)
     }
@@ -52,8 +61,7 @@ public class WalkStepViewController: ORKWalkingTaskStepViewController{
         location: CGRect
     )->UIButton{
         let button = UIButton(frame: location)
-        button.center = view.center
-        button.center.y = view.center.y - 200
+        button.center.x = view.center.x
         button.setTitle(title, for: .normal)
         
         button.setTitleColor(textColor,for: .normal)
