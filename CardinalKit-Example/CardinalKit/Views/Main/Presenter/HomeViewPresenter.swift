@@ -21,10 +21,6 @@ class HomeViewPresenter: ObservableObject {
     @Published var presentWeeklySurvey: Bool
     @Published var presentReportFall: Bool
     
-    var fallsDict: [String:Int] = [:]
-    
-    var integer: Int = 1
-    
     /// Creates an instance that initializes the properties needed in `HomeUIView`.
     init() {
         showOnBoardingSurveyButton = true
@@ -52,8 +48,6 @@ class HomeViewPresenter: ObservableObject {
         }
         // ******************************************************************
         
-        NotificationCenter.default.addObserver(self, selector: #selector(requestFalls), name: Notification.Name(Constants.fallsSurveyComplete), object: nil)
-        
         // if date is between noon sunday - noon Wednesday and is not answered on this week
         let date = Date()
         let dayOfWeek = date.dayNumberOfWeek()!
@@ -67,35 +61,7 @@ class HomeViewPresenter: ObservableObject {
                 NotificationCenter.default.addObserver(self, selector: #selector(OnCompleteWeeklySurvey), name: Notification.Name(Constants.weeklySurveyComplete), object: nil)
             }
         }
-        requestFalls()
-    }
-    
-    @objc
-    /// Access the user's collection to get the data of falls an writes that information to `fallsDict`.
-    func requestFalls(){
-        
-        guard let authCollection = CKStudyUser.shared.authCollection
-        else{
-            return
-        }
-        let route = "\(authCollection)\(Constants.dataBucketSurveys)/reportAFall/falls"
-        CKApp.requestData(route: route){
-            response in
-            self.fallsDict = [:]
-            let startDate = Date().addDays(days: -7)
-            if let response = response as? [String:Any] {
-                for (_, data) in response {
-                    if let data = data as? [String:Any],
-                       let date = data["date"] as? String {
-                        let dateAsDate = date.toDate("MM-dd-yyyy")
-                        if dateAsDate > startDate {
-                            let fallsCounter = (self.fallsDict[date] ?? 0) + 1
-                            self.fallsDict[date] = fallsCounter
-                        }
-                    }
-                }
-            }
-        }
+        weeklySurveyButtonIsActive = true
     }
     
     @objc
@@ -115,16 +81,7 @@ class HomeViewPresenter: ObservableObject {
     
     /// Returns a view of the weekly survey content.
     func weeklySurveyView() -> some View{
-        requestFalls()
-        var fallsSummary =  ["Date", "Falls Count"].map({$0.padding(toLength: 18, withPad: " ", startingAt: 0)}).joined(separator: " | ")
-        var totalFalls = 0
-        for (date, number) in fallsDict {
-            fallsSummary+="\n"
-            fallsSummary+=["\(date)","\(number)"].map({$0.padding(toLength: 15, withPad: " ", startingAt: 0)}).joined(separator: " | ")
-            totalFalls+=number
-        }
-        
-        return AnyView(CKTaskViewController(tasks: WeeklyCheckInSurvey.weeklyCheckInSurvey(totalFalls: totalFalls, fallsSummary: fallsSummary)))
+        return AnyView(CKTaskViewController(tasks: WeeklyCheckInSurvey.weeklyCheckInSurvey()))
     }
     
     /// Returns a view of the report a fall survey.
