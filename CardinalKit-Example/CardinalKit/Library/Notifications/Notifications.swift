@@ -24,7 +24,7 @@ public class Notifications {
                //------------------Report Fall Notification--------------------//
                 let content = UNMutableNotificationContent()
                 content.title = "Gait Task"
-                content.subtitle = "Time for your monthly mobility assessment"
+                content.subtitle = "Time for your weekly mobility assessment"
                 content.sound = UNNotificationSound.default
 
                 // Configure the recurring date for first notification.
