@@ -20,6 +20,8 @@ public class VideoStepViewController: ORKInstructionStepViewController{
     }
     
     override public func viewDidLoad() {
+        let value = UIInterfaceOrientation.landscapeLeft.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
         
         let instructionLabel = UILabel(frame: CGRect(x: 0, y: 100, width: view.frame.width - 50, height: 50 ))
         instructionLabel.center.x = view.center.x
@@ -49,6 +51,14 @@ public class VideoStepViewController: ORKInstructionStepViewController{
         self.view.addSubview(doneButton)
         
         self.view.backgroundColor = .white
+    }
+    
+    public override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .landscapeLeft
     }
         
     @objc
