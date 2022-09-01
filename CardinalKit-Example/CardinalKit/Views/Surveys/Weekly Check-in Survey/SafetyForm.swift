@@ -13,19 +13,19 @@ class SafetyForm:ORKFormStep{
     override init(identifier: String, title: String?, text: String?) {
         super.init(identifier: identifier, title: title, text: text)
         
-        let safe1Question = ORKFormItem(identifier: "safe_1", text: "Have you cleared a 10-foot-long space with no throw rugs or obstructions?", answerFormat: ORKBooleanAnswerFormat(yesString: "yes", noString: "no"))
+        let safe1Question = ORKFormItem(identifier: "safe_1", text: "Have you cleared a 10-foot-long space with no throw rugs or obstructions?", answerFormat: ORKBooleanAnswerFormat(yesString: "Yes", noString: "No"))
         safe1Question.isOptional = false
         
-        let safe2Question = ORKFormItem(identifier: "safe_2", text: "Have you set up a chair on one side (ideally with arms)?", answerFormat: ORKBooleanAnswerFormat(yesString: "yes", noString: "no"))
+        let safe2Question = ORKFormItem(identifier: "safe_2", text: "Have you set up a chair on one side (ideally with arms)?", answerFormat: ORKBooleanAnswerFormat(yesString: "Yes", noString: "No"))
         safe2Question.isOptional = false
 
-        let safe3Question = ORKFormItem(identifier: "safe_3", text: "Are you wearing regular footwear?", answerFormat: ORKBooleanAnswerFormat(yesString: "yes", noString: "no"))
+        let safe3Question = ORKFormItem(identifier: "safe_3", text: "Are you wearing regular footwear?", answerFormat: ORKBooleanAnswerFormat(yesString: "Yes", noString: "No"))
         safe3Question.isOptional = false
         
-        let safe4Question = ORKFormItem(identifier: "safe_4", text: "Do you have someone present who can assist you if needed?", answerFormat: ORKBooleanAnswerFormat(yesString: "yes", noString: "no"))
+        let safe4Question = ORKFormItem(identifier: "safe_4", text: "Do you have someone present who can assist you if needed?", answerFormat: ORKBooleanAnswerFormat(yesString: "Yes", noString: "No"))
         safe4Question.isOptional = false
 
-        let safe5Question = ORKFormItem(identifier: "safe_5", text: "Have you put on the belt with pouch to hold your phone?", answerFormat: ORKBooleanAnswerFormat(yesString: "yes", noString: "no"))
+        let safe5Question = ORKFormItem(identifier: "safe_5", text: "Have you put on the belt with pouch to hold your phone?", answerFormat: ORKBooleanAnswerFormat(yesString: "Yes", noString: "No"))
         safe5Question.isOptional = false
         
         self.formItems = [safe1Question, safe2Question, safe3Question, safe4Question, safe5Question]

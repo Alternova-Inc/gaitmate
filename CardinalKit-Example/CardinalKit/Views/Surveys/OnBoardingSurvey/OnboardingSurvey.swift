@@ -346,9 +346,9 @@ struct OnboardingSurvey {
         let timeSpendItem2 = ORKFormItem(identifier: "pa_2", text: "Jogging?", answerFormat: timeSpendFormat, optional: false)
         let timeSpendItem3 = ORKFormItem(identifier: "pa_3", text: "Bicycling?", answerFormat: timeSpendFormat, optional: false)
         let timeSpendItem4 = ORKFormItem(identifier: "pa_4", text: "Swimming?", answerFormat: timeSpendFormat, optional: false)
-        let timeSpendItem5 = ORKFormItem(identifier: "pa_5", text: "doing Any other exercise that raises your heart rate?", answerFormat: timeSpendFormat, optional: false)
+        let timeSpendItem5 = ORKFormItem(identifier: "pa_5", text: "Doing Any other exercise that raises your heart rate?", answerFormat: timeSpendFormat, optional: false)
         
-        let PASurveyStep = ORKFormStep(identifier: "PASurveyStep", title: "Activity Survey", text: "The following questions regard your physical activity \n In a typical day, approximately how much time do you spend doing each of the following activities: ")
+        let PASurveyStep = ORKFormStep(identifier: "PASurveyStep", title: "Activity Survey", text: "In a typical day, approximately how much time do you spend doing each of the following activities: ")
         PASurveyStep.formItems = [timeSpendItem1, timeSpendItem2, timeSpendItem3, timeSpendItem4, timeSpendItem5]
         PASurveyStep.isOptional = false
         steps += [PASurveyStep]
