@@ -164,6 +164,8 @@ class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerD
             return WalkStepViewController(step: step)
         case is SafetyForm:
             return SafetyFormViewController(step: step)
+        case is WaitChangeOrientation:
+            return WaitChangeOrientationViewController(step: step)
         default:
             return nil
         }

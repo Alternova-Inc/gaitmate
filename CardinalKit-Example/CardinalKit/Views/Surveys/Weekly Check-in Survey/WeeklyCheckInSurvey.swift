@@ -21,6 +21,9 @@ struct WeeklyCheckInSurvey {
         
         steps += [videoStep]
         
+        let waitChangeOrientationStep = WaitChangeOrientation(identifier: "ExtraStep")
+        steps += [waitChangeOrientationStep]
+        
         // safety form
         let safetyForm = SafetyForm(identifier: "SafetyCheck", title: "Safety Check", text: "Ensure that each of these safety conditions is met prior to your mobility assessment")
         steps += [safetyForm]
