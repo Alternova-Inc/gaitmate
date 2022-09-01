@@ -30,5 +30,8 @@ class Constants {
     static let weeklySurveyComplete = "didWeekleSurveyComplete"
     static let fallsSurveyComplete = "onFallsSurveyCompletion"
     
+    static let putViewOnLandScape = "putViewOnLandScape"
+    static let putViewOnPortrait = "putViewOnPortrait"
+    
     
 }

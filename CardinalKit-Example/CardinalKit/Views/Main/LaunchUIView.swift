@@ -36,17 +36,25 @@ struct LaunchUIView: View {
                 }
             } // Action to perform before the `VStack` appears
         }.onAppear(perform: {
+            AppDelegate.orientationLock = .portrait
             CKStudyUser.shared.save()
             if let completed = UserDefaults.standard.object(forKey: Constants.onboardingDidComplete) as? Bool {
                self.didCompleteOnboarding = completed
             }
-        }).onReceive(NotificationCenter.default.publisher(for: NSNotification.Name(Constants.onboardingDidComplete))) { notification in
+        })
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name(Constants.onboardingDidComplete)), perform: { notification in
             if let newValue = notification.object as? Bool {
                 self.didCompleteOnboarding = newValue
             } else if let completed = UserDefaults.standard.object(forKey: Constants.onboardingDidComplete) as? Bool {
                self.didCompleteOnboarding = completed
             }
-        }
+        })
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name(Constants.putViewOnPortrait)), perform: {notification in
+            AppDelegate.orientationLock = .portrait
+        })
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name(Constants.putViewOnLandScape)), perform: {notification in
+            AppDelegate.orientationLock = .landscapeLeft
+        })
         
     }
 }

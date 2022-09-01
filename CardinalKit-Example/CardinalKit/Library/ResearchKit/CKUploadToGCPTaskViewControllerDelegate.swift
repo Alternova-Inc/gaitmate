@@ -14,6 +14,11 @@ import CardinalKit
 class CKUploadToGCPTaskViewControllerDelegate : NSObject, ORKTaskViewControllerDelegate {
     
     public func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+        
+        NotificationCenter.default.post(name: NSNotification.Name(Constants.putViewOnPortrait), object: true)
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        
         switch reason {
         case .completed:
             if taskViewController.result.identifier == "WeeklySurvey" {
