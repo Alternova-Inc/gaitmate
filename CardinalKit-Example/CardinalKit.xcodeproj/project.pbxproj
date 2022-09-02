@@ -12,6 +12,7 @@
 		2B8FB80427552B02000B2D7B /* CKMultipleSignInStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8FB80327552B02000B2D7B /* CKMultipleSignInStep.swift */; };
 		2B932F84276BF8D300AB3A02 /* CKReviewConsentDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B932F83276BF8D300AB3A02 /* CKReviewConsentDocument.swift */; };
 		2B9885A028931D9000725D10 /* SafetyForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B98859F28931D9000725D10 /* SafetyForm.swift */; };
+		2BDCDFCB28C1793400D24463 /* WaitChangeOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCDFCA28C1793400D24463 /* WaitChangeOrientation.swift */; };
 		2BF6451826C1D0040020C206 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		2BF6452026C1DBE70020C206 /* CK_ORKSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF6451F26C1DBE70020C206 /* CK_ORKSerialization.swift */; };
 		2F94C5F22536543600DF8866 /* SceneDelegate+CardinalKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C5F12536543600DF8866 /* SceneDelegate+CardinalKit.swift */; };
@@ -108,6 +109,7 @@
 		2B8FB80327552B02000B2D7B /* CKMultipleSignInStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKMultipleSignInStep.swift; sourceTree = "<group>"; };
 		2B932F83276BF8D300AB3A02 /* CKReviewConsentDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKReviewConsentDocument.swift; sourceTree = "<group>"; };
 		2B98859F28931D9000725D10 /* SafetyForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyForm.swift; sourceTree = "<group>"; };
+		2BDCDFCA28C1793400D24463 /* WaitChangeOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitChangeOrientation.swift; sourceTree = "<group>"; };
 		2BF6451F26C1DBE70020C206 /* CK_ORKSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CK_ORKSerialization.swift; sourceTree = "<group>"; };
 		2F94C5F12536543600DF8866 /* SceneDelegate+CardinalKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+CardinalKit.swift"; sourceTree = "<group>"; };
 		41DC264876E45FE5A3FD8701 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				636E278B28514BA800A2F555 /* InstructionsStep.swift */,
 				636E278D28515B1E00A2F555 /* WalkStep.swift */,
 				2B98859F28931D9000725D10 /* SafetyForm.swift */,
+				2BDCDFCA28C1793400D24463 /* WaitChangeOrientation.swift */,
 			);
 			path = "Weekly Check-in Survey";
 			sourceTree = "<group>";
@@ -762,6 +765,7 @@
 				8E6E1E092534F4100024B8DF /* OnboardingViewController.swift in Sources */,
 				8E7FFFB425DCE9B7002982B4 /* CKUploadToGCPTaskViewControllerDelegate.swift in Sources */,
 				8EBE6F9C24B3C0E60093D07C /* AppDelegate+CardinalKit.swift in Sources */,
+				2BDCDFCB28C1793400D24463 /* WaitChangeOrientation.swift in Sources */,
 				8E0A43B9244A4A0400656518 /* AppDelegate.swift in Sources */,
 				8E6E1E3225353ABE0024B8DF /* ProfileUIView.swift in Sources */,
 				8E6E1E1E253528F50024B8DF /* SupportView.swift in Sources */,
