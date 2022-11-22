@@ -61,7 +61,6 @@ class HomeViewPresenter: ObservableObject {
                 NotificationCenter.default.addObserver(self, selector: #selector(OnCompleteWeeklySurvey), name: Notification.Name(Constants.weeklySurveyComplete), object: nil)
             }
         }
-        weeklySurveyButtonIsActive = true
     }
     
     @objc
